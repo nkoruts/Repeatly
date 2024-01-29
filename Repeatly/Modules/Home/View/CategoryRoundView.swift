@@ -14,7 +14,6 @@ struct CategoryRoundView: View {
     var body: some View {
         Text(title)
             .font(.gilroyRegular(size: 14))
-            .foregroundColor(.white)
             .lineLimit(1)
             .padding(.horizontal, 12)
             .padding(.vertical, 4)

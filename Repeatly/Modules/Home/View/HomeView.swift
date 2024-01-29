@@ -12,21 +12,33 @@ struct HomeView: View {
         CardModel(
             id: 0,
             title: "Заголовок 1",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
             category: "Работа",
-            color: .customGreen),
+            color: Color(hex: 0xffbe98)),
         CardModel(
             id: 1,
             title: "Заголовок 2",
             description: "Lorem ipsum dolor sit amet, consectetur",
             category: "Учёба",
-            color: Color(hex: 0xECA768)),
+            color: Color(hex: 0x6667ab)),
         CardModel(
             id: 2,
             title: "Заголовок 3",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
             category: "Финансы",
-            color: Color(hex: 0xE7E498))
+            color: Color(hex: 0xbb2649)),
+        CardModel(
+            id: 3,
+            title: "Заголовок 3",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
+            category: "Финансы",
+            color: Color(hex: 0x939597)),
+        CardModel(
+            id: 4,
+            title: "Заголовок 3",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
+            category: "Финансы",
+            color: Color(hex: 0xf5df4d))
     ]
     
     var body: some View {

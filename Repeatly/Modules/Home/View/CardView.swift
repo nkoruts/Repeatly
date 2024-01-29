@@ -18,15 +18,7 @@ struct CardView: View {
                     .foregroundColor(.white)
                 if let category = item.category {
                     Spacer()
-                    Text(category)
-                        .font(.gilroyRegular(size: 14))
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 4)
-                        .background(
-//                            RoundedRectangle(cornerRadius: 8)
-                            Capsule()
-                                .fill(item.color)
-                        )
+                    CategoryRoundView(title: category, color: item.color)
                 }
             }
             .padding([.horizontal, .top], 16)
@@ -45,6 +37,9 @@ struct CardView: View {
                 .padding(.leading, 8)
                 .background(item.color)
         )
+//        .clipShape(
+//            RoundedRectangle(cornerRadius: 18, style: .continuous)
+//        )
         .cornerRadius(18)
     }
 }
