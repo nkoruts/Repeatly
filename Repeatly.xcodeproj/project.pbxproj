@@ -22,6 +22,7 @@
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
 		162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162248032B65194D007A61EF /* Gilroy-SemiBold.otf */; };
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
+		166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* CategoryRoundView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		162248012B65156A007A61EF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		162248032B65194D007A61EF /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		1666930F2B6785A9008F8850 /* CategoryRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoundView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,8 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				162247EC2B6500EC007A61EF /* HomeView.swift */,
-				162248012B65156A007A61EF /* CardView.swift */,
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
+				162248012B65156A007A61EF /* CardView.swift */,
+				1666930F2B6785A9008F8850 /* CategoryRoundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
 				162247E12B64F538007A61EF /* Persistence.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
+				166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */,
 				162247DA2B64F537007A61EF /* ContentView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
 				169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */,
