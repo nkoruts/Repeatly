@@ -13,13 +13,14 @@ struct CategoryRoundView: View {
     
     var body: some View {
         Text(title)
-            .font(.gilroyRegular(size: 14))
+            .font(.gilroyMedium(size: 12))
             .lineLimit(1)
+            .foregroundColor(color)
             .padding(.horizontal, 12)
-            .padding(.vertical, 4)
+            .padding(.vertical, 3)
             .background(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(color)
+                    .fill(color.opacity(0.2))
             )
     }
 }

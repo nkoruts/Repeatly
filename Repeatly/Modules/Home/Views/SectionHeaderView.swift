@@ -14,10 +14,11 @@ struct SectionHeaderView: View {
         HStack {
             Text(title)
                 .font(.gilroySemiBold(size: 24))
-                .foregroundColor(.text)
+                .foregroundColor(ColorSystem.mainText)
                 .lineLimit(1)
             Spacer()
         }
         .padding(.top, 8)
+        .padding(.leading)
     }
 }

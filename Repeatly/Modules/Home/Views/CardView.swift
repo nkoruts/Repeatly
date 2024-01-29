@@ -16,41 +16,49 @@ struct CardView: View {
                 .fill(item.color)
                 .frame(width: 8)
             
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(item.title)
-                        .font(.gilroyMedium(size: 24))
-                        .foregroundColor(.white)
-                    if let category = item.category {
-                        Spacer()
-                        CategoryRoundView(
-                            title: category,
-                            color: item.color)
-                    }
+            VStack(alignment: .leading, spacing: 4) {
+                if let category = item.category {
+                    CategoryRoundView(
+                        title: category,
+                        color: item.color)
+                    .padding(.bottom, 4)
                 }
+                
+                Text(item.title)
+                    .font(.gilroyMedium(size: 18))
+                    .foregroundColor(ColorSystem.mainText)
                 
                 if let description = item.description {
                     Text(description)
-                        .font(.gilroyRegular(size: 17))
-                        .foregroundColor(.white)
-                        .lineLimit(3)
+                        .font(.gilroyRegular(size: 14))
+                        .foregroundColor(ColorSystem.grayText)
+                        .lineLimit(2)
                 }
             }
             .padding(16)
+            
+            Spacer()
+            
+            Image(systemName: "chevron.forward")
+                .foregroundColor(ColorSystem.icons)
+                .padding(.trailing, 16)
         }
-        .background(Color.lightBackground)
+        .background(ColorSystem.cardBackground)
         .clipShape(
             RoundedRectangle(
                 cornerRadius: 18,
                 style: .continuous)
         )
+        .shadow(color: ColorSystem.shadow, radius: 8)
+        .padding(.horizontal)
+        
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.background
+            ColorSystem.background
             
             CardView(
                 item: CardModel(

@@ -7,87 +7,59 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    let items = [
-        CardModel(
-            id: 0,
-            title: "Заголовок 1",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-            category: "Работа",
-            color: .accent),
-        CardModel(
-            id: 1,
-            title: "Заголовок 2",
-            description: "Lorem ipsum dolor sit amet, consectetur",
-            category: "Учёба",
-            color: .accent),
-        CardModel(
-            id: 2,
-            title: "Заголовок 3",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
-            category: "Финансы",
-            color: .accent),
-        CardModel(
-            id: 3,
-            title: "Заголовок 3",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
-            category: "Финансы",
-            color: .accent),
-        CardModel(
-            id: 4,
-            title: "Заголовок 3",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
-            category: "Финансы",
-            color: .accent)
-    ]
+struct ColorSystem {
+    static let pink = Color(hex: 0xFD6686)
+    static let lightBlue = Color(hex: 0x33C6F8)
+    static let yellow = Color(hex: 0xFFC12C)
+    static let green = Color(hex: 0x34D183)
     
+    static let blueButton = Color(hex: 0x3E69FF)
+    static let icons = Color(hex: 0xC3C8CE)
+    
+    static let grayText = Color(hex: 0x949DA9)
+    static let mainText = Color(hex: 0x232E3F)
+    
+    static let background = Color(hex: 0xF5F7FA)
+    static let cardBackground = Color(hex: 0xFCFCFD)
+    static let tabbarBackground = Color(hex: 0xFDFDFD)
+    
+    static let shadow = Color(hex: 0xEEF0F4)
+}
+
+struct HomeView: View {    
     var body: some View {
         NavigationView {
-            VStack {
-                VStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        Text("Repetly")
-                            .foregroundColor(.text)
-                            .font(.gilroySemiBold(size: 32))
-                        Spacer()
-                        Button(action: {
-                            print("Search")
-                        }, label: {
-                            Image(systemName: "magnifyingglass")
-                                .font(.title2)
-                                .foregroundColor(.lightGray)
-                        })
-                        Button(action: {
-                            print("Search")
-                        }, label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .font(.title2)
-                                .foregroundColor(.lightGray)
-                        })
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            print("Search")
-                        }, label: {
-                            HStack {
-                                Image(systemName: "plus.app.fill")
-                                    .font(.title)
-                                    .foregroundColor(.lightGray)
-                                Text("Create")
-                                    .font(.gilroyRegular(size: 16))
-                                    .foregroundColor(.text)
-                            }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 4)
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.lightBackground)
-                            )
-                        })
-                    }
+            VStack(spacing: 16) {
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    Text("Repetly")
+                        .foregroundColor(ColorSystem.mainText)
+                        .font(.gilroySemiBold(size: 32))
+                    Spacer()
+                    Button(action: {
+                        print("Search")
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                            .font(.title2)
+                            .foregroundColor(ColorSystem.blueButton)
+                    })
+                    Button(action: {
+                        print("Search")
+                    }, label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .font(.title2)
+                            .foregroundColor(ColorSystem.blueButton)
+                    })
+                    Button(action: {
+                        print("Search")
+                    }, label: {
+                        HStack {
+                            Image(systemName: "plus.app.fill")
+                                .font(.system(size: 34))
+                                .foregroundColor(ColorSystem.blueButton)
+                        }
+                    })
                 }
+                .padding(.horizontal)
                 
                 ScrollView {
                     LazyVStack(spacing: 16) {
@@ -98,19 +70,10 @@ struct HomeView: View {
                         }, header: {
                             SectionHeaderView(title: "Today")
                         })
-                        
-                        Section(content: {
-                            ForEach(items) { item in
-                                CardView(item: item)
-                            }
-                        }, header: {
-                            SectionHeaderView(title: "27 Jan")
-                        })
                     }
                 }
             }
-            .padding()
-            .background(Color.background)
+            .background(ColorSystem.background)
         }
     }
 }
