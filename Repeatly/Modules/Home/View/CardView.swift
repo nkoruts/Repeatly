@@ -11,36 +11,39 @@ struct CardView: View {
     var item: CardModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(item.title)
-                    .font(.gilroyMedium(size: 24))
-                    .foregroundColor(.white)
-                if let category = item.category {
-                    Spacer()
-                    CategoryRoundView(title: category, color: item.color)
+        HStack(spacing: .zero) {
+            Rectangle()
+                .fill(item.color)
+                .frame(width: 8)
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(item.title)
+                        .font(.gilroyMedium(size: 24))
+                        .foregroundColor(.white)
+                    if let category = item.category {
+                        Spacer()
+                        CategoryRoundView(
+                            title: category,
+                            color: item.color)
+                    }
+                }
+                
+                if let description = item.description {
+                    Text(description)
+                        .font(.gilroyRegular(size: 17))
+                        .foregroundColor(.white)
+                        .lineLimit(3)
                 }
             }
-            .padding([.horizontal, .top], 16)
-            
-            if let description = item.description {
-                Text(description)
-                    .font(.gilroyRegular(size: 17))
-                    .foregroundColor(.white)
-                    .lineLimit(3)
-                    .padding([.horizontal, .bottom], 16)
-            }
-            
+            .padding(16)
         }
-        .background(
-            Color.secondaryColor
-                .padding(.leading, 8)
-                .background(item.color)
+        .background(Color.secondaryColor)
+        .clipShape(
+            RoundedRectangle(
+                cornerRadius: 18,
+                style: .continuous)
         )
-//        .clipShape(
-//            RoundedRectangle(cornerRadius: 18, style: .continuous)
-//        )
-        .cornerRadius(18)
     }
 }
 
@@ -53,7 +56,7 @@ struct CardView_Previews: PreviewProvider {
                 item: CardModel(
                     id: 0,
                     title: "Заголовок",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adip",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                     category: "Работа",
                     color: .customGreen)
             )
