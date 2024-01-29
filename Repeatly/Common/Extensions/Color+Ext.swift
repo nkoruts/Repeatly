@@ -20,18 +20,9 @@ extension Color {
 }
 
 extension Color {
-    static var main: Color {
-        Color(hex: 0x121416)
-//        Color(hex: 0x282739)
-    }
-    
-    static var secondaryColor: Color {
-        Color(hex: 0x252628)
-//        Color(hex: 0x47455B)
-    }
-    
-    static var customGreen: Color {
-        Color(hex: 0x60BF75)
-//        Color(hex: 0x8ED8B0)
-    }
+    static var text = Color("TextColor")
+    static var background = Color("BackgroundColor")
+    static var lightBackground = Color("LightBackgroundColor")
+    static var accent = Color("AccentColor")
+    static var lightGray = Color("LightGrayColor")
 }
