@@ -14,7 +14,7 @@ struct SectionHeaderView: View {
         HStack {
             Text(title)
                 .font(.gilroySemiBold(size: 24))
-                .foregroundColor(.white)
+                .foregroundColor(.text)
                 .lineLimit(1)
             Spacer()
         }

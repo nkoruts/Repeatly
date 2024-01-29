@@ -38,7 +38,7 @@ struct CardView: View {
             }
             .padding(16)
         }
-        .background(Color.secondaryColor)
+        .background(Color.lightBackground)
         .clipShape(
             RoundedRectangle(
                 cornerRadius: 18,
@@ -50,7 +50,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.main
+            Color.background
             
             CardView(
                 item: CardModel(
@@ -58,7 +58,7 @@ struct CardView_Previews: PreviewProvider {
                     title: "Заголовок",
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                     category: "Работа",
-                    color: .customGreen)
+                    color: .accent)
             )
             .padding()
         }
