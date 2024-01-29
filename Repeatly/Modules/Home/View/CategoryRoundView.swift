@@ -18,8 +18,7 @@ struct CategoryRoundView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
             .background(
-                //                RoundedRectangle(cornerRadius: 8)
-                Capsule()
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .fill(color)
             )
     }
