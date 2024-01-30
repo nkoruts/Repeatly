@@ -11,10 +11,12 @@ struct CardView: View {
     var item: CardModel
     
     var body: some View {
-        HStack(spacing: .zero) {
-            Rectangle()
+        HStack(spacing: 12) {
+            Capsule()
                 .fill(item.color)
-                .frame(width: 8)
+                .frame(width: 4)
+                .padding(.leading, 12)
+                .padding(.vertical, 16)
             
             VStack(alignment: .leading, spacing: 4) {
                 if let category = item.category {
@@ -35,7 +37,7 @@ struct CardView: View {
                         .lineLimit(2)
                 }
             }
-            .padding(16)
+            .padding([.vertical, .trailing], 16)
             
             Spacer()
             
