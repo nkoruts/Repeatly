@@ -18,7 +18,7 @@ struct MultilineTextView: View {
                 .colorMultiply(.clear)
                 .padding(8)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .stroke(Color.lightGray)
                 )
             if text.isEmpty {
