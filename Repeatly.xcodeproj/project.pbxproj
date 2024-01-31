@@ -77,6 +77,7 @@
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				16110F2E2B6A58E300471512 /* MultilineTextView.swift */,
 				16110F342B6A66C400471512 /* NavigationTopView.swift */,
+				169D63F22B6AB95500866345 /* ViewModifiers */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
 			);
 			path = Views;
@@ -236,6 +237,13 @@
 				162247E22B64F538007A61EF /* Repeatly.xcdatamodeld */,
 			);
 			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		169D63F22B6AB95500866345 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -28,7 +28,7 @@ struct CreateNoteView: View {
                         .font(.gilroyRegular(size: 16))
                         .padding(12)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .stroke(Color.lightGray)
                         )
                 }, header: {
@@ -43,6 +43,21 @@ struct CreateNoteView: View {
                 })
                 
                 Spacer()
+                
+                Button(action: {
+                    // TODO: - Save note
+                    dismiss()
+                }, label: {
+                    Text("Save")
+                        .font(.gilroyMedium(size: 20))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 45)
+                        .background(ColorSystem.blueButton)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        )
+                        
+                })
             }
             .padding()
             .background(ColorSystem.background)

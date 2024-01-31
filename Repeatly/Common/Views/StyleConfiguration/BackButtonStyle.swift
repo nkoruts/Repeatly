@@ -16,7 +16,7 @@ struct BackButtonStyle: ButtonStyle {
                     .foregroundColor(ColorSystem.blueButton)
                     .frame(width: 40, height: 40)
                     .background(
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
                             .fill(ColorSystem.blueButton.opacity(0.15))
                     )
             )
