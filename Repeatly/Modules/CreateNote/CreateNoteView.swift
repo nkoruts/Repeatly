@@ -8,8 +8,45 @@
 import SwiftUI
 
 struct CreateNoteView: View {
+    @State var title = ""
+    @State var details = ""
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack(alignment: .leading, spacing: 8) {
+                NavigationTopView(
+                    title: "Create Note",
+                    backAction: {
+                        dismiss()
+                    })
+                
+                Spacer().frame(height: 32)
+                
+                Section(content: {
+                    TextField("Example: Study", text: $title)
+                        .font(.gilroyRegular(size: 16))
+                        .padding(12)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.lightGray)
+                        )
+                }, header: {
+                    SectionHeaderView(title: "Note title")
+                })
+                
+                Section(content: {
+                    MultilineTextView(placeholder: "Example: ...", text: $details)
+                        .frame(height: 100)
+                }, header: {
+                    SectionHeaderView(title: "Details")
+                })
+                
+                Spacer()
+            }
+            .padding()
+            .background(ColorSystem.background)
+        }
     }
 }
 

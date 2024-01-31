@@ -26,55 +26,50 @@ struct ColorSystem {
     static let shadow = Color(hex: 0xEEF0F4)
 }
 
-struct HomeView: View {    
+struct HomeView: View {
+    @State private var willMoveToNoteCreation = false
+    
     var body: some View {
-        NavigationView {
-            VStack(spacing: 16) {
-                HStack(alignment: .firstTextBaseline, spacing: 12) {
-                    Text("Repetly")
-                        .foregroundColor(ColorSystem.mainText)
-                        .font(.gilroySemiBold(size: 32))
-                    Spacer()
-                    Button(action: {
-                        print("Search")
-                    }, label: {
-                        Image(systemName: "magnifyingglass")
-                            .font(.title2)
+        VStack(spacing: 16) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text("Repetly")
+                    .foregroundColor(ColorSystem.mainText)
+                    .font(.gilroySemiBold(size: 32))
+                Spacer()
+                Button(action: {
+                    print("Search")
+                }, label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .foregroundColor(ColorSystem.blueButton)
+                })
+                Button(action: {
+                    willMoveToNoteCreation = true
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus.app.fill")
+                            .font(.system(size: 34))
                             .foregroundColor(ColorSystem.blueButton)
-                    })
-                    Button(action: {
-                        print("Search")
-                    }, label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .font(.title2)
-                            .foregroundColor(ColorSystem.blueButton)
-                    })
-                    Button(action: {
-                        print("Search")
-                    }, label: {
-                        HStack {
-                            Image(systemName: "plus.app.fill")
-                                .font(.system(size: 34))
-                                .foregroundColor(ColorSystem.blueButton)
-                        }
-                    })
-                }
-                .padding(.horizontal)
-                
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        Section(content: {
-                            ForEach(items) { item in
-                                CardView(item: item)
-                            }
-                        }, header: {
-                            SectionHeaderView(title: "Today")
-                        })
                     }
+                })
+            }
+            .padding(.horizontal)
+            
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    Section(content: {
+                        ForEach(items) { item in
+                            CardView(item: item)
+                        }
+                    }, header: {
+                        SectionHeaderView(title: "Today")
+                    })
+                    .padding(.horizontal)
                 }
             }
-            .background(ColorSystem.background)
         }
+        .background(ColorSystem.background)
+        .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
     }
 }
 

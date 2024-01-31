@@ -19,6 +19,5 @@ struct SectionHeaderView: View {
             Spacer()
         }
         .padding(.top, 8)
-        .padding(.leading)
     }
 }

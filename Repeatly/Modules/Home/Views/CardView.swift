@@ -52,7 +52,6 @@ struct CardView: View {
                 style: .continuous)
         )
         .shadow(color: ColorSystem.shadow, radius: 8)
-        .padding(.horizontal)
         
     }
 }
