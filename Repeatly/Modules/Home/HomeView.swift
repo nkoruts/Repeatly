@@ -27,6 +27,7 @@ struct ColorSystem {
 }
 
 struct HomeView: View {
+    @FetchRequest(sortDescriptors: []) var notes: FetchedResults<Note>
     @State private var willMoveToNoteCreation = false
     
     var body: some View {
@@ -58,8 +59,8 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     Section(content: {
-                        ForEach(items) { item in
-                            CardView(item: item)
+                        ForEach(notes) { note in
+                            CardView(note: note)
                         }
                     }, header: {
                         SectionHeaderView(title: "Today")
