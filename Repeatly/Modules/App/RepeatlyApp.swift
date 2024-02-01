@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RepeatlyApp: App {
+    @StateObject private var storageManager = StorageManager()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            HomeView()
+                .environment(\.managedObjectContext, storageManager.container.viewContext)
         }
     }
 }

@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct CardView: View {
-    var item: CardModel
+    var note: Note
     
     var body: some View {
         HStack(spacing: 12) {
             Capsule()
-                .fill(item.color)
+                .fill(Color(hex: note.category.color))
                 .frame(width: 4)
                 .padding(.leading, 12)
                 .padding(.vertical, 16)
             
             VStack(alignment: .leading, spacing: 4) {
-                if let category = item.category {
+                if let categoryName = note.category.name {
                     CategoryRoundView(
-                        title: category,
-                        color: item.color)
+                        title: categoryName,
+                        color: Color(hex: note.category.color))
                     .padding(.bottom, 4)
                 }
                 
-                Text(item.title)
+                Text(note.title)
                     .font(.gilroyMedium(size: 18))
                     .foregroundColor(ColorSystem.mainText)
                 
-                if let description = item.description {
-                    Text(description)
+                if let details = note.details {
+                    Text(details)
                         .font(.gilroyRegular(size: 14))
                         .foregroundColor(ColorSystem.grayText)
                         .lineLimit(2)
@@ -53,23 +53,5 @@ struct CardView: View {
         )
         .shadow(color: ColorSystem.shadow, radius: 8)
         
-    }
-}
-
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            ColorSystem.background
-            
-            CardView(
-                item: CardModel(
-                    id: 0,
-                    title: "Заголовок",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                    category: "Работа",
-                    color: .accent)
-            )
-            .padding()
-        }
     }
 }

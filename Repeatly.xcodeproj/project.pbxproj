@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD292B6B73530025A1D6 /* StorageManager.swift */; };
+		160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */; };
+		160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */; };
 		16110F2F2B6A58E300471512 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F2E2B6A58E300471512 /* MultilineTextView.swift */; };
 		16110F312B6A624600471512 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F302B6A624600471512 /* View+Ext.swift */; };
 		16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F342B6A66C400471512 /* NavigationTopView.swift */; };
@@ -14,8 +17,6 @@
 		162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247D72B64F537007A61EF /* RepeatlyApp.swift */; };
 		162247DC2B64F538007A61EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162247DB2B64F538007A61EF /* Assets.xcassets */; };
 		162247DF2B64F538007A61EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162247DE2B64F538007A61EF /* Preview Assets.xcassets */; };
-		162247E12B64F538007A61EF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247E02B64F538007A61EF /* Persistence.swift */; };
-		162247E42B64F538007A61EF /* Repeatly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 162247E22B64F538007A61EF /* Repeatly.xcdatamodeld */; };
 		162247ED2B6500EC007A61EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247EC2B6500EC007A61EF /* HomeView.swift */; };
 		162247F12B650AB0007A61EF /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247F02B650AB0007A61EF /* CardModel.swift */; };
 		162247F82B650C64007A61EF /* Gilroy-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F42B650C64007A61EF /* Gilroy-Regular.otf */; };
@@ -33,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160ECD292B6B73530025A1D6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
+		160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreData.swift"; sourceTree = "<group>"; };
 		16110F2E2B6A58E300471512 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
 		16110F302B6A624600471512 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		16110F342B6A66C400471512 /* NavigationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTopView.swift; sourceTree = "<group>"; };
@@ -41,8 +45,6 @@
 		162247D72B64F537007A61EF /* RepeatlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatlyApp.swift; sourceTree = "<group>"; };
 		162247DB2B64F538007A61EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		162247DE2B64F538007A61EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		162247E02B64F538007A61EF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		162247E32B64F538007A61EF /* Repeatly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Repeatly.xcdatamodel; sourceTree = "<group>"; };
 		162247EC2B6500EC007A61EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		162247F02B650AB0007A61EF /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		162247F42B650C64007A61EF /* Gilroy-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.otf"; sourceTree = "<group>"; };
@@ -71,6 +73,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160ECD2B2B6B744D0025A1D6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1668329B2B680BB000576DA5 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		160ECD342B6B7F300025A1D6 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				160ECD292B6B73530025A1D6 /* StorageManager.swift */,
+				160ECD352B6B7F4D0025A1D6 /* Models */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		160ECD352B6B7F4D0025A1D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */,
+				160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		16110F332B6A661700471512 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				16770D802B65C8AA000E0CAC /* App */,
+				160ECD2B2B6B744D0025A1D6 /* Main */,
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
 				1668329F2B680C9D00576DA5 /* Settings */,
@@ -225,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				162247D72B64F537007A61EF /* RepeatlyApp.swift */,
-				1668329B2B680BB000576DA5 /* MainView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -233,8 +261,7 @@
 		16770D812B65C8D1000E0CAC /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				162247E02B64F538007A61EF /* Persistence.swift */,
-				162247E22B64F538007A61EF /* Repeatly.xcdatamodeld */,
+				160ECD342B6B7F300025A1D6 /* Storage */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -323,19 +350,20 @@
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				162247F12B650AB0007A61EF /* CardModel.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
+				160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,
+				160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */,
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
 				16110F2F2B6A58E300471512 /* MultilineTextView.swift in Sources */,
-				162247E12B64F538007A61EF /* Persistence.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
 				166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
+				160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */,
 				169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */,
 				162247ED2B6500EC007A61EF /* HomeView.swift in Sources */,
-				162247E42B64F538007A61EF /* Repeatly.xcdatamodeld in Sources */,
 				1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,19 +569,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		162247E22B64F538007A61EF /* Repeatly.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				162247E32B64F538007A61EF /* Repeatly.xcdatamodel */,
-			);
-			currentVersion = 162247E32B64F538007A61EF /* Repeatly.xcdatamodel */;
-			path = Repeatly.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 162247CC2B64F537007A61EF /* Project object */;
 }
