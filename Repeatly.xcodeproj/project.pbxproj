@@ -18,7 +18,6 @@
 		162247DC2B64F538007A61EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162247DB2B64F538007A61EF /* Assets.xcassets */; };
 		162247DF2B64F538007A61EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162247DE2B64F538007A61EF /* Preview Assets.xcassets */; };
 		162247ED2B6500EC007A61EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247EC2B6500EC007A61EF /* HomeView.swift */; };
-		162247F12B650AB0007A61EF /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247F02B650AB0007A61EF /* CardModel.swift */; };
 		162247F82B650C64007A61EF /* Gilroy-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F42B650C64007A61EF /* Gilroy-Regular.otf */; };
 		162247FA2B650C64007A61EF /* Gilroy-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F62B650C64007A61EF /* Gilroy-Bold.otf */; };
 		162247FB2B650C64007A61EF /* Gilroy-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F72B650C64007A61EF /* Gilroy-Medium.otf */; };
@@ -46,7 +45,6 @@
 		162247DB2B64F538007A61EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		162247DE2B64F538007A61EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		162247EC2B6500EC007A61EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		162247F02B650AB0007A61EF /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		162247F42B650C64007A61EF /* Gilroy-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.otf"; sourceTree = "<group>"; };
 		162247F62B650C64007A61EF /* Gilroy-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.otf"; sourceTree = "<group>"; };
 		162247F72B650C64007A61EF /* Gilroy-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.otf"; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		162247EB2B6500C9007A61EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				162247EF2B650A5D007A61EF /* Model */,
 				162247EE2B650A55007A61EF /* Views */,
 				162247EC2B6500EC007A61EF /* HomeView.swift */,
 			);
@@ -185,14 +182,6 @@
 				1666930F2B6785A9008F8850 /* CategoryRoundView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		162247EF2B650A5D007A61EF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				162247F02B650AB0007A61EF /* CardModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		162247F22B650C42007A61EF /* Resources */ = {
@@ -348,7 +337,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
-				162247F12B650AB0007A61EF /* CardModel.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
 				160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
