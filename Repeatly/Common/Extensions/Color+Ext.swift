@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    init(hex: Int, opacity: Double = 1) {
+    init(hex: Int32, opacity: Double = 1) {
         self.init(
             .sRGB,
             red: Double((hex >> 16) & 0xff) / 255,
