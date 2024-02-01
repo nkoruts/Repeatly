@@ -22,7 +22,7 @@ struct CardView: View {
                 if let categoryName = note.category.name {
                     CategoryRoundView(
                         title: categoryName,
-                        color: note.category.color)
+                        color: Color(hex: note.category.color))
                     .padding(.bottom, 4)
                 }
                 
