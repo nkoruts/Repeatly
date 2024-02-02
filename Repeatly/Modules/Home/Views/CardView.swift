@@ -12,19 +12,21 @@ struct CardView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Capsule()
-                .fill(Color(hex: note.category.color))
-                .frame(width: 4)
-                .padding(.leading, 12)
-                .padding(.vertical, 16)
+//            if let category = note.category {
+//                Capsule()
+//                    .fill(Color(hex: category.color))
+//                    .frame(width: 4)
+//                    .padding(.leading, 12)
+//                    .padding(.vertical, 16)
+//            }
             
             VStack(alignment: .leading, spacing: 4) {
-                if let categoryName = note.category.name {
-                    CategoryRoundView(
-                        title: categoryName,
-                        color: Color(hex: note.category.color))
-                    .padding(.bottom, 4)
-                }
+//                if let categoryName = note.category.name {
+//                    CategoryRoundView(
+//                        title: categoryName,
+//                        color: Color(hex: note.category.color))
+//                    .padding(.bottom, 4)
+//                }
                 
                 Text(note.title)
                     .font(.gilroyMedium(size: 18))

@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-struct ColorSystem {
-    static let pink = Color(hex: 0xFD6686)
-    static let lightBlue = Color(hex: 0x33C6F8)
-    static let yellow = Color(hex: 0xFFC12C)
-    static let green = Color(hex: 0x34D183)
-    
-    static let blueButton = Color(hex: 0x3E69FF)
-    static let icons = Color(hex: 0xC3C8CE)
-    
-    static let grayText = Color(hex: 0x949DA9)
-    static let mainText = Color(hex: 0x232E3F)
-    
-    static let background = Color(hex: 0xF5F7FA)
-    static let cardBackground = Color(hex: 0xFCFCFD)
-    static let tabbarBackground = Color(hex: 0xFDFDFD)
-    
-    static let shadow = Color(hex: 0xEEF0F4)
-}
-
 struct HomeView: View {
     @FetchRequest(sortDescriptors: []) var notes: FetchedResults<Note>
     @State private var willMoveToNoteCreation = false
@@ -47,11 +28,9 @@ struct HomeView: View {
                 Button(action: {
                     willMoveToNoteCreation = true
                 }, label: {
-                    HStack {
-                        Image(systemName: "plus.app.fill")
-                            .font(.system(size: 34))
-                            .foregroundColor(ColorSystem.blueButton)
-                    }
+                    Image(systemName: "plus.app.fill")
+                        .font(.system(size: 34))
+                        .foregroundColor(ColorSystem.blueButton)
                 })
             }
             .padding(.horizontal)

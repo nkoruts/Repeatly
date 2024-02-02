@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+var categories = [
+    Category(color: 0x3E69FF, name: "Study"),
+    Category(color: 0x3E69FF, name: "Job"),
+    Category(color: 0x3E69FF, name: "Programming"),
+    Category(color: 0x3E69FF, name: "Sport")
+]
+
 struct CreateNoteView: View {
     @State var title = ""
     @State var details = ""
+
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -22,6 +30,8 @@ struct CreateNoteView: View {
                     })
                 
                 Spacer().frame(height: 32)
+                
+                CategoriesListView(categories: categories)
                 
                 Section(content: {
                     TextField("Example: Study", text: $title)

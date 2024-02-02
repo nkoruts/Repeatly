@@ -10,7 +10,7 @@
 		160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD292B6B73530025A1D6 /* StorageManager.swift */; };
 		160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */; };
 		160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */; };
-		160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD362B6BC2C50025A1D6 /* Repetition+CoreData.swift */; };
+		160ECD372B6BC2C50025A1D6 /* RepetitionList+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD362B6BC2C50025A1D6 /* RepetitionList+CoreData.swift */; };
 		16110F2F2B6A58E300471512 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F2E2B6A58E300471512 /* MultilineTextView.swift */; };
 		16110F312B6A624600471512 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F302B6A624600471512 /* View+Ext.swift */; };
 		16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16110F342B6A66C400471512 /* NavigationTopView.swift */; };
@@ -30,6 +30,8 @@
 		1668329C2B680BB000576DA5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329B2B680BB000576DA5 /* MainView.swift */; };
 		1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329D2B680C9A00576DA5 /* SettingsView.swift */; };
 		166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166832A02B680EF900576DA5 /* CreateNoteView.swift */; };
+		166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A677D2B6D621700102BA5 /* CategoryView.swift */; };
+		166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A677F2B6D689200102BA5 /* CategoriesListView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,7 @@
 		160ECD292B6B73530025A1D6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
 		160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreData.swift"; sourceTree = "<group>"; };
-		160ECD362B6BC2C50025A1D6 /* Repetition+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repetition+CoreData.swift"; sourceTree = "<group>"; };
+		160ECD362B6BC2C50025A1D6 /* RepetitionList+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepetitionList+CoreData.swift"; sourceTree = "<group>"; };
 		16110F2E2B6A58E300471512 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
 		16110F302B6A624600471512 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		16110F342B6A66C400471512 /* NavigationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTopView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 		1668329B2B680BB000576DA5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1668329D2B680C9A00576DA5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		166832A02B680EF900576DA5 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
+		166A677D2B6D621700102BA5 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		166A677F2B6D689200102BA5 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +99,7 @@
 			children = (
 				160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */,
 				160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */,
-				160ECD362B6BC2C50025A1D6 /* Repetition+CoreData.swift */,
+				160ECD362B6BC2C50025A1D6 /* RepetitionList+CoreData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,6 +110,8 @@
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				16110F2E2B6A58E300471512 /* MultilineTextView.swift */,
 				16110F342B6A66C400471512 /* NavigationTopView.swift */,
+				166A677F2B6D689200102BA5 /* CategoriesListView.swift */,
+				166A677D2B6D621700102BA5 /* CategoryView.swift */,
 				169D63F22B6AB95500866345 /* ViewModifiers */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
 			);
@@ -343,14 +349,16 @@
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
 				160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
+				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
+				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,
 				160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */,
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
 				16110F2F2B6A58E300471512 /* MultilineTextView.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
-				160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */,
+				160ECD372B6BC2C50025A1D6 /* RepetitionList+CoreData.swift in Sources */,
 				166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
 				160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */,
