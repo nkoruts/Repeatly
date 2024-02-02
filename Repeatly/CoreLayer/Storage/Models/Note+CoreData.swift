@@ -20,5 +20,5 @@ public class Note: NSManagedObject, Identifiable {
     @NSManaged public var title: String
     @NSManaged public var details: String?
     @NSManaged public var category: Category
-    @NSManaged public var repetition: RepetitionModel
+    @NSManaged public var repetition: RepetitionListModel
 }
