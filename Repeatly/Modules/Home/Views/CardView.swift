@@ -12,21 +12,21 @@ struct CardView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-//            if let category = note.category {
-//                Capsule()
-//                    .fill(Color(hex: category.color))
-//                    .frame(width: 4)
-//                    .padding(.leading, 12)
-//                    .padding(.vertical, 16)
-//            }
+            if let category = note.category {
+                Capsule()
+                    .fill(Color(hex: category.color))
+                    .frame(width: 4)
+                    .padding(.leading, 12)
+                    .padding(.vertical, 16)
+            }
             
             VStack(alignment: .leading, spacing: 4) {
-//                if let categoryName = note.category.name {
-//                    CategoryRoundView(
-//                        title: categoryName,
-//                        color: Color(hex: note.category.color))
-//                    .padding(.bottom, 4)
-//                }
+                if let category = note.category {
+                    CategoryRoundView(
+                        title: category.name,
+                        color: Color(hex: category.color))
+                    .padding(.bottom, 4)
+                }
                 
                 Text(note.title)
                     .font(.gilroyMedium(size: 18))
@@ -44,7 +44,7 @@ struct CardView: View {
             Spacer()
             
             Image(systemName: "chevron.forward")
-                .foregroundColor(ColorSystem.icons)
+                .foregroundColor(ColorSystem.icon)
                 .padding(.trailing, 16)
         }
         .background(ColorSystem.cardBackground)
@@ -55,5 +55,12 @@ struct CardView: View {
         )
         .shadow(color: ColorSystem.shadow, radius: 8)
         
+    }
+}
+
+extension HomeView {
+    private enum Constants {        
+        static let navigationPanelSpacing: CGFloat = 12
+        static let cardsSpacing: CGFloat = 16
     }
 }
