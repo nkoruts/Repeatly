@@ -18,68 +18,84 @@ struct CreateNoteView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 NavigationTopView(
-                    title: "Create Note",
+                    title: Constants.screenTitle,
                     backAction: {
                         dismiss()
                     })
                 .padding(.horizontal)
                 
-                Spacer().frame(height: 16)
+                Spacer().frame(height: Constants.contentTopInset)
                 
                 Section(content: {
                     CategoriesListView(
                         categories: categories,
                         selection: $selectedCategoryId)
                 }, header: {
-                    SectionHeaderView(title: "Category")
+                    SectionHeaderView(title: Constants.categoryTitle)
                         .padding(.horizontal)
                 })
                 
                 Section(content: {
-                    TextField("Example: Study", text: $title)
-                        .font(.gilroyRegular(size: 16))
-                        .padding(12)
+                    TextField(Constants.notePlaceholder, text: $title)
+                        .font(Constants.noteFieldFont)
+                        .padding(Constants.noteFieldPadding)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(Color.lightGray)
+                            RoundedRectangle(
+                                cornerRadius: Constants.noteFieldCornerRadius,
+                                style: .continuous)
+                            .stroke(Color.lightGray)
                         )
                 }, header: {
-                    SectionHeaderView(title: "Note title")
+                    SectionHeaderView(title: Constants.noteTitle)
                 })
                 .padding(.horizontal)
 
                 
                 Section(content: {
-                    MultilineTextView(placeholder: "Example: ...", text: $details)
-                        .frame(height: 100)
+                    MultilineTextView(
+                        placeholder: Constants.detailsPlaceholder,
+                        text: $details)
+                    .frame(height: Constants.detailsHeight)
                 }, header: {
-                    SectionHeaderView(title: "Details")
+                    SectionHeaderView(title: Constants.detailsTitle)
                 })
                 .padding(.horizontal)
                 
                 Spacer()
                 
-                Button(action: {
-                    // TODO: - Save note
-                    dismiss()
-                }, label: {
-                    Text("Save")
-                        .font(.gilroyMedium(size: 20))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: 45)
-                        .background(ColorSystem.button)
-                        .clipShape(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        )
-                    
-                })
+                
+                Button(Constants.saveButtonTitle) {
+                    print("save")
+                }
+                .buttonStyle(MainButtonStyle())
                 .padding(.horizontal)
             }
             .padding(.vertical)
             .background(ColorSystem.background)
         }
+    }
+}
+
+extension CreateNoteView {
+    private enum Constants {
+        static let screenTitle = "Create Note"
+        static let contentTopInset: CGFloat = 16
+        static let contentSpacing: CGFloat = 12
+        
+        static let categoryTitle = "Category"
+        static let noteTitle = "Example: Study"
+        static let notePlaceholder = "Note title"
+        static let noteFieldFont: Font = .gilroyRegular(size: 16)
+        static let noteFieldPadding: Font = 12
+        static let noteFieldCornerRadius: CGFloat = 16
+        
+        static let detailsTitle = "Details"
+        static let detailsPlaceholder: LocalizedStringKey = "Example: Creating a learning space"
+        static let detailsHeight: CGFloat = 100
+        
+        static let saveButtonTitle = "Save"
     }
 }
 

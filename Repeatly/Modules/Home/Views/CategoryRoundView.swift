@@ -13,14 +13,29 @@ struct CategoryRoundView: View {
     
     var body: some View {
         Text(title)
-            .font(.gilroyMedium(size: 12))
-            .lineLimit(1)
+            .font(Constants.titleFont)
             .foregroundColor(color)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 3)
+            .padding(.horizontal, Constants.hPadding)
+            .padding(.vertical, Constants.vPadding)
             .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(color.opacity(0.2))
+                RoundedRectangle(
+                    cornerRadius: Constants.cornerRadius,
+                    style: .continuous)
+                .fill(color.opacity(Constants.backgroundColorOpacity))
             )
+    }
+}
+
+extension CategoryRoundView {
+    private enum Constants {
+        static let cornerRadius: CGFloat = 10
+        static let shadowRadius: CGFloat = 8
+        
+        static let dividerWidth: CGFloat = 4
+        static let hPadding: CGFloat = 12
+        static let vPadding: CGFloat = 16
+        
+        static let titleFont: Font = .gilroyMedium(size: 12)
+        static let backgroundColorOpacity: CGFloat = 0.2
     }
 }

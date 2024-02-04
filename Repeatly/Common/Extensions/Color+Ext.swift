@@ -13,8 +13,9 @@ struct ColorSystem {
     static let yellow = Color(hex: 0xFFC12C)
     static let green = Color(hex: 0x34D183)
     
-    static let blueButton = Color(hex: 0x3E69FF)
-    static let icons = Color(hex: 0xC3C8CE)
+    static let button = Color(hex: 0x3E69FF)
+    static let lightButton = Color(hex: 0x3E69FF, opacity: 0.15)
+    static let icon = Color(hex: 0xC3C8CE)
     
     static let grayText = Color(hex: 0x949DA9)
     static let mainText = Color(hex: 0x232E3F)

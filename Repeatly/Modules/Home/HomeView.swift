@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var willMoveToNoteCreation = false
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: Constants.cardsSpacing) {
             HStack(alignment: .firstTextBaseline,
                    spacing: Constants.navigationPanelSpacing) {
                 Text(Constants.appName)
