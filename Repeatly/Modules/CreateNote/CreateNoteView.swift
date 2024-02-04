@@ -17,7 +17,7 @@ var categories = [
 struct CreateNoteView: View {
     @State var title = ""
     @State var details = ""
-
+    
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -31,7 +31,11 @@ struct CreateNoteView: View {
                 
                 Spacer().frame(height: 32)
                 
-                CategoriesListView(categories: categories)
+                Section(content: {
+                    CategoriesListView(categories: categories)
+                }, header: {
+                    SectionHeaderView(title: "Category")
+                })
                 
                 Section(content: {
                     TextField("Example: Study", text: $title)
@@ -66,7 +70,7 @@ struct CreateNoteView: View {
                         .clipShape(
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                         )
-                        
+                    
                 })
             }
             .padding()
