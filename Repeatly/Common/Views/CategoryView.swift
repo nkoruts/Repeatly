@@ -10,13 +10,14 @@ import SwiftUI
 struct CategoryView: View {
     var title: String
     var color: Color
-    var isSelected: Bool = false
-    var action: Action
+    @Binding var isSelected: Bool
     
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            self.isSelected.toggle()
+        }, label: {
             Text(title)
-                .font(.gilroyRegular(size: 14))
+                .font(.gilroyMedium(size: 14))
                 .foregroundColor(.white)
                 .padding(.horizontal)
                 .padding(.vertical, 12)
@@ -24,17 +25,7 @@ struct CategoryView: View {
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .fill(isSelected ? color : color.opacity(0.5))
                 )
-        }
-    }
-}
-
-struct CategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryView(
-            title: "Programming",
-            color: ColorSystem.blueButton,
-            isSelected: true) {
-                print("selected")
-        }
+        })
+        .buttonStyle(PlainButtonStyle()) 
     }
 }

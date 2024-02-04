@@ -9,38 +9,50 @@ import SwiftUI
 
 struct CategoriesListView: View {
     var categories: [Category]
+    @Binding var selection: UUID?
     
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack() {
+                Button(action: {
+//                    willMoveToNoteCreation = true
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(ColorSystem.button)
+                        .padding(14)
+                        .background(
+                            Circle()
+                                .fill(ColorSystem.lightButton)
+                        )
+                })
+                
                 ForEach(categories) { caterory in
                     CategoryView(
                         title: caterory.name,
-                        color: Color(hex: caterory.color)) {
-                    }
-                }
-                
-                Button(action: {
-    //                willMoveToNoteCreation = true
-                }, label: {
-                    Image(systemName: "plus.app.fill")
-//                        .font(.system(size: 34))
-                        .font(.gilroyRegular(size: 14))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .fill(ColorSystem.blueButton)
-                        )
-                })
+                        color: Color(hex: caterory.color),
+                        isSelected: Binding(
+                            get: {
+                                self.selection == caterory.id
+                            },
+                            set: { _ in
+                                self.handleSelection(caterory.id)
+                            })
+                    )}
             }
         }
+        .safeAreaInset(edge: .leading, spacing: .zero) {
+            Spacer()
+                .frame(width: 16, height: 0)
+        }
+        .safeAreaInset(edge: .trailing, spacing: .zero) {
+            Spacer()
+                .frame(width: 24, height: 0)
+        }
     }
-}
-
-struct CategoriesListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesListView(categories: categories)
+    
+    private func handleSelection(_ categoryId: UUID) {
+        selection = (selection != categoryId) ? categoryId : nil
     }
 }
 
