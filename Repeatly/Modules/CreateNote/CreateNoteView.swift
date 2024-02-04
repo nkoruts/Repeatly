@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-var categories = [
-    Category(color: 0x3E69FF, name: "Study"),
-    Category(color: 0x3E69FF, name: "Job"),
-    Category(color: 0x3E69FF, name: "Programming"),
-    Category(color: 0x3E69FF, name: "Sport")
-]
-
 struct CreateNoteView: View {
     @State var title = ""
     @State var details = ""
+    @State var selectedCategoryId: UUID?
+    
+    @State var categories: [Category] = []
     
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 12) {
                 NavigationTopView(
                     title: "Create Note",
                     backAction: {
                         dismiss()
                     })
+                .padding(.horizontal)
                 
-                Spacer().frame(height: 32)
+                Spacer().frame(height: 16)
                 
                 Section(content: {
-                    CategoriesListView(categories: categories)
+                    CategoriesListView(
+                        categories: categories,
+                        selection: $selectedCategoryId)
                 }, header: {
                     SectionHeaderView(title: "Category")
+                        .padding(.horizontal)
                 })
                 
                 Section(content: {
@@ -48,6 +48,8 @@ struct CreateNoteView: View {
                 }, header: {
                     SectionHeaderView(title: "Note title")
                 })
+                .padding(.horizontal)
+
                 
                 Section(content: {
                     MultilineTextView(placeholder: "Example: ...", text: $details)
@@ -55,6 +57,7 @@ struct CreateNoteView: View {
                 }, header: {
                     SectionHeaderView(title: "Details")
                 })
+                .padding(.horizontal)
                 
                 Spacer()
                 
@@ -66,14 +69,15 @@ struct CreateNoteView: View {
                         .font(.gilroyMedium(size: 20))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, maxHeight: 45)
-                        .background(ColorSystem.blueButton)
+                        .background(ColorSystem.button)
                         .clipShape(
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                         )
                     
                 })
+                .padding(.horizontal)
             }
-            .padding()
+            .padding(.vertical)
             .background(ColorSystem.background)
         }
     }

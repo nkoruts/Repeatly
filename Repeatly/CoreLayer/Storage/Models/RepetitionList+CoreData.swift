@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-@objc(RepetitionModel)
+@objc(RepetitionListModel)
 public class RepetitionListModel: NSManagedObject, Identifiable {
 
     // TODO: - Delete if needed
@@ -16,16 +16,16 @@ public class RepetitionListModel: NSManagedObject, Identifiable {
         return NSFetchRequest<RepetitionListModel>(entityName: "RepetitionListModel")
     }
 
-    @NSManaged public var nextRepetition: RepetitionModel
-    @NSManaged public var repetitions: [RepetitionModel]
+    @NSManaged public var nextRepetition: Repetition
+    @NSManaged public var repetitions: [Repetition]
 }
 
-@objc(RepetitionModel)
-public class RepetitionModel: NSManagedObject, Identifiable {
+@objc(Repetition)
+public class Repetition: NSManagedObject, Identifiable {
     
     // TODO: - Delete if needed
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<RepetitionModel> {
-        return NSFetchRequest<RepetitionModel>(entityName: "RepetitionModel")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Repetition> {
+        return NSFetchRequest<Repetition>(entityName: "Repetition")
     }
 
     @NSManaged public var id: UUID
