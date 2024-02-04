@@ -13,36 +13,37 @@ struct HomeView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
-                Text("Repetly")
+            HStack(alignment: .firstTextBaseline,
+                   spacing: Constants.navigationPanelSpacing) {
+                Text(Constants.appName)
                     .foregroundColor(ColorSystem.mainText)
-                    .font(.gilroySemiBold(size: 32))
+                    .font(Constants.logoFont)
                 Spacer()
                 Button(action: {
-                    print("Search")
+                    // TODO: - Search notes
                 }, label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: Constants.findIconSystemName)
                         .font(.title2)
-                        .foregroundColor(ColorSystem.blueButton)
+                        .foregroundColor(ColorSystem.button)
                 })
                 Button(action: {
                     willMoveToNoteCreation = true
                 }, label: {
-                    Image(systemName: "plus.app.fill")
-                        .font(.system(size: 34))
-                        .foregroundColor(ColorSystem.blueButton)
+                    Image(systemName: Constants.addIconSystemName)
+                        .font(Constants.addIconFont)
+                        .foregroundColor(ColorSystem.button)
                 })
             }
             .padding(.horizontal)
             
             ScrollView {
-                LazyVStack(spacing: 16) {
+                LazyVStack(spacing: Constants.cardsSpacing) {
                     Section(content: {
                         ForEach(notes) { note in
                             CardView(note: note)
                         }
                     }, header: {
-                        SectionHeaderView(title: "Today")
+                        SectionHeaderView(title: "===TODO===")
                     })
                     .padding(.horizontal)
                 }
@@ -50,6 +51,20 @@ struct HomeView: View {
         }
         .background(ColorSystem.background)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
+    }
+}
+
+extension HomeView {
+    private enum Constants {
+        static let appName = "Repetly"
+        static let findIconSystemName = "magnifyingglass"
+        static let addIconSystemName = "plus.app.fill"
+        
+        static let logoFont: Font = .gilroySemiBold(size: 32)
+        static let addIconFont: Font = .system(size: 34)
+        
+        static let navigationPanelSpacing: CGFloat = 12
+        static let cardsSpacing: CGFloat = 16
     }
 }
 
