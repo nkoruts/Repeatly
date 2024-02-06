@@ -19,7 +19,9 @@ public class Note: NSManagedObject, Identifiable {
     @NSManaged public var id: UUID
     @NSManaged public var title: String
     @NSManaged public var details: String?
-    @NSManaged public var color: Int32
-    @NSManaged public var category: Category?
-    @NSManaged public var repetition: RepetitionListModel
+    @NSManaged public var color: String
+    @NSManaged public var categoryId: UUID?
+    
+    // TODO: Add repetition logic
+    @NSManaged public var repetition: RepetitionListModel?
 }

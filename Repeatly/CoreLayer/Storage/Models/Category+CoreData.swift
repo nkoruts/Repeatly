@@ -18,6 +18,6 @@ public class Category: NSManagedObject, Identifiable {
     }
 
     @NSManaged public var id: UUID
-    @NSManaged public var color: Int32
+    @NSManaged public var color: String
     @NSManaged public var name: String
 }
