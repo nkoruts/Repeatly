@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryRoundView: View {
+struct NoteCategoryView: View {
     let title: String
     let color: Color
     
@@ -26,7 +26,7 @@ struct CategoryRoundView: View {
     }
 }
 
-extension CategoryRoundView {
+extension NoteCategoryView {
     private enum Constants {
         static let cornerRadius: CGFloat = 10
         static let shadowRadius: CGFloat = 8

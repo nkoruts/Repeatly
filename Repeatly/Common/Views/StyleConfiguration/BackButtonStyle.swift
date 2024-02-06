@@ -22,17 +22,3 @@ struct BackButtonStyle: ButtonStyle {
             )
     }
 }
-
-struct MainButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration)
-    -> some View {
-        configuration.label
-            .font(.gilroyMedium(size: 20))
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity, maxHeight: 45)
-            .background(ColorSystem.button)
-            .clipShape(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-            )
-    }
-}

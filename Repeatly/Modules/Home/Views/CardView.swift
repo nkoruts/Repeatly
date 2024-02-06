@@ -7,32 +7,35 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardViewModel {
     var note: Note
+    var category: Category
+}
+
+struct CardView: View {
+    var viewModel: CardViewModel
     
     var body: some View {
         HStack(spacing: Constants.mainStackSpacing) {
-            if let category = note.category {
-                Capsule()
-                    .fill(Color(hex: category.color))
-                    .frame(width: Constants.dividerWidth)
-                    .padding(.leading, Constants.dividerLeadingPadding)
-                    .padding(.vertical, Constants.dividerVerticalPadding)
-            }
+            Capsule()
+                .fill(Color(viewModel.note.color))
+                .frame(width: Constants.dividerWidth)
+                .padding(.leading, Constants.dividerLeadingPadding)
+                .padding(.vertical, Constants.dividerVerticalPadding)
             
             VStack(alignment: .leading, spacing: Constants.infoSpacing) {
-                if let category = note.category {
-                    CategoryRoundView(
-                        title: category.name,
-                        color: Color(hex: category.color))
-                    .padding(.bottom, Constants.infoSpacing)
-                }
+//                if let category = viewModel.note.category {
+//                    NoteCategoryView(
+//                        title: category.name,
+//                        color: Color(category.color))
+//                    .padding(.bottom, Constants.infoSpacing)
+//                }
                 
-                Text(note.title)
+                Text(viewModel.note.title)
                     .font(Constants.titleFont)
                     .foregroundColor(ColorSystem.mainText)
                 
-                if let details = note.details {
+                if let details = viewModel.note.details {
                     Text(details)
                         .font(Constants.detailsFont)
                         .foregroundColor(ColorSystem.grayText)

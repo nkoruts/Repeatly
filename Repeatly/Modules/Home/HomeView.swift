@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var storageService: StorageService
+    
     @FetchRequest(sortDescriptors: []) var notes: FetchedResults<Note>
     @State private var willMoveToNoteCreation = false
     
@@ -34,19 +36,26 @@ struct HomeView: View {
                         .foregroundColor(ColorSystem.button)
                 })
             }
-            .padding(.horizontal)
+                   .padding(.horizontal)
+                   .padding(.top)
             
-            ScrollView {
-                LazyVStack(spacing: Constants.cardsSpacing) {
-                    Section(content: {
-                        ForEach(notes) { note in
-                            CardView(note: note)
-                        }
-                    }, header: {
-                        SectionHeaderView(title: "===TODO===")
-                    })
-                    .padding(.horizontal)
+            if !notes.isEmpty {
+                ScrollView {
+                    LazyVStack(spacing: Constants.cardsSpacing) {
+                        Section(content: {
+//                            ForEach(notes) { note in
+//                                CardView(viewModel: <#T##CardViewModel#>)
+//                            }
+                        }, header: {
+                            SectionHeaderView(title: "===TODO===")
+                        })
+                        .padding(.horizontal)
+                    }
                 }
+            } else {
+                ListEmptyView(
+                    title: "Your notes is empty",
+                    description: "Create a new Note to get started on spaced repetition")
             }
         }
         .background(ColorSystem.background)

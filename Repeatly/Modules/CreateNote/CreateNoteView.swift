@@ -14,6 +14,7 @@ struct CreateNoteView: View {
     
     @State var categories: [Category] = []
     
+    @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -31,7 +32,9 @@ struct CreateNoteView: View {
                 Section(content: {
                     CategoriesListView(
                         categories: categories,
-                        selection: $selectedCategoryId)
+                        selection: $selectedCategoryId) {
+                            // TODO: Move to category creation
+                        }
                 }, header: {
                     SectionHeaderView(title: Constants.categoryTitle)
                         .padding(.horizontal)
@@ -70,11 +73,16 @@ struct CreateNoteView: View {
                     print("save")
                 }
                 .buttonStyle(MainButtonStyle())
+                .disabled(title.isEmpty)
                 .padding(.horizontal)
             }
             .padding(.vertical)
             .background(ColorSystem.background)
         }
+    }
+    
+    private func saveNote() {
+        var note = Note(context: viewContext)
     }
 }
 
@@ -88,7 +96,7 @@ extension CreateNoteView {
         static let noteTitle = "Example: Study"
         static let notePlaceholder = "Note title"
         static let noteFieldFont: Font = .gilroyRegular(size: 16)
-        static let noteFieldPadding: Font = 12
+        static let noteFieldPadding: CGFloat = 12
         static let noteFieldCornerRadius: CGFloat = 16
         
         static let detailsTitle = "Details"

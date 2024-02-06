@@ -10,13 +10,12 @@ import SwiftUI
 struct CategoriesListView: View {
     var categories: [Category]
     @Binding var selection: UUID?
+    var action: Action
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
-                Button(action: {
-//                    willMoveToNoteCreation = true
-                }, label: {
+                Button(action: action) {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(ColorSystem.button)
@@ -25,12 +24,12 @@ struct CategoriesListView: View {
                             Circle()
                                 .fill(ColorSystem.lightButton)
                         )
-                })
+                }
                 
                 ForEach(categories) { caterory in
                     CategoryView(
                         title: caterory.name,
-                        color: Color(hex: caterory.color),
+                        color: Color(caterory.color),
                         isSelected: Binding(
                             get: {
                                 self.selection == caterory.id

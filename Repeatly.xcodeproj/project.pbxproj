@@ -26,6 +26,8 @@
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
 		162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162248032B65194D007A61EF /* Gilroy-SemiBold.otf */; };
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
+		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
+		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
 		166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* CategoryRoundView.swift */; };
 		1668329C2B680BB000576DA5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329B2B680BB000576DA5 /* MainView.swift */; };
 		1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329D2B680C9A00576DA5 /* SettingsView.swift */; };
@@ -58,6 +60,8 @@
 		162248012B65156A007A61EF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		162248032B65194D007A61EF /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
+		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		1666930F2B6785A9008F8850 /* CategoryRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoundView.swift; sourceTree = "<group>"; };
 		1668329B2B680BB000576DA5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1668329D2B680C9A00576DA5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -115,7 +119,7 @@
 				16110F342B6A66C400471512 /* NavigationTopView.swift */,
 				166A677F2B6D689200102BA5 /* CategoriesListView.swift */,
 				166A677D2B6D621700102BA5 /* CategoryView.swift */,
-				169D63F22B6AB95500866345 /* ViewModifiers */,
+				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
 			);
 			path = Views;
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				16110F362B6A6AEE00471512 /* BackButtonStyle.swift */,
+				164870592B70D015000BD34B /* MainButtonStyle.swift */,
 			);
 			path = StyleConfiguration;
 			sourceTree = "<group>";
@@ -267,13 +272,6 @@
 			path = CoreLayer;
 			sourceTree = "<group>";
 		};
-		169D63F22B6AB95500866345 /* ViewModifiers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModifiers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,10 +348,12 @@
 			files = (
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
+				164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */,
 				160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
+				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,
