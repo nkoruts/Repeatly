@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct CreateNoteView: View {
-    @State var title = ""
-    @State var details = ""
-    @State var selectedCategoryId: UUID?
+    @State private var title = ""
+    @State private var details = ""
+    @State private var selectedCategoryId: UUID?
     
-    @State var categories: [Category] = []
+    @State private var categories: [Category] = []
     
-    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject private var storageService: StorageService
     @Environment(\.dismiss) private var dismiss
+    
+    @FocusState private var focusedField: FocusedField?
+    enum FocusedField: Hashable {
+        case title
+        case details
+    }
     
     var body: some View {
         NavigationView {
@@ -42,14 +48,11 @@ struct CreateNoteView: View {
                 
                 Section(content: {
                     TextField(Constants.notePlaceholder, text: $title)
-                        .font(Constants.noteFieldFont)
-                        .padding(Constants.noteFieldPadding)
-                        .overlay(
-                            RoundedRectangle(
-                                cornerRadius: Constants.noteFieldCornerRadius,
-                                style: .continuous)
-                            .stroke(Color.lightGray)
-                        )
+                        .focused($focusedField, equals: .title)
+                        .onSubmit {
+                            focusedField = .details
+                        }
+                        .textFieldStyle(BorderedTextFieldStyle())
                 }, header: {
                     SectionHeaderView(title: Constants.noteTitle)
                 })
@@ -60,7 +63,11 @@ struct CreateNoteView: View {
                     MultilineTextView(
                         placeholder: Constants.detailsPlaceholder,
                         text: $details)
+                    .focused($focusedField, equals: .details)
                     .frame(height: Constants.detailsHeight)
+                    .onSubmit {
+                        focusedField = nil
+                    }
                 }, header: {
                     SectionHeaderView(title: Constants.detailsTitle)
                 })
@@ -68,9 +75,8 @@ struct CreateNoteView: View {
                 
                 Spacer()
                 
-                
                 Button(Constants.saveButtonTitle) {
-                    print("save")
+                    saveNote()
                 }
                 .buttonStyle(MainButtonStyle())
                 .disabled(title.isEmpty)
@@ -82,7 +88,13 @@ struct CreateNoteView: View {
     }
     
     private func saveNote() {
-        var note = Note(context: viewContext)
+        storageService.saveNote(
+            title: title,
+            details: details,
+            colorName: "AccentColor",
+            categoryId: nil,
+            repetition: nil)
+//        dismiss()
     }
 }
 
@@ -100,7 +112,7 @@ extension CreateNoteView {
         static let noteFieldCornerRadius: CGFloat = 16
         
         static let detailsTitle = "Details"
-        static let detailsPlaceholder: LocalizedStringKey = "Example: Creating a learning space"
+        static let detailsPlaceholder = "Example: Creating a learning space"
         static let detailsHeight: CGFloat = 100
         
         static let saveButtonTitle = "Save"
