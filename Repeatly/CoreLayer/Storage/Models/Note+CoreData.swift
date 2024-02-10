@@ -23,5 +23,5 @@ public class Note: NSManagedObject, Identifiable {
     @NSManaged public var categoryId: UUID?
     
     // TODO: Add repetition logic
-    @NSManaged public var repetition: RepetitionListModel?
+//    @NSManaged public var repetitionId: UUID?
 }

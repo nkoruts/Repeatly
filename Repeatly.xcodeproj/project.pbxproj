@@ -36,6 +36,8 @@
 		166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A677F2B6D689200102BA5 /* CategoriesListView.swift */; };
 		166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 166A67842B6F914900102BA5 /* Repeatly.xcdatamodeld */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
+		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
+		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		166A677F2B6D689200102BA5 /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
 		166A67852B6F914900102BA5 /* Repeatly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Repeatly.xcdatamodel; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
+		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 			children = (
 				16110F362B6A6AEE00471512 /* BackButtonStyle.swift */,
 				164870592B70D015000BD34B /* MainButtonStyle.swift */,
+				16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */,
 			);
 			path = StyleConfiguration;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				162247FE2B650E60007A61EF /* Font+Ext.swift */,
 				162248052B657B5A007A61EF /* Color+Ext.swift */,
 				16110F302B6A624600471512 /* View+Ext.swift */,
+				16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
+				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
@@ -368,6 +375,7 @@
 				160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */,
 				169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */,
 				162247ED2B6500EC007A61EF /* HomeView.swift in Sources */,
+				16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */,
 				1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
