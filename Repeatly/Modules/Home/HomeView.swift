@@ -22,10 +22,11 @@ struct HomeView: View {
                     .font(Constants.logoFont)
                 Spacer()
                 Button(action: {
+                    print(notes)
                     // TODO: - Search notes
                 }, label: {
                     Image(systemName: Constants.findIconSystemName)
-                        .font(.title2)
+                        .font(.system(size: 24))
                         .foregroundColor(ColorSystem.button)
                 })
                 Button(action: {
@@ -39,13 +40,13 @@ struct HomeView: View {
                    .padding(.horizontal)
                    .padding(.top)
             
-            if !notes.isEmpty {
+            if !storageService.getNotes().isEmpty {
                 ScrollView {
                     LazyVStack(spacing: Constants.cardsSpacing) {
                         Section(content: {
-//                            ForEach(notes) { note in
-//                                CardView(viewModel: <#T##CardViewModel#>)
-//                            }
+                            ForEach(storageService.getNotes()) { note in
+                                CardView(viewModel: CardViewModel(note: note, category: nil))
+                            }
                         }, header: {
                             SectionHeaderView(title: "===TODO===")
                         })

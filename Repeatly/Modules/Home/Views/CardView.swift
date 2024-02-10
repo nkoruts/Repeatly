@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardViewModel {
     var note: Note
-    var category: Category
+    var category: Category?
 }
 
 struct CardView: View {
