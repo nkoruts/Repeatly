@@ -21,55 +21,24 @@ class StorageService: ObservableObject {
         let newNote = Note(context: storageManager.viewContext)
         newNote.id = UUID()
         newNote.title = title
-        newNote.details = details
+        newNote.details = !details.isEmpty ? details : nil
         newNote.color = colorName
         newNote.categoryId = categoryId
-        newNote.repetition = repetition
+//        newNote.repetition = repetition
         
-        do {
-            try storageManager.viewContext.save()
-        } catch {
-            storageManager.viewContext.rollback()
-            print("=== DEBUG: Failed to save note: \(error)")
-        }
+        // TODO: - Save async
+        storageManager.save()
     }
     
     func getNotes() -> [Note] {
-        let context = storageManager.viewContext
-        let repetitionDate = Date()
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         
-        let note1 = Note(context: context)
-        note1.id = UUID()
-        note1.title = "note1"
-        note1.details = nil
-        note1.color = "AccentColor"
-        note1.categoryId = nil
-        note1.repetition = RepetitionListModel(context: context)
-        note1.repetition?.nextRepetition.id = UUID()
-        note1.repetition?.nextRepetition.date = repetitionDate
-        note1.repetition?.repetitions = []
-        
-        let note2 = Note(context: context)
-        note1.id = UUID()
-        note1.title = "note2"
-        note1.details = "details"
-        note1.color = "AccentColor"
-        note1.categoryId = nil
-        note1.repetition = RepetitionListModel(context: context)
-        note1.repetition?.nextRepetition.id = UUID()
-        note1.repetition?.nextRepetition.date = repetitionDate
-        note1.repetition?.repetitions = []
-        
-        return [note1, note2]
-        
-        //        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        //
-        //        do {
-        //            try storageManager.viewContext.fetch(fetchRequest)
-        //        } catch {
-        //            print("=== DEBUG: Failed to fetch notes: \(error)")
-        //            return []
-        //        }
+        do {
+            return try storageManager.viewContext.fetch(fetchRequest)
+        } catch {
+            print("=== DEBUG: Failed to fetch notes: \(error)")
+            return []
+        }
     }
     
     func updateNote(_ note: Note) {
@@ -82,14 +51,7 @@ class StorageService: ObservableObject {
     }
     
     func deleteNote(_ note: Note) {
-        storageManager.viewContext.delete(note)
-        
-        do {
-            try storageManager.viewContext.save()
-        } catch {
-            storageManager.viewContext.rollback()
-            print("Failed to save context: \(error)")
-        }
+        storageManager.delete(note)
     }
 }
 
@@ -106,6 +68,26 @@ class StorageManager: ObservableObject {
             if let error {
                 print("=== Error: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func save() {
+        do {
+            try viewContext.save()
+        } catch {
+            viewContext.rollback()
+            print("=== DEBUG: Failed to save note: \(error)")
+        }
+    }
+    
+    func delete(_ object: NSManagedObject) {
+        viewContext.delete(object)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            viewContext.rollback()
+            print("Failed to save context: \(error)")
         }
     }
 }
