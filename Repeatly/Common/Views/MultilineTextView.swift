@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct MultilineTextView: View {
-    var placeholder: LocalizedStringKey = ""
+    var placeholder: String = ""
     @Binding var text: String
     
     var body: some View {
         ZStack {
             TextEditor(text: $text)
                 .font(.gilroyRegular(size: 16))
-                .colorMultiply(.clear)
+                .textEditorBackground(.clear)
                 .padding(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .stroke(Color.lightGray)
                 )
-            if text.isEmpty {
+            if text.isEmpty, !placeholder.isEmpty {
                 HStack {
                     VStack {
                         Text(placeholder)
@@ -36,5 +36,18 @@ struct MultilineTextView: View {
             }
 
         }
+    }
+}
+
+struct MultilineTextView_Previews: PreviewProvider {
+    static var previews: some View {
+        @State var text = ""
+        
+        ZStack {
+            Color.gray
+            MultilineTextView(placeholder: "placeholder", text: $text)
+                .frame(width: 340, height: 120)
+        }
+
     }
 }
