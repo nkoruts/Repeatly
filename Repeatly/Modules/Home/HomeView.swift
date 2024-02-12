@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var storageService: StorageService
     
-    @FetchRequest(sortDescriptors: []) var notes: FetchedResults<Note>
+    @FetchRequest(fetchRequest: Note.fetchRequest()) var notes: FetchedResults<Note>
     @State private var willMoveToNoteCreation = false
     
     var body: some View {
@@ -81,5 +81,6 @@ extension HomeView {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(StorageService())
     }
 }

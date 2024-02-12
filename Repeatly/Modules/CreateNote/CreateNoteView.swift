@@ -64,10 +64,10 @@ struct CreateNoteView: View {
                         placeholder: Constants.detailsPlaceholder,
                         text: $details)
                     .focused($focusedField, equals: .details)
-                    .frame(height: Constants.detailsHeight)
                     .onSubmit {
-                        focusedField = nil
+                        focusedField = title.isEmpty ? .title : nil
                     }
+                    .frame(height: Constants.detailsHeight)
                 }, header: {
                     SectionHeaderView(title: Constants.detailsTitle)
                 })

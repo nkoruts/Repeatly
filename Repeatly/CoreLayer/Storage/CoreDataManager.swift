@@ -10,11 +10,11 @@ import SwiftUI
 import CoreData
 
 class StorageService: ObservableObject {
-    private let storageManager: StorageManager
+    private let storageManager: CoreDataManager
     
-    init() {
-        self.storageManager = StorageManager()
-        
+    static let instance = StorageService()
+    private init() {
+        self.storageManager = CoreDataManager()
     }
     
     func saveNote(title: String, details: String, colorName: String, categoryId: UUID?, repetition: RepetitionListModel?) {
@@ -31,6 +31,8 @@ class StorageService: ObservableObject {
     }
     
     func getNotes() -> [Note] {
+//        let categoryFetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+//        let categories = try context.fetch(categoryFetchRequest)
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         
         do {
@@ -55,15 +57,13 @@ class StorageService: ObservableObject {
     }
 }
 
-class StorageManager: ObservableObject {
+private class CoreDataManager: ObservableObject {
     private let container: NSPersistentContainer
-    
-    var viewContext: NSManagedObjectContext {
-        container.viewContext
-    }
+    let viewContext: NSManagedObjectContext
     
     init() {
         container = NSPersistentContainer(name: "Repeatly")
+        self.viewContext = container.viewContext
         container.loadPersistentStores { _, error in
             if let error {
                 print("=== Error: \(error.localizedDescription)")

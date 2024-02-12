@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD292B6B73530025A1D6 /* StorageManager.swift */; };
+		160ECD2A2B6B73530025A1D6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD292B6B73530025A1D6 /* CoreDataManager.swift */; };
 		160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */; };
 		160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */; };
 		160ECD372B6BC2C50025A1D6 /* RepetitionList+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD362B6BC2C50025A1D6 /* RepetitionList+CoreData.swift */; };
@@ -26,6 +26,7 @@
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
 		162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162248032B65194D007A61EF /* Gilroy-SemiBold.otf */; };
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
+		163BDD052B78A8B1001E5607 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163BDD042B78A8B1001E5607 /* DataStorage.swift */; };
 		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
 		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
 		166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* CategoryRoundView.swift */; };
@@ -41,7 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		160ECD292B6B73530025A1D6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		160ECD292B6B73530025A1D6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
 		160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreData.swift"; sourceTree = "<group>"; };
 		160ECD362B6BC2C50025A1D6 /* RepetitionList+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepetitionList+CoreData.swift"; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		162248012B65156A007A61EF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		162248032B65194D007A61EF /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		163BDD042B78A8B1001E5607 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		1666930F2B6785A9008F8850 /* CategoryRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoundView.swift; sourceTree = "<group>"; };
@@ -99,7 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				166A67842B6F914900102BA5 /* Repeatly.xcdatamodeld */,
-				160ECD292B6B73530025A1D6 /* StorageManager.swift */,
+				160ECD292B6B73530025A1D6 /* CoreDataManager.swift */,
+				163BDD042B78A8B1001E5607 /* DataStorage.swift */,
 				160ECD352B6B7F4D0025A1D6 /* Models */,
 			);
 			path = Storage;
@@ -355,12 +358,13 @@
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
 				164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */,
-				160ECD2A2B6B73530025A1D6 /* StorageManager.swift in Sources */,
+				160ECD2A2B6B73530025A1D6 /* CoreDataManager.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
 				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
+				163BDD052B78A8B1001E5607 /* DataStorage.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,
