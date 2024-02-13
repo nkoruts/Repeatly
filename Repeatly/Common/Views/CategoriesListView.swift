@@ -18,11 +18,11 @@ struct CategoriesListView: View {
                 Button(action: action) {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(ColorSystem.button)
+                        .foregroundColor(ColorSystem.button.color)
                         .padding(14)
                         .background(
                             Circle()
-                                .fill(ColorSystem.lightButton)
+                                .fill(ColorSystem.lightButton.color)
                         )
                 }
                 

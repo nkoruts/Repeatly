@@ -11,12 +11,13 @@ struct BorderedTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .font(Constants.noteFieldFont)
+            .foregroundColor(ColorSystem.mainText.color)
             .padding(Constants.noteFieldPadding)
             .overlay(
                 RoundedRectangle(
                     cornerRadius: Constants.noteFieldCornerRadius,
                     style: .continuous)
-                .stroke(ColorSystem.lightGray)
+                .stroke(ColorSystem.lightGray.color)
             )
     }
 }

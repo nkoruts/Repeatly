@@ -13,11 +13,11 @@ struct BackButtonStyle: ButtonStyle {
         configuration.label
             .background(
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(ColorSystem.button)
+                    .foregroundColor(ColorSystem.button.color)
                     .frame(width: 40, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 8, style: .continuous)
-                            .fill(ColorSystem.lightButton)
+                            .fill(ColorSystem.lightButton.color)
                     )
             )
     }

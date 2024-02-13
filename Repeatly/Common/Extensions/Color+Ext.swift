@@ -7,26 +7,29 @@
 
 import SwiftUI
 
-enum ColorSystem {
-    static let accent = Color("AccentColor")
-    static let lightGray = Color("LightGrayColor")
-    static let pink = Color("PinkColor")
-    static let lightBlue = Color("LightBlueColor")
-    static let yellow = Color("YellowColor")
-    static let green = Color("GreenColor")
+enum ColorSystem: String {
+    case accent = "AccentColor"
+    case lightGray = "LightGrayColor"
+    case pink = "PinkColor"
+    case lightBlue = "LightBlueColor"
+    case yellow = "YellowColor"
+    case green = "GreenColor"
     
-    static let button = Color("ButtonColor")
-    static let lightButton = Color("LightButtonColor")
-    static let icon = Color("IconColor")
+    case button = "ButtonColor"
+    case lightButton = "LightButtonColor"
+    case icon = "IconColor"
     
-    static let grayText = Color("GrayTextColor")
-    static let mainText = Color("MainTextColor")
+    case grayText = "GrayTextColor"
+    case mainText = "MainTextColor"
     
-    static let background = Color("BackgroundColor")
-    static let cardBackground = Color("CardBackgroundColor")
-    static let tabbarBackground = Color("TabbarBackgroundColor")
+    case background = "BackgroundColor"
+    case cardBackground = "CardBackgroundColor"
+    case tabbarBackground = "TabbarBackgroundColor"
+    case shadow = "ShadowColor"
     
-    static let shadow = Color("ShadowColor")
+    var color: Color {
+        return Color(self.rawValue)
+    }
     
     //        static let background = Color("BackgroundColor")
     //        static let text = Color("TextColor")

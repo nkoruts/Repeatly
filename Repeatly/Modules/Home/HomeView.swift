@@ -20,7 +20,7 @@ struct HomeView: View {
             HStack(alignment: .firstTextBaseline,
                    spacing: Constants.navigationPanelSpacing) {
                 Text(Constants.appName)
-                    .foregroundColor(ColorSystem.mainText)
+                    .foregroundColor(ColorSystem.mainText.color)
                     .font(Constants.logoFont)
                 Spacer()
                 Button(action: {
@@ -29,14 +29,14 @@ struct HomeView: View {
                 }, label: {
                     Image(systemName: Constants.findIconSystemName)
                         .font(.system(size: 24))
-                        .foregroundColor(ColorSystem.button)
+                        .foregroundColor(ColorSystem.button.color)
                 })
                 Button(action: {
                     willMoveToNoteCreation = true
                 }, label: {
                     Image(systemName: Constants.addIconSystemName)
                         .font(Constants.addIconFont)
-                        .foregroundColor(ColorSystem.button)
+                        .foregroundColor(ColorSystem.button.color)
                 })
             }
                    .padding(.horizontal)
@@ -50,7 +50,7 @@ struct HomeView: View {
                                 CardView(viewModel: CardViewModel(note: note, category: nil))
                             }
                         }, header: {
-                            SectionHeaderView(title: ColorSystem.lightBlue.description)
+                            SectionHeaderView(title: "===== TODO ======")
                         })
                         .padding(.horizontal)
                     }
@@ -61,7 +61,7 @@ struct HomeView: View {
                     description: Constants.emptyViewDescription)
             }
         }
-        .background(ColorSystem.background)
+        .background(ColorSystem.background.color)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
     }
 }

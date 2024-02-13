@@ -33,12 +33,12 @@ struct CardView: View {
                 
                 Text(viewModel.note.title)
                     .font(Constants.titleFont)
-                    .foregroundColor(ColorSystem.mainText)
+                    .foregroundColor(ColorSystem.mainText.color)
                 
                 if let details = viewModel.note.details {
                     Text(details)
                         .font(Constants.detailsFont)
-                        .foregroundColor(ColorSystem.grayText)
+                        .foregroundColor(ColorSystem.grayText.color)
                         .lineLimit(Constants.detailsLineLimit)
                 }
             }
@@ -47,16 +47,16 @@ struct CardView: View {
             Spacer()
             
             Image(systemName: Constants.arrowIconName)
-                .foregroundColor(ColorSystem.icon)
+                .foregroundColor(ColorSystem.icon.color)
                 .padding(.trailing, Constants.defaultPadding)
         }
-        .background(ColorSystem.cardBackground)
+        .background(ColorSystem.cardBackground.color)
         .clipShape(
             RoundedRectangle(
                 cornerRadius: Constants.cornerRadius,
                 style: .continuous)
         )
-        .shadow(color: ColorSystem.shadow, radius: Constants.shadowRadius)
+        .shadow(color: ColorSystem.shadow.color, radius: Constants.shadowRadius)
         
     }
 }

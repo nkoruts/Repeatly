@@ -15,11 +15,12 @@ struct MultilineTextView: View {
         ZStack {
             TextEditor(text: $text)
                 .font(.gilroyRegular(size: 16))
+                .foregroundColor(ColorSystem.mainText.color)
                 .textEditorBackground(.clear)
                 .padding(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(ColorSystem.lightGray)
+                        .stroke(ColorSystem.lightGray.color)
                 )
             if text.isEmpty, !placeholder.isEmpty {
                 HStack {
@@ -33,6 +34,7 @@ struct MultilineTextView: View {
                     }
                     Spacer()
                 }
+                .allowsHitTesting(false)
             }
 
         }
