@@ -24,31 +24,31 @@ class StorageService: ObservableObject {
         newNote.details = !details.isEmpty ? details : nil
         newNote.color = colorName
         newNote.categoryId = categoryId
-//        newNote.repetition = repetition
+        //        newNote.repetition = repetition
         
         // TODO: - Save async
         storageManager.save()
     }
     
     func getNotes() -> [Note] {
-//        let categoryFetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-//        let categories = try context.fetch(categoryFetchRequest)
+        //        let categoryFetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        //        let categories = try context.fetch(categoryFetchRequest)
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         
         do {
             return try storageManager.viewContext.fetch(fetchRequest)
         } catch {
-            print("=== DEBUG: Failed to fetch notes: \(error)")
+            logError(error)
             return []
         }
     }
     
     func updateNote(_ note: Note) {
         do {
-          try storageManager.viewContext.save()
+            try storageManager.viewContext.save()
         } catch {
-          storageManager.viewContext.rollback()
-          print("Failed to save context: \(error)")
+            storageManager.viewContext.rollback()
+            logError(error)
         }
     }
     
@@ -57,16 +57,18 @@ class StorageService: ObservableObject {
     }
 }
 
-private class CoreDataManager: ObservableObject {
+class CoreDataManager: ObservableObject {
     private let container: NSPersistentContainer
-    let viewContext: NSManagedObjectContext
+    
+    var viewContext: NSManagedObjectContext {
+        container.viewContext
+    }
     
     init() {
         container = NSPersistentContainer(name: "Repeatly")
-        self.viewContext = container.viewContext
         container.loadPersistentStores { _, error in
             if let error {
-                print("=== Error: \(error.localizedDescription)")
+                logError(error)
             }
         }
     }
@@ -76,7 +78,7 @@ private class CoreDataManager: ObservableObject {
             try viewContext.save()
         } catch {
             viewContext.rollback()
-            print("=== DEBUG: Failed to save note: \(error)")
+            logError(error)
         }
     }
     
@@ -87,7 +89,7 @@ private class CoreDataManager: ObservableObject {
             try viewContext.save()
         } catch {
             viewContext.rollback()
-            print("Failed to save context: \(error)")
+            logError(error)
         }
     }
 }

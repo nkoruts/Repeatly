@@ -19,7 +19,7 @@ struct MultilineTextView: View {
                 .padding(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(Color.lightGray)
+                        .stroke(ColorSystem.lightGray)
                 )
             if text.isEmpty, !placeholder.isEmpty {
                 HStack {

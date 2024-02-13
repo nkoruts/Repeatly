@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var storageService: StorageService
+    @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(fetchRequest: Note.fetchRequest()) var notes: FetchedResults<Note>
+    @FetchRequest(sortDescriptors: [], animation: .spring())
+    private var notes: FetchedResults<Note>
+    
     @State private var willMoveToNoteCreation = false
     
     var body: some View {
@@ -40,23 +42,23 @@ struct HomeView: View {
                    .padding(.horizontal)
                    .padding(.top)
             
-            if !storageService.getNotes().isEmpty {
+            if !notes.isEmpty {
                 ScrollView {
                     LazyVStack(spacing: Constants.cardsSpacing) {
                         Section(content: {
-                            ForEach(storageService.getNotes()) { note in
+                            ForEach(notes) { note in
                                 CardView(viewModel: CardViewModel(note: note, category: nil))
                             }
                         }, header: {
-                            SectionHeaderView(title: "===TODO===")
+                            SectionHeaderView(title: ColorSystem.lightBlue.description)
                         })
                         .padding(.horizontal)
                     }
                 }
             } else {
                 ListEmptyView(
-                    title: "Your notes is empty",
-                    description: "Create a new Note to get started on spaced repetition")
+                    title: Constants.emptyViewTitle,
+                    description: Constants.emptyViewDescription)
             }
         }
         .background(ColorSystem.background)
@@ -75,12 +77,15 @@ extension HomeView {
         
         static let navigationPanelSpacing: CGFloat = 12
         static let cardsSpacing: CGFloat = 16
+        
+        static let emptyViewTitle = "Your notes is empty"
+        static let emptyViewDescription = "Create a new Note to get started on spaced repetition"
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(StorageService())
+            .environmentObject(StorageService.instance)
     }
 }

@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct RepeatlyApp: App {
-    @StateObject private var storageService = StorageService()
+    @StateObject private var storageService = CoreDataManager()
     
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .environmentObject(storageService)
+                .environment(\.managedObjectContext, storageService.viewContext)
+//                .environmentObject(storageService)
         }
     }
 }

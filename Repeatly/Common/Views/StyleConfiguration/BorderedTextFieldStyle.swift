@@ -16,7 +16,7 @@ struct BorderedTextFieldStyle: TextFieldStyle {
                 RoundedRectangle(
                     cornerRadius: Constants.noteFieldCornerRadius,
                     style: .continuous)
-                .stroke(Color.lightGray)
+                .stroke(ColorSystem.lightGray)
             )
     }
 }

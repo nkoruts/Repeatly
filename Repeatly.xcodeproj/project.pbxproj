@@ -26,9 +26,9 @@
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
 		162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162248032B65194D007A61EF /* Gilroy-SemiBold.otf */; };
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
-		163BDD052B78A8B1001E5607 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163BDD042B78A8B1001E5607 /* DataStorage.swift */; };
 		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
 		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
+		166301442B7B700800EC6870 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166301432B7B700800EC6870 /* Logger.swift */; };
 		166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* CategoryRoundView.swift */; };
 		1668329C2B680BB000576DA5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329B2B680BB000576DA5 /* MainView.swift */; };
 		1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329D2B680C9A00576DA5 /* SettingsView.swift */; };
@@ -63,9 +63,9 @@
 		162248012B65156A007A61EF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		162248032B65194D007A61EF /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
-		163BDD042B78A8B1001E5607 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		166301432B7B700800EC6870 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1666930F2B6785A9008F8850 /* CategoryRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoundView.swift; sourceTree = "<group>"; };
 		1668329B2B680BB000576DA5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1668329D2B680C9A00576DA5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -102,7 +102,6 @@
 			children = (
 				166A67842B6F914900102BA5 /* Repeatly.xcdatamodeld */,
 				160ECD292B6B73530025A1D6 /* CoreDataManager.swift */,
-				163BDD042B78A8B1001E5607 /* DataStorage.swift */,
 				160ECD352B6B7F4D0025A1D6 /* Models */,
 			);
 			path = Storage;
@@ -234,6 +233,7 @@
 			children = (
 				16110F332B6A661700471512 /* Views */,
 				162247FD2B650C93007A61EF /* Extensions */,
+				166301452B7B701200EC6870 /* Utility */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -247,6 +247,14 @@
 				16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		166301452B7B701200EC6870 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				166301432B7B700800EC6870 /* Logger.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		1668329F2B680C9D00576DA5 /* Settings */ = {
@@ -359,12 +367,12 @@
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
 				164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */,
 				160ECD2A2B6B73530025A1D6 /* CoreDataManager.swift in Sources */,
+				166301442B7B700800EC6870 /* Logger.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
 				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
-				163BDD052B78A8B1001E5607 /* DataStorage.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,

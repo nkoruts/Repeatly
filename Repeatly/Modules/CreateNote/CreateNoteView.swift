@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct CreateNoteView: View {
-    @State private var title = ""
-    @State private var details = ""
-    @State private var selectedCategoryId: UUID?
-    
-    @State private var categories: [Category] = []
-    
-    @EnvironmentObject private var storageService: StorageService
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    
     @FocusState private var focusedField: FocusedField?
-    enum FocusedField: Hashable {
+    private enum FocusedField: Hashable {
         case title
         case details
     }
+    
+    @State private var title = ""
+    @State private var details = ""
+    @State private var selectedCategoryId: UUID?
+    @State private var categories: [Category] = []
     
     var body: some View {
         NavigationView {
@@ -88,12 +86,22 @@ struct CreateNoteView: View {
     }
     
     private func saveNote() {
-        storageService.saveNote(
-            title: title,
-            details: details,
-            colorName: "AccentColor",
-            categoryId: nil,
-            repetition: nil)
+        let newNote = Note(context: viewContext)
+        newNote.id = UUID()
+        newNote.title = title
+        newNote.details = !details.isEmpty ? details : nil
+        newNote.color = ColorSystem.lightBlue.description // TODO: Set category color
+        newNote.categoryId = nil
+        //        newNote.repetition = repetition
+        
+        // TODO: - Save async
+        try? viewContext.save()
+//        storageService.saveNote(
+//            title: title,
+//            details: details,
+//            colorName: "AccentColor",
+//            categoryId: nil,
+//            repetition: nil)
 //        dismiss()
     }
 }
