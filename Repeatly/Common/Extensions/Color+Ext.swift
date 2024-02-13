@@ -7,24 +7,30 @@
 
 import SwiftUI
 
-struct ColorSystem {
-    static let pink = Color(hex: 0xFD6686)
-    static let lightBlue = Color(hex: 0x33C6F8)
-    static let yellow = Color(hex: 0xFFC12C)
-    static let green = Color(hex: 0x34D183)
+enum ColorSystem {
+    static let accent = Color("AccentColor")
+    static let lightGray = Color("LightGrayColor")
+    static let pink = Color("PinkColor")
+    static let lightBlue = Color("LightBlueColor")
+    static let yellow = Color("YellowColor")
+    static let green = Color("GreenColor")
     
-    static let button = Color(hex: 0x3E69FF)
-    static let lightButton = Color(hex: 0x3E69FF, opacity: 0.15)
-    static let icon = Color(hex: 0xC3C8CE)
+    static let button = Color("ButtonColor")
+    static let lightButton = Color("LightButtonColor")
+    static let icon = Color("IconColor")
     
-    static let grayText = Color(hex: 0x949DA9)
-    static let mainText = Color(hex: 0x232E3F)
+    static let grayText = Color("GrayTextColor")
+    static let mainText = Color("MainTextColor")
     
-    static let background = Color(hex: 0xF5F7FA)
-    static let cardBackground = Color(hex: 0xFCFCFD)
-    static let tabbarBackground = Color(hex: 0xFDFDFD)
+    static let background = Color("BackgroundColor")
+    static let cardBackground = Color("CardBackgroundColor")
+    static let tabbarBackground = Color("TabbarBackgroundColor")
     
-    static let shadow = Color(hex: 0xEEF0F4)
+    static let shadow = Color("ShadowColor")
+    
+    //        static let background = Color("BackgroundColor")
+    //        static let text = Color("TextColor")
+    //        static let lightBackground = Color("LightBackgroundColor")
 }
 
 extension Color {
@@ -37,12 +43,4 @@ extension Color {
             opacity: opacity
         )
     }
-}
-
-extension Color {
-    static var text = Color("TextColor")
-    static var background = Color("BackgroundColor")
-    static var lightBackground = Color("LightBackgroundColor")
-    static var accent = Color("AccentColor")
-    static var lightGray = Color("LightGrayColor")
 }
