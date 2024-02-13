@@ -16,7 +16,7 @@ struct CreateNoteView: View {
         case details
     }
     
-    @State private var title = ""
+    @State private var title: String = ""
     @State private var details = ""
     @State private var selectedCategoryId: UUID?
     @State private var categories: [Category] = []
@@ -33,43 +33,49 @@ struct CreateNoteView: View {
                 
                 Spacer().frame(height: Constants.contentTopInset)
                 
-                Section(content: {
-                    CategoriesListView(
-                        categories: categories,
-                        selection: $selectedCategoryId) {
-                            // TODO: Move to category creation
-                        }
-                }, header: {
-                    SectionHeaderView(title: Constants.categoryTitle)
-                        .padding(.horizontal)
-                })
-                
-                Section(content: {
-                    TextField(Constants.notePlaceholder, text: $title)
+                ScrollView {
+                    Section(content: {
+                        CategoriesListView(
+                            categories: categories,
+                            selection: $selectedCategoryId) {
+                                // TODO: Move to category creation
+                            }
+                    }, header: {
+                        SectionHeaderView(title: Constants.categoryTitle)
+                            .padding(.horizontal)
+                    })
+                    
+                    Section(content: {
+                        TextField(
+                            "",
+                            text: $title,
+                            prompt: Text(Constants.notePlaceholder)
+                                .foregroundColor(.gray.opacity(0.6))
+                        )
                         .focused($focusedField, equals: .title)
                         .onSubmit {
                             focusedField = .details
                         }
                         .textFieldStyle(BorderedTextFieldStyle())
-                }, header: {
-                    SectionHeaderView(title: Constants.noteTitle)
-                })
-                .padding(.horizontal)
-
-                
-                Section(content: {
-                    MultilineTextView(
-                        placeholder: Constants.detailsPlaceholder,
-                        text: $details)
-                    .focused($focusedField, equals: .details)
-                    .onSubmit {
-                        focusedField = title.isEmpty ? .title : nil
-                    }
-                    .frame(height: Constants.detailsHeight)
-                }, header: {
-                    SectionHeaderView(title: Constants.detailsTitle)
-                })
-                .padding(.horizontal)
+                    }, header: {
+                        SectionHeaderView(title: Constants.noteTitle)
+                    })
+                    .padding(.horizontal)
+                    
+                    Section(content: {
+                        MultilineTextView(
+                            placeholder: Constants.detailsPlaceholder,
+                            text: $details)
+                        .focused($focusedField, equals: .details)
+                        .onSubmit {
+                            focusedField = title.isEmpty ? .title : nil
+                        }
+                        .frame(height: Constants.detailsHeight)
+                    }, header: {
+                        SectionHeaderView(title: Constants.detailsTitle)
+                    })
+                    .padding(.horizontal)
+                }
                 
                 Spacer()
                 
@@ -81,7 +87,7 @@ struct CreateNoteView: View {
                 .padding(.horizontal)
             }
             .padding(.vertical)
-            .background(ColorSystem.background)
+            .background(ColorSystem.background.color)
         }
     }
     
@@ -90,19 +96,12 @@ struct CreateNoteView: View {
         newNote.id = UUID()
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
-        newNote.color = ColorSystem.lightBlue.description // TODO: Set category color
+        newNote.color = ColorSystem.lightBlue.rawValue // TODO: Set category color
         newNote.categoryId = nil
-        //        newNote.repetition = repetition
+        // newNote.repetition = repetition
         
         // TODO: - Save async
         try? viewContext.save()
-//        storageService.saveNote(
-//            title: title,
-//            details: details,
-//            colorName: "AccentColor",
-//            categoryId: nil,
-//            repetition: nil)
-//        dismiss()
     }
 }
 
