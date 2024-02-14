@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateNoteView: View {
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedField: FocusedField?
@@ -21,9 +22,12 @@ struct CreateNoteView: View {
     @State private var selectedCategoryId: UUID?
     @State private var categories: [Category] = []
     
+    private let titleTextLength = 6
+    
+    // MARK: - UI
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: Constants.contentSpacing) {
+            VStack(alignment: .leading, spacing: Constants.contentTopInset) {
                 NavigationTopView(
                     title: Constants.screenTitle,
                     backAction: {
@@ -31,53 +35,51 @@ struct CreateNoteView: View {
                     })
                 .padding(.horizontal)
                 
-                Spacer().frame(height: Constants.contentTopInset)
-                
                 ScrollView {
-                    Section(content: {
-                        CategoriesListView(
-                            categories: categories,
-                            selection: $selectedCategoryId) {
-                                // TODO: Move to category creation
+                    VStack(spacing: 8) {
+                        Section(content: {
+                            CategoriesListView(
+                                categories: categories,
+                                selection: $selectedCategoryId) {
+                                    // TODO: Move to category creation
+                                }
+                        }, header: {
+                            SectionHeaderView(title: Constants.categoryTitle)
+                                .padding(.horizontal)
+                        })
+                        
+                        Section(content: {
+                            TextField(Constants.notePlaceholder, text: $title)
+                                .font(FontBook.regular3)
+                                .textLimit(titleTextLength, $title)
+                                .focused($focusedField, equals: .title)
+                                .textFieldStyle(BorderedTextFieldStyle())
+                                .onSubmit {
+                                    focusedField = .details
+                                }
+                        }, header: {
+                            SectionHeaderView(title: Constants.noteTitle)
+                        })
+                        .padding(.horizontal)
+                        
+                        Section(content: {
+                            TextField(
+                                Constants.detailsPlaceholder,
+                                text: $details,
+                                axis: .vertical)
+                            .font(FontBook.regular3)
+                            .lineLimit(5, reservesSpace: true)
+                            .focused($focusedField, equals: .details)
+                            .onSubmit {
+                                focusedField = title.isEmpty ? .title : nil
                             }
-                    }, header: {
-                        SectionHeaderView(title: Constants.categoryTitle)
-                            .padding(.horizontal)
-                    })
-                    
-                    Section(content: {
-                        TextField(
-                            "",
-                            text: $title,
-                            prompt: Text(Constants.notePlaceholder)
-                                .foregroundColor(.gray.opacity(0.6))
-                        )
-                        .focused($focusedField, equals: .title)
-                        .onSubmit {
-                            focusedField = .details
-                        }
-                        .textFieldStyle(BorderedTextFieldStyle())
-                    }, header: {
-                        SectionHeaderView(title: Constants.noteTitle)
-                    })
-                    .padding(.horizontal)
-                    
-                    Section(content: {
-                        MultilineTextView(
-                            placeholder: Constants.detailsPlaceholder,
-                            text: $details)
-                        .focused($focusedField, equals: .details)
-                        .onSubmit {
-                            focusedField = title.isEmpty ? .title : nil
-                        }
-                        .frame(height: Constants.detailsHeight)
-                    }, header: {
-                        SectionHeaderView(title: Constants.detailsTitle)
-                    })
-                    .padding(.horizontal)
+                            .textFieldStyle(BorderedTextFieldStyle())
+                        }, header: {
+                            SectionHeaderView(title: Constants.detailsTitle)
+                        })
+                        .padding(.horizontal)
+                    }
                 }
-                
-                Spacer()
                 
                 Button(Constants.saveButtonTitle) {
                     saveNote()
@@ -89,6 +91,7 @@ struct CreateNoteView: View {
             .padding(.vertical)
             .background(ColorSystem.background.color)
         }
+        .preferredColorScheme(.light)
     }
     
     private func saveNote() {
@@ -108,19 +111,17 @@ struct CreateNoteView: View {
 extension CreateNoteView {
     private enum Constants {
         static let screenTitle = "Create Note"
-        static let contentTopInset: CGFloat = 16
+        static let contentTopInset: CGFloat = 32
         static let contentSpacing: CGFloat = 12
         
         static let categoryTitle = "Category"
-        static let noteTitle = "Example: Study"
-        static let notePlaceholder = "Note title"
-        static let noteFieldFont: Font = .gilroyRegular(size: 16)
+        static let noteTitle = "Note title"
+        static let notePlaceholder = "Example: Study"
         static let noteFieldPadding: CGFloat = 12
         static let noteFieldCornerRadius: CGFloat = 16
         
         static let detailsTitle = "Details"
         static let detailsPlaceholder = "Example: Creating a learning space"
-        static let detailsHeight: CGFloat = 100
         
         static let saveButtonTitle = "Save"
     }
