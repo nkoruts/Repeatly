@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum ColorSystem: String {
-    case accent = "AccentColor"
     case lightGray = "LightGrayColor"
     case pink = "PinkColor"
     case lightBlue = "LightBlueColor"
@@ -30,10 +29,6 @@ enum ColorSystem: String {
     var color: Color {
         return Color(self.rawValue)
     }
-    
-    //        static let background = Color("BackgroundColor")
-    //        static let text = Color("TextColor")
-    //        static let lightBackground = Color("LightBackgroundColor")
 }
 
 extension Color {
