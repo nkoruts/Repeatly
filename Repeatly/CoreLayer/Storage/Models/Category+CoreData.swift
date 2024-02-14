@@ -12,7 +12,6 @@ import CoreData
 @objc(Category)
 public class Category: NSManagedObject, Identifiable {
 
-    // TODO: - Delete if needed
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
         return NSFetchRequest<Category>(entityName: "Category")
     }

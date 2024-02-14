@@ -13,7 +13,7 @@ struct NoteCategoryView: View {
     
     var body: some View {
         Text(title)
-            .font(Constants.titleFont)
+            .font(FontBook.medium5)
             .foregroundColor(color)
             .padding(.horizontal, Constants.hPadding)
             .padding(.vertical, Constants.vPadding)
@@ -35,7 +35,6 @@ extension NoteCategoryView {
         static let hPadding: CGFloat = 12
         static let vPadding: CGFloat = 16
         
-        static let titleFont: Font = .gilroyMedium(size: 12)
         static let backgroundColorOpacity: CGFloat = 0.2
     }
 }

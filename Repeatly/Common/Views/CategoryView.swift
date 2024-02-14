@@ -17,7 +17,7 @@ struct CategoryView: View {
             self.isSelected.toggle()
         }, label: {
             Text(title)
-                .font(.gilroyMedium(size: 14))
+                .font(FontBook.medium4)
                 .foregroundColor(.white)
                 .padding(.horizontal)
                 .padding(.vertical, 12)

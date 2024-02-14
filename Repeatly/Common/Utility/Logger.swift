@@ -7,6 +7,6 @@
 
 import Foundation
 
-func logError(_ error: Error) {
+func log(_ error: Error) {
     print("=== Debug Log: \(error.localizedDescription)")
 }

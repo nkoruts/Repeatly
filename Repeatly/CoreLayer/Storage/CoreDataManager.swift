@@ -38,7 +38,7 @@ class StorageService: ObservableObject {
         do {
             return try storageManager.viewContext.fetch(fetchRequest)
         } catch {
-            logError(error)
+            log(error)
             return []
         }
     }
@@ -48,7 +48,7 @@ class StorageService: ObservableObject {
             try storageManager.viewContext.save()
         } catch {
             storageManager.viewContext.rollback()
-            logError(error)
+            log(error)
         }
     }
     
@@ -68,7 +68,7 @@ class CoreDataManager: ObservableObject {
         container = NSPersistentContainer(name: "Repeatly")
         container.loadPersistentStores { _, error in
             if let error {
-                logError(error)
+                log(error)
             }
         }
     }
@@ -78,7 +78,7 @@ class CoreDataManager: ObservableObject {
             try viewContext.save()
         } catch {
             viewContext.rollback()
-            logError(error)
+            log(error)
         }
     }
     
@@ -89,7 +89,7 @@ class CoreDataManager: ObservableObject {
             try viewContext.save()
         } catch {
             viewContext.rollback()
-            logError(error)
+            log(error)
         }
     }
 }

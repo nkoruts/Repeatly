@@ -32,12 +32,12 @@ struct CardView: View {
 //                }
                 
                 Text(viewModel.note.title)
-                    .font(Constants.titleFont)
+                    .font(FontBook.medium3)
                     .foregroundColor(ColorSystem.mainText.color)
                 
                 if let details = viewModel.note.details {
                     Text(details)
-                        .font(Constants.detailsFont)
+                        .font(FontBook.regular4)
                         .foregroundColor(ColorSystem.grayText.color)
                         .lineLimit(Constants.detailsLineLimit)
                 }
@@ -71,11 +71,7 @@ extension CardView {
         static let dividerWidth: CGFloat = 4
         static let dividerLeadingPadding: CGFloat = 12
         static let dividerVerticalPadding: CGFloat = 16
-        
         static let infoSpacing: CGFloat = 4
-        
-        static let titleFont: Font = .gilroyMedium(size: 18)
-        static let detailsFont: Font = .gilroyRegular(size: 14)
         static let detailsLineLimit = 2
         
         static let arrowIconName = "chevron.forward"

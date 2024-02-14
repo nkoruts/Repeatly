@@ -21,16 +21,19 @@ struct HomeView: View {
                    spacing: Constants.navigationPanelSpacing) {
                 Text(Constants.appName)
                     .foregroundColor(ColorSystem.mainText.color)
-                    .font(Constants.logoFont)
+                    .font(FontBook.semibold)
                 Spacer()
-                Button(action: {
-                    print(notes)
-                    // TODO: - Search notes
-                }, label: {
-                    Image(systemName: Constants.findIconSystemName)
-                        .font(.system(size: 24))
-                        .foregroundColor(ColorSystem.button.color)
-                })
+                // TODO: Show search button
+                if false {
+                    Button(action: {
+                        print(notes)
+                        // TODO: - Search notes
+                    }, label: {
+                        Image(systemName: Constants.findIconSystemName)
+                            .font(.system(size: 24))
+                            .foregroundColor(ColorSystem.button.color)
+                    })
+                }
                 Button(action: {
                     willMoveToNoteCreation = true
                 }, label: {

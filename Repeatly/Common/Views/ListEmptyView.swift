@@ -20,11 +20,11 @@ struct ListEmptyView: View {
                 .foregroundColor(ColorSystem.icon.color)
             VStack(spacing: 4) {
                 Text(title)
-                    .font(.gilroySemiBold(size: 24))
+                    .font(FontBook.semibold2)
                     .foregroundColor(ColorSystem.mainText.color)
                 .lineLimit(1)
                 Text(description)
-                    .font(.gilroyRegular(size: 14))
+                    .font(FontBook.regular4)
                     .foregroundColor(ColorSystem.mainText.color)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)

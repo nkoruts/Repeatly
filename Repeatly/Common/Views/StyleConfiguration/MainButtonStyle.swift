@@ -13,7 +13,7 @@ struct MainButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration)
     -> some View {
         configuration.label
-            .font(.gilroyMedium(size: 20))
+            .font(FontBook.medium2)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: 45)
             .background(isEnabled ? ColorSystem.button.color : ColorSystem.lightButton.color)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+    // TODO: - Update navigation
     func navigate<AnyView: View>(to view: AnyView, when binding: Binding<Bool>) -> some View {
         NavigationView {
             ZStack {
@@ -20,6 +21,14 @@ extension View {
             }
             
             .navigationBarBackButtonHidden(true)
+        }
+    }
+}
+
+extension View {
+    func textLimit(_ limit: Int, _ text: Binding<String>) -> some View {
+        self.onChange(of: text.wrappedValue) { _ in
+            text.wrappedValue = String(text.wrappedValue.prefix(limit))
         }
     }
 }

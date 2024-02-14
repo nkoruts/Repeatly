@@ -11,7 +11,6 @@ import CoreData
 @objc(RepetitionListModel)
 public class RepetitionListModel: NSManagedObject, Identifiable {
 
-    // TODO: - Delete if needed
     @nonobjc public class func fetchRequest() -> NSFetchRequest<RepetitionListModel> {
         return NSFetchRequest<RepetitionListModel>(entityName: "RepetitionListModel")
     }
@@ -23,7 +22,6 @@ public class RepetitionListModel: NSManagedObject, Identifiable {
 @objc(Repetition)
 public class Repetition: NSManagedObject, Identifiable {
     
-    // TODO: - Delete if needed
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Repetition> {
         return NSFetchRequest<Repetition>(entityName: "Repetition")
     }
