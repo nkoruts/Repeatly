@@ -27,13 +27,14 @@ struct CreateNoteView: View {
     // MARK: - UI
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: Constants.contentTopInset) {
+            VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 NavigationTopView(
                     title: Constants.screenTitle,
                     backAction: {
                         dismiss()
                     })
                 .padding(.horizontal)
+                .padding(.bottom, 24)
                 
                 ScrollView {
                     VStack(spacing: 8) {
@@ -50,7 +51,6 @@ struct CreateNoteView: View {
                         
                         Section(content: {
                             TextField(Constants.notePlaceholder, text: $title)
-                                .font(FontBook.regular3)
                                 .textLimit(titleTextLength, $title)
                                 .focused($focusedField, equals: .title)
                                 .textFieldStyle(BorderedTextFieldStyle())
@@ -67,19 +67,19 @@ struct CreateNoteView: View {
                                 Constants.detailsPlaceholder,
                                 text: $details,
                                 axis: .vertical)
-                            .font(FontBook.regular3)
                             .lineLimit(5, reservesSpace: true)
                             .focused($focusedField, equals: .details)
+                            .textFieldStyle(BorderedTextFieldStyle())
                             .onSubmit {
                                 focusedField = title.isEmpty ? .title : nil
                             }
-                            .textFieldStyle(BorderedTextFieldStyle())
                         }, header: {
                             SectionHeaderView(title: Constants.detailsTitle)
                         })
                         .padding(.horizontal)
                     }
                 }
+                .scrollDisabled(focusedField == nil)
                 
                 Button(Constants.saveButtonTitle) {
                     saveNote()
@@ -88,9 +88,10 @@ struct CreateNoteView: View {
                 .disabled(title.isEmpty)
                 .padding(.horizontal)
             }
-            .padding(.vertical)
+            .padding(.vertical, Constants.contentVerticalPadding)
             .background(ColorSystem.background.color)
         }
+//        .animation(.spring(), value: focusedField != nil)
         .preferredColorScheme(.light)
     }
     
@@ -111,8 +112,8 @@ struct CreateNoteView: View {
 extension CreateNoteView {
     private enum Constants {
         static let screenTitle = "Create Note"
-        static let contentTopInset: CGFloat = 32
         static let contentSpacing: CGFloat = 12
+        static let contentVerticalPadding: CGFloat = 24
         
         static let categoryTitle = "Category"
         static let noteTitle = "Note title"
