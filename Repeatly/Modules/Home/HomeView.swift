@@ -53,7 +53,8 @@ struct HomeView: View {
                                 CardView(viewModel: CardViewModel(note: note, category: nil))
                             }
                         }, header: {
-                            SectionHeaderView(title: "===== TODO ======")
+                            EmptyView()
+//                            SectionHeaderView(title: "===== TODO ======")
                         })
                         .padding(.horizontal)
                     }
@@ -71,13 +72,11 @@ struct HomeView: View {
 
 extension HomeView {
     private enum Constants {
-        static let appName = "Repetly"
+        static let appName = "Repeatly"
         static let findIconSystemName = "magnifyingglass"
         static let addIconSystemName = "plus.app.fill"
         
-        static let logoFont: Font = .gilroySemiBold(size: 32)
         static let addIconFont: Font = .system(size: 34)
-        
         static let navigationPanelSpacing: CGFloat = 12
         static let cardsSpacing: CGFloat = 16
         
