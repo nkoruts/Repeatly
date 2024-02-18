@@ -13,7 +13,7 @@ struct NoteCategoryView: View {
     
     var body: some View {
         Text(title)
-            .font(FontBook.medium5)
+            .font(FontBook.medium4)
             .foregroundColor(color)
             .padding(.horizontal, Constants.hPadding)
             .padding(.vertical, Constants.vPadding)

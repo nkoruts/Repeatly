@@ -17,15 +17,17 @@ struct CategoryView: View {
             self.isSelected.toggle()
         }, label: {
             Text(title)
-                .font(FontBook.medium4)
+                .font(FontBook.medium3)
                 .foregroundColor(.white)
                 .padding(.horizontal)
                 .padding(.vertical, 12)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(isSelected ? color : color.opacity(0.5))
+                    RoundedRectangle(
+                        cornerRadius: DesignSystem.cornerRadius,
+                        style: .continuous)
+                    .fill(isSelected ? color : color.opacity(0.5))
                 )
         })
-        .buttonStyle(PlainButtonStyle()) 
+        .buttonStyle(PlainButtonStyle())
     }
 }

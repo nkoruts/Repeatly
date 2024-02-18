@@ -33,8 +33,8 @@ struct CreateNoteView: View {
                     backAction: {
                         dismiss()
                     })
-                .padding(.horizontal)
-                .padding(.bottom, 24)
+                .padding([.horizontal, .bottom])
+//                .padding(.bottom, 12)
                 
                 ScrollView {
                     VStack(spacing: 8) {
@@ -52,8 +52,9 @@ struct CreateNoteView: View {
                         Section(content: {
                             TextField(Constants.notePlaceholder, text: $title)
                                 .textLimit(titleTextLength, $title)
-                                .focused($focusedField, equals: .title)
                                 .textFieldStyle(BorderedTextFieldStyle())
+                                .focused($focusedField, equals: .title)
+                                .submitLabel(.next)
                                 .onSubmit {
                                     focusedField = .details
                                 }
@@ -68,8 +69,9 @@ struct CreateNoteView: View {
                                 text: $details,
                                 axis: .vertical)
                             .lineLimit(5, reservesSpace: true)
-                            .focused($focusedField, equals: .details)
                             .textFieldStyle(BorderedTextFieldStyle())
+                            .focused($focusedField, equals: .details)
+                            .submitLabel(.continue)
                             .onSubmit {
                                 focusedField = title.isEmpty ? .title : nil
                             }
@@ -78,10 +80,13 @@ struct CreateNoteView: View {
                         })
                         .padding(.horizontal)
                     }
+                    .padding(.vertical)
                 }
                 .scrollDisabled(focusedField == nil)
+                .background(focusedField == nil ? .clear : ColorSystem.focus.color)
                 
                 Button(Constants.saveButtonTitle) {
+                    focusedField = nil
                     saveNote()
                 }
                 .buttonStyle(MainButtonStyle())
@@ -91,7 +96,6 @@ struct CreateNoteView: View {
             .padding(.vertical, Constants.contentVerticalPadding)
             .background(ColorSystem.background.color)
         }
-//        .animation(.spring(), value: focusedField != nil)
         .preferredColorScheme(.light)
     }
     
@@ -119,7 +123,6 @@ extension CreateNoteView {
         static let noteTitle = "Note title"
         static let notePlaceholder = "Example: Study"
         static let noteFieldPadding: CGFloat = 12
-        static let noteFieldCornerRadius: CGFloat = 16
         
         static let detailsTitle = "Details"
         static let detailsPlaceholder = "Example: Creating a learning space"

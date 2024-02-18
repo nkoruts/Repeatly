@@ -13,12 +13,14 @@ struct MainButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration)
     -> some View {
         configuration.label
-            .font(FontBook.medium2)
+            .font(FontBook.medium)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: 45)
             .background(isEnabled ? ColorSystem.button.color : ColorSystem.lightButton.color)
             .clipShape(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                RoundedRectangle(
+                    cornerRadius: DesignSystem.cornerRadius,
+                    style: .continuous)
             )
     }
 }

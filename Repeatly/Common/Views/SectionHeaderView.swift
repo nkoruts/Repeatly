@@ -13,7 +13,7 @@ struct SectionHeaderView: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(FontBook.regular2)
+                .font(FontBook.regular)
                 .foregroundColor(ColorSystem.mainText.color)
                 .lineLimit(1)
             Spacer()

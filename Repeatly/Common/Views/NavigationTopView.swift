@@ -22,7 +22,7 @@ struct NavigationTopView: View {
             
             Text(title)
                 .foregroundColor(ColorSystem.mainText.color)
-                .font(FontBook.medium2)
+                .font(FontBook.medium)
             
             Spacer()
         }

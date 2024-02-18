@@ -12,10 +12,10 @@ struct BorderedTextFieldStyle: TextFieldStyle {
         configuration
             .font(FontBook.regular3)
             .foregroundColor(ColorSystem.mainText.color)
-            .padding(Constants.noteFieldPadding)
+            .padding(Constants.padding)
             .overlay(
                 RoundedRectangle(
-                    cornerRadius: Constants.noteFieldCornerRadius,
+                    cornerRadius: DesignSystem.cornerRadius,
                     style: .continuous)
                 .stroke(ColorSystem.lightGray.color)
             )
@@ -25,7 +25,6 @@ struct BorderedTextFieldStyle: TextFieldStyle {
 // MARK: - Constants
 extension BorderedTextFieldStyle {
     private enum Constants {
-        static let noteFieldPadding: CGFloat = 12
-        static let noteFieldCornerRadius: CGFloat = 16
+        static let padding: CGFloat = 12
     }
 }

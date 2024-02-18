@@ -24,7 +24,7 @@ struct ListEmptyView: View {
                     .foregroundColor(ColorSystem.mainText.color)
                 .lineLimit(1)
                 Text(description)
-                    .font(FontBook.regular4)
+                    .font(FontBook.regular3)
                     .foregroundColor(ColorSystem.mainText.color)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)

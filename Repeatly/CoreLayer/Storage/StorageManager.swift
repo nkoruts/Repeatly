@@ -10,11 +10,11 @@ import SwiftUI
 import CoreData
 
 class StorageService: ObservableObject {
-    private let storageManager: CoreDataManager
+    private let storageManager: StorageManager
     
     static let instance = StorageService()
     private init() {
-        self.storageManager = CoreDataManager()
+        self.storageManager = StorageManager()
     }
     
     func saveNote(title: String, details: String, colorName: String, categoryId: UUID?, repetition: RepetitionListModel?) {
@@ -57,7 +57,7 @@ class StorageService: ObservableObject {
     }
 }
 
-class CoreDataManager: ObservableObject {
+class StorageManager: ObservableObject {
     private let container: NSPersistentContainer
     
     var viewContext: NSManagedObjectContext {
