@@ -20,16 +20,18 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            Color.red
-            
             HStack {
                 Spacer()
                 
                 Button(action: {}) {
                     Image(systemName: "trash")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .frame(width: 90, height: 50)
+                        .font(.title3)
+                        .foregroundColor(.red)
+                        .padding()
+                        .background(
+                            Circle()
+                                .fill(.red.opacity(0.15))
+                        )
                 }
             }
             
@@ -75,7 +77,6 @@ struct CardView: View {
             .shadow(
                 color: ColorSystem.shadow.color,
                 radius: Constants.shadowRadius)
-            .contentShape(Rectangle())
             .offset(x: cardOffset)
             .gesture(
                 DragGesture()
@@ -86,25 +87,29 @@ struct CardView: View {
     
     func dragOnChange(_ value: DragGesture.Value) {
         let offset = value.translation.width
-        guard offset < 0 else { return }
-        cardOffset = isSwipped ? (offset - 90) : offset
+        print(offset)
+        
+        if offset < .zero, offset > -90 {
+            cardOffset = isSwipped ? offset - 90 : offset
+        } else if offset > .zero, isSwipped {
+            cardOffset = cardOffset + offset
+        }
+//        if offset > 0, !isSwipped {
+//            return
+//        } else if offset > -90 {
+//            cardOffset = isSwipped ? offset - 90 : offset
+//        }
     }
     
     func dragOnEnd(_ value: DragGesture.Value) {
         let offset = value.translation.width
         withAnimation(.easeInOut) {
-            guard offset < 0 else {
+            if offset > 0 {
                 cardOffset = .zero
-                return
-            }
-            if -offset > UIScreen.main.bounds.width / 2 {
-                cardOffset = -1000
-            } else if -cardOffset > 50 {
-                isSwipped = true
-                cardOffset = -90
-            } else {
                 isSwipped = false
-                cardOffset = .zero
+            } else if cardOffset < -50 {
+                cardOffset = -90
+                isSwipped = true
             }
         }
     }
