@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(sortDescriptors: [], animation: .spring())
-    private var notes: FetchedResults<Note>
     
+    private var notes: FetchedResults<Note>
     @State private var willMoveToNoteCreation = false
     
+    // MARK: - UI
     var body: some View {
         VStack(spacing: Constants.cardsSpacing) {
             HStack(alignment: .firstTextBaseline,
@@ -42,31 +43,51 @@ struct HomeView: View {
                         .foregroundColor(ColorSystem.button.color)
                 })
             }
-                   .padding(.horizontal)
-                   .padding(.top)
+            .padding([.horizontal, .top])
             
-            if !notes.isEmpty {
-                ScrollView {
-                    LazyVStack(spacing: Constants.cardsSpacing) {
-                        Section(content: {
-                            ForEach(notes) { note in
-                                CardView(viewModel: CardViewModel(note: note, category: nil))
-                            }
-                        }, header: {
-                            EmptyView()
-//                            SectionHeaderView(title: "===== TODO ======")
-                        })
-                        .padding(.horizontal)
+            // TODO: - Crash when show ListEmptyView
+            ScrollView {
+                LazyVStack(spacing: Constants.cardsSpacing) {
+                    Section(content: {
+                        ForEach(notes) { note in
+                            let cardViewModel = CardViewModel(
+                                note: note,
+                                category: nil,
+                                removeAction: { deleteNote(note) }
+                            )
+                            CardView(viewModel: cardViewModel)
+                        }
+                    }, header: {
+                        EmptyView()
+//                        SectionHeaderView(title: "===== TODO ======")
+                    })
+                    .padding(.horizontal)
+                }
+            }
+            .overlay(
+                Group {
+                    if notes.isEmpty {
+                        ListEmptyView(
+                            title: Constants.emptyViewTitle,
+                            description: Constants.emptyViewDescription)
                     }
                 }
-            } else {
-                ListEmptyView(
-                    title: Constants.emptyViewTitle,
-                    description: Constants.emptyViewDescription)
-            }
+            )
         }
         .background(ColorSystem.background.color)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
+    }
+    
+    private func deleteNote(_ note: Note) {
+        viewContext.delete(note)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            viewContext.rollback()
+            log(error)
+        }
+        print(!notes.isEmpty)
     }
 }
 
@@ -88,6 +109,5 @@ extension HomeView {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(StorageService.instance)
     }
 }

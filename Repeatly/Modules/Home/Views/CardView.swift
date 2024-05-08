@@ -10,6 +10,7 @@ import SwiftUI
 struct CardViewModel {
     var note: Note
     var category: Category?
+    var removeAction: () -> Void
 }
 
 struct CardView: View {
@@ -23,7 +24,7 @@ struct CardView: View {
             HStack {
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: viewModel.removeAction) {
                     Image(systemName: "trash")
                         .font(.title3)
                         .foregroundColor(.red)
@@ -32,6 +33,7 @@ struct CardView: View {
                             Circle()
                                 .fill(.red.opacity(0.15))
                         )
+                        .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
                 }
             }
             
@@ -85,32 +87,22 @@ struct CardView: View {
         }
     }
     
-    func dragOnChange(_ value: DragGesture.Value) {
+    private func dragOnChange(_ value: DragGesture.Value) {
         let offset = value.translation.width
-        print(offset)
         
-        if offset < .zero, offset > -90 {
+        if offset < .zero {
             cardOffset = isSwipped ? offset - 90 : offset
-        } else if offset > .zero, isSwipped {
-            cardOffset = cardOffset + offset
+        } else {
+            cardOffset = isSwipped ? min(0, offset - 90) : .zero
         }
-//        if offset > 0, !isSwipped {
-//            return
-//        } else if offset > -90 {
-//            cardOffset = isSwipped ? offset - 90 : offset
-//        }
     }
     
-    func dragOnEnd(_ value: DragGesture.Value) {
+    private func dragOnEnd(_ value: DragGesture.Value) {
         let offset = value.translation.width
         withAnimation(.easeInOut) {
-            if offset > 0 {
-                cardOffset = .zero
-                isSwipped = false
-            } else if cardOffset < -50 {
-                cardOffset = -90
-                isSwipped = true
-            }
+            let isSwipeGestureLong = offset < -60
+            cardOffset = isSwipeGestureLong ? -90 : .zero
+            isSwipped = isSwipeGestureLong
         }
     }
 }
