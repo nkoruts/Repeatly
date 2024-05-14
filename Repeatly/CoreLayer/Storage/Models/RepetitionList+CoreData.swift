@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 @objc(RepetitionListModel)
-public class RepetitionListModel: NSManagedObject, Identifiable {
+public class RepetitionListModel: NSManagedObject, Identifiable, Model {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<RepetitionListModel> {
         return NSFetchRequest<RepetitionListModel>(entityName: "RepetitionListModel")
@@ -20,7 +20,7 @@ public class RepetitionListModel: NSManagedObject, Identifiable {
 }
 
 @objc(Repetition)
-public class Repetition: NSManagedObject, Identifiable {
+public class Repetition: NSManagedObject, Identifiable, Model {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Repetition> {
         return NSFetchRequest<Repetition>(entityName: "Repetition")

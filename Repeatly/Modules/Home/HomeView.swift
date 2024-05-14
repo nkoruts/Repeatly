@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [], animation: .spring())
     
+    @FetchRequest(sortDescriptors: [], animation: .spring())
     private var notes: FetchedResults<Note>
+    
     @State private var willMoveToNoteCreation = false
     
     // MARK: - UI
@@ -45,7 +47,6 @@ struct HomeView: View {
             }
             .padding([.horizontal, .top])
             
-            // TODO: - Crash when show ListEmptyView
             ScrollView {
                 LazyVStack(spacing: Constants.cardsSpacing) {
                     Section(content: {
@@ -79,15 +80,12 @@ struct HomeView: View {
     }
     
     private func deleteNote(_ note: Note) {
-        viewContext.delete(note)
-        
         do {
-            try viewContext.save()
+            try note.delete()
         } catch {
             viewContext.rollback()
             log(error)
         }
-        print(!notes.isEmpty)
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 @objc(Category)
-public class Category: NSManagedObject, Identifiable {
+public class Category: NSManagedObject, Identifiable, Model {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
         return NSFetchRequest<Category>(entityName: "Category")
