@@ -15,13 +15,10 @@ public class Note: NSManagedObject, Identifiable, Model {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Note> {
         return NSFetchRequest<Note>(entityName: "Note")
     }
-
+    
     @NSManaged public var id: UUID
     @NSManaged public var title: String
-    @NSManaged public var details: String?
-    @NSManaged public var color: String
-    @NSManaged public var categoryId: UUID?
-    
-    // TODO: Add repetition logic
-//    @NSManaged public var repetitionId: UUID?
+    @NSManaged public var details: String
+    @NSManaged public var category: Category?
+    @NSManaged public var repetition: Repetition
 }

@@ -15,8 +15,8 @@ public class Category: NSManagedObject, Identifiable, Model {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
         return NSFetchRequest<Category>(entityName: "Category")
     }
-
+    
     @NSManaged public var id: UUID
-    @NSManaged public var color: String
     @NSManaged public var name: String
+    @NSManaged public var colorHex: Int32
 }
