@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateNoteView: View {
+    
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
@@ -83,7 +84,7 @@ struct CreateNoteView: View {
                     .padding(.vertical)
                 }
                 .scrollDisabled(focusedField == nil)
-                .background(focusedField == nil ? .clear : .focus)
+//                .background(.clear : .focus)
                 
                 Button(Constants.saveButtonTitle) {
                     focusedField = nil
@@ -107,8 +108,12 @@ struct CreateNoteView: View {
         newNote.category = nil
         // newNote.repetition = repetition
         
-        // TODO: - Save async
-        try? viewContext.save()
+        do {
+            try newNote.save()
+            dismiss()
+        } catch {
+            log(error)
+        }
     }
 }
 

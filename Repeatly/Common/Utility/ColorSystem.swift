@@ -8,8 +8,6 @@
 import SwiftUI
 
 enum ColorSystem: Int32 {
-    case clear = 0x00000000
-    
     case lightGray = 0xD3D3D3
     case pink = 0xFD6686
     case lightBlue = 0x33C6F8
@@ -17,7 +15,7 @@ enum ColorSystem: Int32 {
     case green = 0x34D183
     
     case button = 0x3E69FF
-    case lightButton = 0x3E69FF26
+    case lightButton = 0xDBE2FB
     case icon = 0xC3C8CE
     
     case grayText = 0x949DA9
