@@ -17,15 +17,15 @@ struct ListEmptyView: View {
             
             Image(systemName: "tray")
                 .font(.system(size: 64))
-                .foregroundColor(ColorSystem.icon.color)
+                .foregroundColor(.icon)
             VStack(spacing: 4) {
                 Text(title)
                     .font(FontBook.semibold2)
-                    .foregroundColor(ColorSystem.mainText.color)
+                    .foregroundColor(.mainText)
                 .lineLimit(1)
                 Text(description)
                     .font(FontBook.regular3)
-                    .foregroundColor(ColorSystem.mainText.color)
+                    .foregroundColor(.mainText)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
             }

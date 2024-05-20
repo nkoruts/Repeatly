@@ -16,7 +16,7 @@ struct MainButtonStyle: ButtonStyle {
             .font(FontBook.medium)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: 45)
-            .background(isEnabled ? ColorSystem.button.color : ColorSystem.lightButton.color)
+            .background(isEnabled ? .button : .lightButton)
             .clipShape(
                 RoundedRectangle(
                     cornerRadius: DesignSystem.cornerRadius,

@@ -83,7 +83,7 @@ struct CreateNoteView: View {
                     .padding(.vertical)
                 }
                 .scrollDisabled(focusedField == nil)
-                .background(focusedField == nil ? .clear : ColorSystem.focus.color)
+                .background(focusedField == nil ? .clear : .focus)
                 
                 Button(Constants.saveButtonTitle) {
                     focusedField = nil
@@ -94,7 +94,7 @@ struct CreateNoteView: View {
                 .padding(.horizontal)
             }
             .padding(.vertical, Constants.contentVerticalPadding)
-            .background(ColorSystem.background.color)
+            .background(.background)
         }
         .preferredColorScheme(.light)
     }
@@ -104,8 +104,7 @@ struct CreateNoteView: View {
         newNote.id = UUID()
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
-        newNote.color = ColorSystem.lightBlue.rawValue // TODO: Set category color
-        newNote.categoryId = nil
+        newNote.category = nil
         // newNote.repetition = repetition
         
         // TODO: - Save async

@@ -7,26 +7,49 @@
 
 import SwiftUI
 
-enum ColorSystem: String {
-    case lightGray = "LightGrayColor"
-    case pink = "PinkColor"
-    case lightBlue = "LightBlueColor"
-    case yellow = "YellowColor"
-    case green = "GreenColor"
+enum ColorSystem: Int32 {
+    case clear = 0x00000000
     
-    case button = "ButtonColor"
-    case lightButton = "LightButtonColor"
-    case icon = "IconColor"
+    case lightGray = 0xD3D3D3
+    case pink = 0xFD6686
+    case lightBlue = 0x33C6F8
+    case yellow = 0xFFC12C
+    case green = 0x34D183
     
-    case grayText = "GrayTextColor"
-    case mainText = "MainTextColor"
+    case button = 0x3E69FF
+    case lightButton = 0x3E69FF26
+    case icon = 0xC3C8CE
     
-    case background = "BackgroundColor"
-    case cardBackground = "CardBackgroundColor"
-    case shadow = "ShadowColor"
-    case focus = "FocusColor"
+    case grayText = 0x949DA9
+    case mainText = 0x232E3F
     
-    var color: Color {
-        return Color(self.rawValue)
+    case background = 0xF5F7FA
+    case cardBackground = 0xFCFCFD
+    case shadow = 0xEEF0F4
+    case focus = 0xF0F2F4
+    
+    var hex: Int32 {
+        return self.rawValue
     }
+}
+
+// MARK: - Extensions
+extension View {
+  func foregroundColor(_ color: ColorSystem) -> some View {
+      self.foregroundColor(Color(hex: color.hex))
+  }
+    
+  func background(_ color: ColorSystem) -> some View {
+      self.background(Color(hex: color.hex))
+  }
+}
+
+extension Shape {
+  func fill(_ color: ColorSystem) -> some View {
+      self.fill(Color(hex: color.hex))
+  }
+    
+  func stroke(_ color: ColorSystem) -> some View {
+      self.stroke(Color(hex: color.hex))
+  }
 }

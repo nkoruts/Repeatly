@@ -18,25 +18,21 @@ struct CategoriesListView: View {
                 Button(action: action) {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(ColorSystem.button.color)
+                        .foregroundColor(.button)
                         .padding(14)
                         .background(
                             Circle()
-                                .fill(ColorSystem.lightButton.color)
-                        )
+                                .fill(.lightButton))
                 }
                 
-                ForEach(categories) { caterory in
+                ForEach(categories) { category in
                     CategoryView(
-                        title: caterory.name,
-                        color: Color(caterory.color),
+                        title: category.name,
+                        color: Color(hex: category.colorHex),
                         isSelected: Binding(
-                            get: {
-                                self.selection == caterory.id
-                            },
-                            set: { _ in
-                                self.handleSelection(caterory.id)
-                            })
+                            get: { self.selection == category.id },
+                            set: { _ in self.handleSelection(category.id) }
+                        )
                     )}
             }
         }

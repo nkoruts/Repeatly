@@ -14,8 +14,8 @@
         <relationship name="repetition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repetition" inverseName="note" inverseEntity="Repetition"/>
     </entity>
     <entity name="Repetition" representedClassName="Repetition" syncable="YES">
-        <attribute name="allDates" optional="YES" attributeType="Transformable"/>
-        <attribute name="nextDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="allDates" attributeType="Transformable"/>
+        <attribute name="nextDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="repetition" inverseEntity="Note"/>
     </entity>
 </model>

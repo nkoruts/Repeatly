@@ -18,7 +18,7 @@ public class Note: NSManagedObject, Identifiable, Model {
     
     @NSManaged public var id: UUID
     @NSManaged public var title: String
-    @NSManaged public var details: String
+    @NSManaged public var details: String?
     @NSManaged public var category: Category?
     @NSManaged public var repetition: Repetition
 }

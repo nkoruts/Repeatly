@@ -11,6 +11,13 @@ struct CardViewModel {
     var note: Note
     var category: Category?
     var removeAction: () -> Void
+    
+    var color: Color {
+        if let hexColor = category?.colorHex {
+            return Color(hex: hexColor)
+        }
+        return Color(hex: ColorSystem.lightGray.hex)
+    }
 }
 
 struct CardView: View {
@@ -39,7 +46,7 @@ struct CardView: View {
             
             HStack(spacing: Constants.mainStackSpacing) {
                 Capsule()
-                    .fill(Color(viewModel.note.color))
+                    .fill(viewModel.color)
                     .frame(width: Constants.dividerWidth)
                     .padding(.leading, Constants.dividerLeadingPadding)
                     .padding(.vertical, Constants.dividerVerticalPadding)
@@ -48,18 +55,18 @@ struct CardView: View {
                     if let category = viewModel.category {
                         NoteCategoryView(
                             title: category.name,
-                            color: Color(category.color))
+                            color: Color(hex: category.colorHex))
                         .padding(.bottom, Constants.infoSpacing)
                     }
                     
                     Text(viewModel.note.title)
                         .font(FontBook.medium2)
-                        .foregroundColor(ColorSystem.mainText.color)
+                        .foregroundColor(.mainText)
                     
                     if let details = viewModel.note.details {
                         Text(details)
                             .font(FontBook.regular3)
-                            .foregroundColor(ColorSystem.grayText.color)
+                            .foregroundColor(.grayText)
                             .lineLimit(Constants.detailsLineLimit)
                     }
                 }
@@ -68,16 +75,16 @@ struct CardView: View {
                 Spacer()
                 
                 Image(systemName: Constants.arrowIconName)
-                    .foregroundColor(ColorSystem.icon.color)
+                    .foregroundColor(.icon)
                     .padding(.trailing, Constants.defaultPadding)
             }
             .background(
                 RoundedRectangle(
                     cornerRadius: DesignSystem.cornerRadius,
                     style: .continuous)
-                .fill(ColorSystem.cardBackground.color))
+                .fill(.cardBackground))
             .shadow(
-                color: ColorSystem.shadow.color,
+                color: Color(hex: ColorSystem.shadow.hex),
                 radius: Constants.shadowRadius)
             .offset(x: cardOffset)
             .gesture(

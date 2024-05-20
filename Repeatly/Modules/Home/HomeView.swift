@@ -23,7 +23,7 @@ struct HomeView: View {
             HStack(alignment: .firstTextBaseline,
                    spacing: Constants.navigationPanelSpacing) {
                 Text(Constants.appName)
-                    .foregroundColor(ColorSystem.mainText.color)
+                    .foregroundColor(.mainText)
                     .font(FontBook.semibold)
                 Spacer()
                 // TODO: Show search button
@@ -34,7 +34,7 @@ struct HomeView: View {
                     }, label: {
                         Image(systemName: Constants.findIconSystemName)
                             .font(.system(size: 24))
-                            .foregroundColor(ColorSystem.button.color)
+                            .foregroundColor(.button)
                     })
                 }
                 Button(action: {
@@ -42,7 +42,7 @@ struct HomeView: View {
                 }, label: {
                     Image(systemName: Constants.addIconSystemName)
                         .font(Constants.addIconFont)
-                        .foregroundColor(ColorSystem.button.color)
+                        .foregroundColor(.button)
                 })
             }
             .padding([.horizontal, .top])
@@ -75,7 +75,7 @@ struct HomeView: View {
                 }
             )
         }
-        .background(ColorSystem.background.color)
+        .background(.background)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
     }
     
