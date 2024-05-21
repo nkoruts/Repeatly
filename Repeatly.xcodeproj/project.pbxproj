@@ -43,6 +43,7 @@
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
 		16E478AF2BFB449500CE588D /* CreateCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478AE2BFB449500CE588D /* CreateCategoryView.swift */; };
+		16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16E478AE2BFB449500CE588D /* CreateCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryView.swift; sourceTree = "<group>"; };
+		16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				16E478AE2BFB449500CE588D /* CreateCategoryView.swift */,
+				16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */,
 			);
 			path = CreateCategory;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
 				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */,
+				16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */,
 				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
