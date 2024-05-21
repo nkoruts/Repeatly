@@ -42,6 +42,7 @@
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
+		16E478AF2BFB449500CE588D /* CreateCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478AE2BFB449500CE588D /* CreateCategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		16E478AE2BFB449500CE588D /* CreateCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
 				1668329F2B680C9D00576DA5 /* Settings */,
+				16E478B02BFB44B000CE588D /* CreateCategory */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -298,6 +301,14 @@
 			path = CoreLayer;
 			sourceTree = "<group>";
 		};
+		16E478B02BFB44B000CE588D /* CreateCategory */ = {
+			isa = PBXGroup;
+			children = (
+				16E478AE2BFB449500CE588D /* CreateCategoryView.swift */,
+			);
+			path = CreateCategory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E478AF2BFB449500CE588D /* CreateCategoryView.swift in Sources */,
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
 				164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */,

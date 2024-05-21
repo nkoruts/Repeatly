@@ -9,11 +9,10 @@ import SwiftUI
 
 struct CardViewModel {
     var note: Note
-    var category: Category?
     var removeAction: () -> Void
     
     var color: Color {
-        if let hexColor = category?.colorHex {
+        if let hexColor = note.category?.colorHex {
             return Color(hex: hexColor)
         }
         return Color(hex: ColorSystem.lightGray.hex)
@@ -52,7 +51,7 @@ struct CardView: View {
                     .padding(.vertical, Constants.dividerVerticalPadding)
                 
                 VStack(alignment: .leading, spacing: Constants.infoSpacing) {
-                    if let category = viewModel.category {
+                    if let category = viewModel.note.category {
                         NoteCategoryView(
                             title: category.name,
                             color: Color(hex: category.colorHex))

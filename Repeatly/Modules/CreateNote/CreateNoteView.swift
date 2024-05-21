@@ -12,6 +12,8 @@ struct CreateNoteView: View {
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    @State private var showModal: Bool = false
+    
     @FocusState private var focusedField: FocusedField?
     private enum FocusedField: Hashable {
         case title
@@ -23,8 +25,6 @@ struct CreateNoteView: View {
     @State private var selectedCategoryId: UUID?
     @State private var categories: [Category] = []
     
-    private let titleTextLength = 6
-    
     // MARK: - UI
     var body: some View {
         NavigationView {
@@ -35,7 +35,6 @@ struct CreateNoteView: View {
                         dismiss()
                     })
                 .padding([.horizontal, .bottom])
-//                .padding(.bottom, 12)
                 
                 ScrollView {
                     VStack(spacing: 8) {
@@ -43,7 +42,7 @@ struct CreateNoteView: View {
                             CategoriesListView(
                                 categories: categories,
                                 selection: $selectedCategoryId) {
-                                    // TODO: Move to category creation
+                                    showModal.toggle()
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.categoryTitle)
@@ -52,7 +51,7 @@ struct CreateNoteView: View {
                         
                         Section(content: {
                             TextField(Constants.notePlaceholder, text: $title)
-                                .textLimit(titleTextLength, $title)
+                                .textLimit(Constants.titleTextLength, $title)
                                 .textFieldStyle(BorderedTextFieldStyle())
                                 .focused($focusedField, equals: .title)
                                 .submitLabel(.next)
@@ -84,7 +83,6 @@ struct CreateNoteView: View {
                     .padding(.vertical)
                 }
                 .scrollDisabled(focusedField == nil)
-//                .background(.clear : .focus)
                 
                 Button(Constants.saveButtonTitle) {
                     focusedField = nil
@@ -98,6 +96,18 @@ struct CreateNoteView: View {
             .background(.background)
         }
         .preferredColorScheme(.light)
+        .sheet(isPresented: $showModal) {
+            if #available(iOS 16.4, *) {
+                CreateCategoryView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.hidden)
+                    .presentationCornerRadius(DesignSystem.cornerRadius)
+            } else {
+                CreateCategoryView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.hidden)
+            }
+        }
     }
     
     private func saveNote() {
@@ -105,7 +115,13 @@ struct CreateNoteView: View {
         newNote.id = UUID()
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
-        newNote.category = nil
+        
+        let category = Category(context: viewContext)
+        category.id = UUID()
+        category.name = "Test"
+        category.colorHex = ColorSystem.lightBlue.hex
+        
+        newNote.category = category
         // newNote.repetition = repetition
         
         do {
@@ -117,8 +133,10 @@ struct CreateNoteView: View {
     }
 }
 
+// MARK: - Constants
 extension CreateNoteView {
     private enum Constants {
+        static let titleTextLength = 6
         static let screenTitle = "Create Note"
         static let contentSpacing: CGFloat = 12
         static let contentVerticalPadding: CGFloat = 24
@@ -135,6 +153,7 @@ extension CreateNoteView {
     }
 }
 
+// MARK: - Preview
 struct CreateNoteView_Previews: PreviewProvider {
     static var previews: some View {
         CreateNoteView()

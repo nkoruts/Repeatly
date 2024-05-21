@@ -21,8 +21,7 @@ struct NoteCategoryView: View {
                 RoundedRectangle(
                     cornerRadius: Constants.cornerRadius,
                     style: .continuous)
-                .fill(color.opacity(Constants.backgroundColorOpacity))
-            )
+                .fill(color.opacity(Constants.backgroundColorOpacity)))
     }
 }
 
@@ -31,9 +30,8 @@ extension NoteCategoryView {
         static let cornerRadius: CGFloat = 10
         static let shadowRadius: CGFloat = 8
         
-        static let dividerWidth: CGFloat = 4
         static let hPadding: CGFloat = 12
-        static let vPadding: CGFloat = 16
+        static let vPadding: CGFloat = 4
         
         static let backgroundColorOpacity: CGFloat = 0.2
     }

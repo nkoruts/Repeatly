@@ -53,7 +53,6 @@ struct HomeView: View {
                         ForEach(notes) { note in
                             let cardViewModel = CardViewModel(
                                 note: note,
-                                category: nil,
                                 removeAction: { deleteNote(note) }
                             )
                             CardView(viewModel: cardViewModel)

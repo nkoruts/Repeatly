@@ -14,7 +14,7 @@ struct BackButtonStyle: ButtonStyle {
             .background(
                 Image(systemName: "arrow.backward")
                     .foregroundColor(.button)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 30, height: 30)
                     .background(
                         RoundedRectangle(
                             cornerRadius: DesignSystem.smallCornerRadius,
