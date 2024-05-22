@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateCategoryView: View {
     
     @State private var name: String = ""
+    @State private var selectedColor: Color? = Constants.colors.first
     
     var body: some View {
         NavigationView {
@@ -30,7 +31,9 @@ struct CreateCategoryView: View {
                 })
                 
                 Section(content: {
-                    ColorPickerView(colors: Constants.colors)
+                    ColorPickerView(
+                        colors: Constants.colors,
+                        selectedColor: $selectedColor)
                 }, header: {
                     SectionHeaderView(title: Constants.colorsTitle)
                 })
@@ -52,16 +55,11 @@ extension CreateCategoryView {
         static let nameTextLength = 6
         
         static let colors: [Color] = [
-            .red,
-            .blue,
-            .green,
-            .orange,
-            .pink,
-            .purple,
-            .brown,
-            .cyan,
-            .indigo,
-            .mint
+            Color(hex: ColorSystem.icon.hex),
+            Color(hex: ColorSystem.pink.hex),
+            Color(hex: ColorSystem.lightBlue.hex),
+            Color(hex: ColorSystem.yellow.hex),
+            Color(hex: ColorSystem.green.hex)
         ]
     }
 }

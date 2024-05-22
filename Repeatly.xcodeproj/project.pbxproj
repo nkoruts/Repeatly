@@ -44,6 +44,7 @@
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
 		16E478AF2BFB449500CE588D /* CreateCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478AE2BFB449500CE588D /* CreateCategoryView.swift */; };
 		16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */; };
+		16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16E478AE2BFB449500CE588D /* CreateCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryView.swift; sourceTree = "<group>"; };
 		16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +133,10 @@
 		16110F332B6A661700471512 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16E478B62BFDC34200CE588D /* CategoriesListView */,
+				16E478B32BFDBB0600CE588D /* ColorPickerView */,
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				16110F342B6A66C400471512 /* NavigationTopView.swift */,
-				166A677F2B6D689200102BA5 /* CategoriesListView.swift */,
-				166A677D2B6D621700102BA5 /* CategoryView.swift */,
 				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
 			);
@@ -307,9 +309,26 @@
 			isa = PBXGroup;
 			children = (
 				16E478AE2BFB449500CE588D /* CreateCategoryView.swift */,
-				16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */,
 			);
 			path = CreateCategory;
+			sourceTree = "<group>";
+		};
+		16E478B32BFDBB0600CE588D /* ColorPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */,
+				16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */,
+			);
+			path = ColorPickerView;
+			sourceTree = "<group>";
+		};
+		16E478B62BFDC34200CE588D /* CategoriesListView */ = {
+			isa = PBXGroup;
+			children = (
+				166A677F2B6D689200102BA5 /* CategoriesListView.swift */,
+				166A677D2B6D621700102BA5 /* CategoryView.swift */,
+			);
+			path = CategoriesListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +415,7 @@
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
+				16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */,
 				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */,
 				16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */,
