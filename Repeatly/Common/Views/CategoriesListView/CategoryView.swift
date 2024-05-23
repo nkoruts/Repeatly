@@ -20,14 +20,12 @@ struct CategoryView: View {
                 .font(FontBook.medium3)
                 .foregroundColor(.white)
                 .padding(.horizontal)
-                .padding(.vertical, 12)
+                .padding(.vertical, 8)
                 .background(
-                    RoundedRectangle(
-                        cornerRadius: DesignSystem.cornerRadius,
-                        style: .continuous)
-                    .fill(isSelected ? color : color.opacity(0.5))
+                    RoundedRectangle(cornerRadius: 10)
+                    .fill(isSelected ? color : color.opacity(0.4))
                 )
         })
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
     }
 }

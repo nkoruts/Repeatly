@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CategoriesListView: View {
-    var categories: [Category]
-    @Binding var selection: UUID?
+    var categories: FetchedResults<Category>
+    @Binding var selectedCategory: Category?
     var action: Action
     
     var body: some View {
@@ -30,8 +30,8 @@ struct CategoriesListView: View {
                         title: category.name,
                         color: Color(hex: category.colorHex),
                         isSelected: Binding(
-                            get: { self.selection == category.id },
-                            set: { _ in self.handleSelection(category.id) }
+                            get: { self.selectedCategory?.id == category.id },
+                            set: { _ in self.handleSelection(category) }
                         )
                     )}
             }
@@ -46,8 +46,8 @@ struct CategoriesListView: View {
         }
     }
     
-    private func handleSelection(_ categoryId: UUID) {
-        selection = (selection != categoryId) ? categoryId : nil
+    private func handleSelection(_ category: Category) {
+        selectedCategory = (selectedCategory?.id != category.id) ? category : nil
     }
 }
 
