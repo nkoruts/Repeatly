@@ -22,8 +22,10 @@ struct CreateNoteView: View {
     
     @State private var title: String = ""
     @State private var details = ""
-    @State private var selectedCategoryId: UUID?
-    @State private var categories: [Category] = []
+    @State private var selectedCategory: Category?
+    
+    @FetchRequest(sortDescriptors: [], animation: .spring())
+    private var categories: FetchedResults<Category>
     
     // MARK: - UI
     var body: some View {
@@ -41,7 +43,7 @@ struct CreateNoteView: View {
                         Section(content: {
                             CategoriesListView(
                                 categories: categories,
-                                selection: $selectedCategoryId) {
+                                selectedCategory: $selectedCategory) {
                                     showModal.toggle()
                                 }
                         }, header: {
@@ -115,15 +117,10 @@ struct CreateNoteView: View {
         newNote.id = UUID()
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
-        
-        let category = Category(context: viewContext)
-        category.id = UUID()
-        category.name = "Test"
-        category.colorHex = ColorSystem.lightBlue.hex
-        
-        newNote.category = category
+
+        newNote.category = selectedCategory
         // newNote.repetition = repetition
-        
+
         do {
             try newNote.save()
             dismiss()
@@ -136,7 +133,7 @@ struct CreateNoteView: View {
 // MARK: - Constants
 extension CreateNoteView {
     private enum Constants {
-        static let titleTextLength = 6
+        static let titleTextLength = 20
         static let screenTitle = "Create Note"
         static let contentSpacing: CGFloat = 12
         static let contentVerticalPadding: CGFloat = 24

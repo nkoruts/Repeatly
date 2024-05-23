@@ -9,31 +9,56 @@ import SwiftUI
 
 struct CreateCategoryView: View {
     
-    @State private var name: String = ""
-    @State private var selectedColor: Color? = Constants.colors.first
+    // MARK: - Properties
+    @Environment(\.managedObjectContext) private var viewContenxt
+    @Environment(\.dismiss) private var dismiss
     
+    @State private var name: String = ""
+    @State private var selectedColorHex: Int32? = Constants.colorsHex.first
+    
+    @FocusState private var focusedField: FocusedField?
+    private enum FocusedField: Hashable {
+        case name
+    }
+    
+    // MARK: - UI
     var body: some View {
         NavigationView {
             VStack(spacing: Constants.contentSpacing) {
-                Text("New category")
-                    .foregroundColor(.mainText)
-                    .font(FontBook.medium)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 12)
+                
+                HStack(alignment: .lastTextBaseline) {
+                    Text("New category")
+                        .foregroundColor(.mainText)
+                        .font(FontBook.medium)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    Button(action: {
+                        focusedField = nil
+                        saveCategory()
+                    }, label: {
+                        Text("Save")
+                            .font(FontBook.medium2)
+                    })
+                    .disabled(name.isEmpty)
+                }
+                .padding(.top)
                 
                 Section(content: {
                     TextField(Constants.namePlaceholder, text: $name)
                         .textLimit(Constants.nameTextLength, $name)
                         .textFieldStyle(BorderedTextFieldStyle())
                         .submitLabel(.next)
+                        .onSubmit {
+                            focusedField = nil
+                        }
                 }, header: {
                     SectionHeaderView(title: Constants.categoryNameTitle)
                 })
                 
                 Section(content: {
                     ColorPickerView(
-                        colors: Constants.colors,
-                        selectedColor: $selectedColor)
+                        colorsHex: Constants.colorsHex,
+                        selectedColorHex: $selectedColorHex)
                 }, header: {
                     SectionHeaderView(title: Constants.colorsTitle)
                 })
@@ -41,6 +66,20 @@ struct CreateCategoryView: View {
                 Spacer()
             }
             .padding(.horizontal)
+        }
+    }
+    
+    private func saveCategory() {
+        let category = Category(context: viewContenxt)
+        category.id = UUID()
+        category.name = name
+        category.colorHex = selectedColorHex ?? ColorSystem.icon.hex
+        
+        do {
+            try category.save()
+            dismiss()
+        } catch {
+            log(error)
         }
     }
 }
@@ -52,14 +91,16 @@ extension CreateCategoryView {
         static let colorsTitle = "Choose color"
         static let categoryNameTitle = "Category name"
         static let namePlaceholder = "Example: Study"
-        static let nameTextLength = 6
+        static let nameTextLength = 12
         
-        static let colors: [Color] = [
-            Color(hex: ColorSystem.icon.hex),
-            Color(hex: ColorSystem.pink.hex),
-            Color(hex: ColorSystem.lightBlue.hex),
-            Color(hex: ColorSystem.yellow.hex),
-            Color(hex: ColorSystem.green.hex)
+        static let saveButtonTitle = "Save"
+        
+        static let colorsHex: [Int32] = [
+            ColorSystem.icon.hex,
+            ColorSystem.pink.hex,
+            ColorSystem.lightBlue.hex,
+            ColorSystem.yellow.hex,
+            ColorSystem.green.hex
         ]
     }
 }
