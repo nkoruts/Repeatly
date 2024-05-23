@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ColorPickerView: View {
     
-    let colors: [Color]
-    @Binding var selectedColor: Color?
+    let colorsHex: [Int32]
+    @Binding var selectedColorHex: Int32?
     
     private let columns: [GridItem] = [.init(.adaptive(minimum: 40))]
     
     var body: some View {
         LazyVGrid(columns: columns, spacing: 12) {
-            ForEach(colors, id: \.self) { color in
+            ForEach(colorsHex, id: \.self) { hex in
                 ColorPickerButtonView(
-                    color: color,
+                    color: Color(hex: hex),
                     isSelected: Binding(
-                        get: { self.selectedColor == color },
-                        set: { _ in self.selectedColor = color }
+                        get: { self.selectedColorHex == hex },
+                        set: { _ in self.selectedColorHex = hex }
                     ))
             }
         }
