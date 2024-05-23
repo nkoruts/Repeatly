@@ -4,7 +4,6 @@
 //
 //  Created by Nikita Koruts on 01.02.2024.
 //
-//
 
 import Foundation
 import CoreData
@@ -21,4 +20,11 @@ public class Note: NSManagedObject, Identifiable, Model {
     @NSManaged public var details: String?
     @NSManaged public var category: Category?
     @NSManaged public var repetition: Repetition
+    
+    @objc var nextRepetitionDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "MMM d"
+        return dateFormatter.string(from: repetition.nextDate)
+    }
 }

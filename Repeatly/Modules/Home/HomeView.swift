@@ -12,72 +12,84 @@ struct HomeView: View {
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: [], animation: .spring())
-    private var notes: FetchedResults<Note>
+    @SectionedFetchRequest(
+        sectionIdentifier: \.nextRepetitionDate,
+        sortDescriptors: [.init(keyPath: \Note.repetition.nextDate, ascending: true)],
+        animation: .spring())
+    private var noteSections: SectionedFetchResults<String, Note>
     
     @State private var willMoveToNoteCreation = false
     
     // MARK: - UI
     var body: some View {
         VStack(spacing: Constants.cardsSpacing) {
-            HStack(alignment: .firstTextBaseline,
-                   spacing: Constants.navigationPanelSpacing) {
-                Text(Constants.appName)
-                    .foregroundColor(.mainText)
-                    .font(FontBook.semibold)
-                Spacer()
-                // TODO: Show search button
-                if false {
-                    Button(action: {
-                        print(notes)
-                        // TODO: - Search notes
-                    }, label: {
-                        Image(systemName: Constants.findIconSystemName)
-                            .font(.system(size: 24))
-                            .foregroundColor(.button)
-                    })
-                }
-                Button(action: {
-                    willMoveToNoteCreation = true
-                }, label: {
-                    Image(systemName: Constants.addIconSystemName)
-                        .font(Constants.addIconFont)
-                        .foregroundColor(.button)
-                })
-            }
-            .padding([.horizontal, .top])
+            navigationView
+                .padding([.horizontal, .top])
             
-            ScrollView {
-                LazyVStack(spacing: Constants.cardsSpacing) {
-                    Section(content: {
-                        ForEach(notes) { note in
-                            let cardViewModel = CardViewModel(
-                                note: note,
-                                removeAction: { deleteNote(note) }
-                            )
-                            CardView(viewModel: cardViewModel)
-                        }
-                    }, header: {
-                        EmptyView()
-//                        SectionHeaderView(title: "===== TODO ======")
-                    })
-                    .padding(.horizontal)
-                }
-            }
-            .overlay(
-                Group {
-                    if notes.isEmpty {
-                        ListEmptyView(
-                            title: Constants.emptyViewTitle,
-                            description: Constants.emptyViewDescription)
-                    }
-                }
-            )
+            notesList
+                .overlay(emptyView)
         }
         .background(.background)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
     }
     
+    private var navigationView: some View {
+        HStack(alignment: .firstTextBaseline,
+               spacing: Constants.navigationPanelSpacing) {
+            Text(Constants.appName)
+                .foregroundColor(.mainText)
+                .font(FontBook.semibold)
+            Spacer()
+            // TODO: Show search button
+//                Button(action: {
+//                    print(notes)
+//                    // TODO: - Search notes
+//                }, label: {
+//                    Image(systemName: Constants.findIconSystemName)
+//                        .font(.system(size: 24))
+//                        .foregroundColor(.button)
+//                })
+            Button(action: {
+                willMoveToNoteCreation = true
+            }, label: {
+                Image(systemName: Constants.addIconSystemName)
+                    .font(Constants.addIconFont)
+                    .foregroundColor(.button)
+            })
+        }
+    }
+    
+    private var notesList: some View {
+        ScrollView {
+            LazyVStack(spacing: Constants.cardsSpacing) {
+                ForEach(noteSections) { section in
+                    Section(content: {
+                        ForEach(section) { note in
+                            let cardViewModel = CardViewModel(
+                                note: note,
+                                removeAction: { deleteNote(note) })
+                            CardView(viewModel: cardViewModel)
+                        }
+                    }, header: {
+                        SectionHeaderView(title: section.id)
+                    })
+                    .padding(.horizontal)
+                }
+            }
+        }
+    }
+    
+    private var emptyView: some View {
+        Group {
+            if noteSections.isEmpty {
+                ListEmptyView(
+                    title: Constants.emptyViewTitle,
+                    description: Constants.emptyViewDescription)
+            }
+        }
+    }
+    
+    // MARK: - Private Methods
     private func deleteNote(_ note: Note) {
         do {
             try note.delete()
@@ -85,6 +97,13 @@ struct HomeView: View {
             viewContext.rollback()
             log(error)
         }
+    }
+    
+    private func getSectionTitle(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "MMM d"
+        return dateFormatter.string(from: date)
     }
 }
 

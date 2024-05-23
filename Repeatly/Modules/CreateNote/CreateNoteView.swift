@@ -36,7 +36,7 @@ struct CreateNoteView: View {
                     backAction: {
                         dismiss()
                     })
-                .padding([.horizontal, .bottom])
+                .padding([.horizontal])
                 
                 ScrollView {
                     VStack(spacing: 8) {
@@ -119,13 +119,42 @@ struct CreateNoteView: View {
         newNote.details = !details.isEmpty ? details : nil
 
         newNote.category = selectedCategory
-        // newNote.repetition = repetition
-
+        newNote.repetition = createRepetition()
+        
         do {
             try newNote.save()
             dismiss()
         } catch {
             log(error)
+        }
+    }
+        
+    private func createRepetition() -> Repetition {
+        let repetition = Repetition(context: viewContext)
+        let repetitionIntervals = RepetitionManager.sharing.defaultRepetitionIntervals()
+        repetition.nextDate = repetitionIntervals[0]
+        repetition.allDates = repetitionIntervals
+        return repetition
+    }
+}
+
+struct RepetitionManager {
+    static let sharing = RepetitionManager()
+    private init() { }
+    
+    func defaultRepetitionIntervals() -> [Date] {
+        let dayIntervals = [1, 3, 7, 14, 28]
+        return getTimestamps(for: dayIntervals)
+    }
+    
+    private func getTimestamps(for days: [Int]) -> [Date] {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar.current
+        
+        return days.map {
+            dateComponents.day = $0
+            return calendar.date(byAdding: dateComponents, to: currentDate) ?? Date()
         }
     }
 }
