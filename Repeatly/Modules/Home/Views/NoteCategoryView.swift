@@ -1,5 +1,5 @@
 //
-//  CategoryRoundView.swift
+//  NoteCategoryView.swift
 //  Repeatly
 //
 //  Created by Nikita Koruts on 29.01.2024.
@@ -18,9 +18,7 @@ struct NoteCategoryView: View {
             .padding(.horizontal, Constants.hPadding)
             .padding(.vertical, Constants.vPadding)
             .background(
-                RoundedRectangle(
-                    cornerRadius: Constants.cornerRadius,
-                    style: .continuous)
+                RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .fill(color.opacity(Constants.backgroundColorOpacity)))
     }
 }

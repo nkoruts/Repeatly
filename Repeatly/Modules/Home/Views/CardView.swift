@@ -78,10 +78,8 @@ struct CardView: View {
                     .padding(.trailing, Constants.defaultPadding)
             }
             .background(
-                RoundedRectangle(
-                    cornerRadius: DesignSystem.cornerRadius,
-                    style: .continuous)
-                .fill(.cardBackground))
+                RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
+                    .fill(.cardBackground))
             .shadow(
                 color: Color(hex: ColorSystem.shadow.hex),
                 radius: Constants.shadowRadius)

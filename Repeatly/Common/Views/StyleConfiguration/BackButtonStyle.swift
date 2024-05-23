@@ -16,9 +16,7 @@ struct BackButtonStyle: ButtonStyle {
                     .foregroundColor(.button)
                     .frame(width: 30, height: 30)
                     .background(
-                        RoundedRectangle(
-                            cornerRadius: DesignSystem.smallCornerRadius,
-                            style: .continuous)
+                        RoundedRectangle(cornerRadius: DesignSystem.smallCornerRadius)
                         .fill(.lightButton)
                     )
             )

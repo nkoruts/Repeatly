@@ -28,7 +28,7 @@
 		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
 		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
 		166301442B7B700800EC6870 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166301432B7B700800EC6870 /* Logger.swift */; };
-		166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* CategoryRoundView.swift */; };
+		166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* NoteCategoryView.swift */; };
 		1668329C2B680BB000576DA5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329B2B680BB000576DA5 /* MainView.swift */; };
 		1668329E2B680C9A00576DA5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329D2B680C9A00576DA5 /* SettingsView.swift */; };
 		166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166832A02B680EF900576DA5 /* CreateNoteView.swift */; };
@@ -71,7 +71,7 @@
 		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		166301432B7B700800EC6870 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		1666930F2B6785A9008F8850 /* CategoryRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRoundView.swift; sourceTree = "<group>"; };
+		1666930F2B6785A9008F8850 /* NoteCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCategoryView.swift; sourceTree = "<group>"; };
 		1668329B2B680BB000576DA5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1668329D2B680C9A00576DA5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		166832A02B680EF900576DA5 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 				160ECD2B2B6B744D0025A1D6 /* Main */,
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
-				1668329F2B680C9D00576DA5 /* Settings */,
 				16E478B02BFB44B000CE588D /* CreateCategory */,
+				1668329F2B680C9D00576DA5 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				162248012B65156A007A61EF /* CardView.swift */,
-				1666930F2B6785A9008F8850 /* CategoryRoundView.swift */,
+				1666930F2B6785A9008F8850 /* NoteCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
 				160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */,
-				166693102B6785A9008F8850 /* CategoryRoundView.swift in Sources */,
+				166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
 				160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */,
 				167656D82B8202D8003D2A68 /* ColorSystem.swift in Sources */,

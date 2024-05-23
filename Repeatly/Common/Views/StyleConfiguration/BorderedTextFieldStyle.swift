@@ -14,10 +14,8 @@ struct BorderedTextFieldStyle: TextFieldStyle {
             .foregroundColor(.mainText)
             .padding(Constants.padding)
             .overlay(
-                RoundedRectangle(
-                    cornerRadius: DesignSystem.cornerRadius,
-                    style: .continuous)
-                .stroke(.lightGray)
+                RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
+                    .stroke(.lightGray)
             )
     }
 }
