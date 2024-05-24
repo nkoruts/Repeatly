@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160CC08C2C00B860005D5DA4 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CC08B2C00B860005D5DA4 /* CategoriesView.swift */; };
 		160ECD2A2B6B73530025A1D6 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD292B6B73530025A1D6 /* CoreDataProvider.swift */; };
 		160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */; };
 		160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160CC08B2C00B860005D5DA4 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		160ECD292B6B73530025A1D6 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreData.swift"; sourceTree = "<group>"; };
 		160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreData.swift"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				166832A22B680F0600576DA5 /* CreateNote */,
 				16E478B02BFB44B000CE588D /* CreateCategory */,
 				1668329F2B680C9D00576DA5 /* Settings */,
+				160CC08B2C00B860005D5DA4 /* CategoriesView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				167656DC2B823B69003D2A68 /* DesignSystem.swift in Sources */,
 				166301442B7B700800EC6870 /* Logger.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButtonStyle.swift in Sources */,
+				160CC08C2C00B860005D5DA4 /* CategoriesView.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
 				16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */,

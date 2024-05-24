@@ -36,7 +36,7 @@ struct CreateNoteView: View {
                     backAction: {
                         dismiss()
                     })
-                .padding([.horizontal])
+                .padding(.horizontal)
                 
                 ScrollView {
                     VStack(spacing: 8) {
@@ -114,6 +114,7 @@ struct CreateNoteView: View {
         }
     }
     
+    // MARK: - Private Methods
     private func saveNote() {
         let newNote = Note(context: viewContext)
         newNote.id = UUID()
@@ -164,7 +165,7 @@ struct RepetitionManager {
 // MARK: - Constants
 extension CreateNoteView {
     private enum Constants {
-        static let titleTextLength = 20
+        static let titleTextLength = 40
         static let screenTitle = "Create Note"
         static let contentSpacing: CGFloat = 12
         static let contentVerticalPadding: CGFloat = 24

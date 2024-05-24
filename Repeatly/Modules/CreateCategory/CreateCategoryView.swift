@@ -66,6 +66,7 @@ struct CreateCategoryView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .background(.background)
         }
     }
     
