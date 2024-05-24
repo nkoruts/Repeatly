@@ -11,7 +11,7 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="notes" inverseEntity="Category"/>
-        <relationship name="repetition" maxCount="1" deletionRule="Nullify" destinationEntity="Repetition" inverseName="note" inverseEntity="Repetition"/>
+        <relationship name="repetition" maxCount="1" deletionRule="Cascade" destinationEntity="Repetition" inverseName="note" inverseEntity="Repetition"/>
     </entity>
     <entity name="Repetition" representedClassName="Repetition" syncable="YES">
         <attribute name="allDates" attributeType="Transformable"/>
