@@ -72,6 +72,7 @@ struct HomeView: View {
                         }
                     }, header: {
                         SectionHeaderView(title: section.id)
+                            .font(FontBook.medium2)
                     })
                     .padding(.horizontal)
                 }

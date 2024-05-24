@@ -48,6 +48,7 @@ struct CreateNoteView: View {
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.categoryTitle)
+                                .font(FontBook.regular2)
                                 .padding(.horizontal)
                         })
                         
@@ -62,6 +63,7 @@ struct CreateNoteView: View {
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.noteTitle)
+                                .font(FontBook.regular2)
                         })
                         .padding(.horizontal)
                         
@@ -79,6 +81,7 @@ struct CreateNoteView: View {
                             }
                         }, header: {
                             SectionHeaderView(title: Constants.detailsTitle)
+                                .font(FontBook.regular2)
                         })
                         .padding(.horizontal)
                     }
