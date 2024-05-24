@@ -96,12 +96,24 @@ extension CreateCategoryView {
         static let saveButtonTitle = "Save"
         
         static let colorsHex: [Int32] = [
-            ColorSystem.icon.hex,
-            ColorSystem.pink.hex,
-            ColorSystem.lightBlue.hex,
-            ColorSystem.yellow.hex,
-            ColorSystem.green.hex
+            0xC62828,
+            0xF79F36,
+            0x3D51B2,
+            0x673AB7,
+            0x2196F3,
         ]
+        
+//        0x00BCD4,
+//        0x4CAF50,
+//        0xF44336,
+//        0xE91E63
+        
+//        0x7C4DFF,
+//        0x03DAC5,
+//        0xFFA726,
+//        0x9C27B0,
+//        0x673AB7
+        
     }
 }
 

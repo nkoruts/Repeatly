@@ -18,6 +18,12 @@ struct HomeView: View {
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
+    @FetchRequest(sortDescriptors: [], animation: .spring())
+    private var categories: FetchedResults<Category>
+    
+    @State private var selectedCategory: Category?
+    
+    @State private var showModal: Bool = false
     @State private var willMoveToNoteCreation = false
     
     // MARK: - UI
@@ -25,38 +31,62 @@ struct HomeView: View {
         VStack(spacing: Constants.cardsSpacing) {
             navigationView
                 .padding([.horizontal, .top])
+            categoriesView
             
             notesList
                 .overlay(emptyView)
         }
         .background(.background)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
+        .sheet(isPresented: $showModal) {
+            if #available(iOS 16.4, *) {
+                CreateCategoryView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.hidden)
+                    .presentationCornerRadius(DesignSystem.cornerRadius)
+            } else {
+                CreateCategoryView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.hidden)
+            }
+        }
     }
     
     private var navigationView: some View {
-        HStack(alignment: .firstTextBaseline,
-               spacing: Constants.navigationPanelSpacing) {
-            Text(Constants.appName)
-                .foregroundColor(.mainText)
-                .font(FontBook.semibold)
-            Spacer()
-            // TODO: Show search button
-//                Button(action: {
-//                    print(notes)
-//                    // TODO: - Search notes
-//                }, label: {
-//                    Image(systemName: Constants.findIconSystemName)
-//                        .font(.system(size: 24))
-//                        .foregroundColor(.button)
-//                })
-            Button(action: {
-                willMoveToNoteCreation = true
-            }, label: {
-                Image(systemName: Constants.addIconSystemName)
-                    .font(Constants.addIconFont)
-                    .foregroundColor(.button)
-            })
+        VStack {
+            HStack(alignment: .firstTextBaseline,
+                   spacing: Constants.navigationPanelSpacing) {
+                Text(Constants.appName)
+                    .foregroundColor(.mainText)
+                    .font(FontBook.semibold)
+                Spacer()
+                // TODO: Show search button
+    //                Button(action: {
+    //                    print(notes)
+    //                    // TODO: - Search notes
+    //                }, label: {
+    //                    Image(systemName: Constants.findIconSystemName)
+    //                        .font(.system(size: 24))
+    //                        .foregroundColor(.button)
+    //                })
+                Button(action: {
+                    willMoveToNoteCreation = true
+                }, label: {
+                    Image(systemName: Constants.addIconSystemName)
+                        .font(Constants.addIconFont)
+                        .foregroundColor(.button)
+                })
+            }
         }
+    }
+    
+    private var categoriesView: some View {
+        CategoriesListView(
+            categories: categories,
+            selectedCategory: $selectedCategory) {
+                showModal.toggle()
+            }
+            .isHidden(noteSections.isEmpty)
     }
     
     private var notesList: some View {
@@ -81,13 +111,10 @@ struct HomeView: View {
     }
     
     private var emptyView: some View {
-        Group {
-            if noteSections.isEmpty {
-                ListEmptyView(
-                    title: Constants.emptyViewTitle,
-                    description: Constants.emptyViewDescription)
-            }
-        }
+        ListEmptyView(
+            title: Constants.emptyViewTitle,
+            description: Constants.emptyViewDescription)
+        .isHidden(!noteSections.isEmpty)
     }
     
     // MARK: - Private Methods

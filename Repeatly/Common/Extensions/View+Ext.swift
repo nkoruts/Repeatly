@@ -31,4 +31,12 @@ extension View {
             text.wrappedValue = String(text.wrappedValue.prefix(limit))
         }
     }
+    
+    @ViewBuilder func isHidden(_ hidden: Bool) -> some View {
+         if hidden {
+             self.hidden()
+         } else {
+             self
+         }
+     }
 }

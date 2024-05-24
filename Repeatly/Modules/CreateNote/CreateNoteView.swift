@@ -87,7 +87,6 @@ struct CreateNoteView: View {
                     }
                     .padding(.vertical)
                 }
-                .scrollDisabled(focusedField == nil)
                 
                 Button(Constants.saveButtonTitle) {
                     focusedField = nil

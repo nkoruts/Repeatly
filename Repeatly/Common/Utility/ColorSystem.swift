@@ -27,7 +27,11 @@ enum ColorSystem: Int32 {
     case focus = 0xF0F2F4
     
     var hex: Int32 {
-        return self.rawValue
+        self.rawValue
+    }
+    
+    var color: Color {
+        Color(hex: self.rawValue)
     }
 }
 

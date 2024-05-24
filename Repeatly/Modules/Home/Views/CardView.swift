@@ -15,7 +15,7 @@ struct CardViewModel {
         if let hexColor = note.category?.colorHex {
             return Color(hex: hexColor)
         }
-        return Color(hex: ColorSystem.lightGray.hex)
+        return ColorSystem.lightGray.color
     }
 }
 
@@ -81,7 +81,7 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
                     .fill(.cardBackground))
             .shadow(
-                color: Color(hex: ColorSystem.shadow.hex),
+                color: ColorSystem.shadow.color,
                 radius: Constants.shadowRadius)
             .offset(x: cardOffset)
             .gesture(

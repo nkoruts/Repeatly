@@ -23,7 +23,7 @@ struct ColorPickerButtonView: View {
             Image(systemName: "checkmark")
                 .foregroundColor(.white)
                 .font(.system(size: 18, weight: .semibold))
-                .opacity(isSelected ? 1 : 0)
+                .isHidden(!isSelected)
         }
     }
     

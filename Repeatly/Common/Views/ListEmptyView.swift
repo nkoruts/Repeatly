@@ -13,8 +13,6 @@ struct ListEmptyView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Spacer()
-            
             Image(systemName: "tray")
                 .font(.system(size: 64))
                 .foregroundColor(.icon)
@@ -29,9 +27,8 @@ struct ListEmptyView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 32)
             }
-            
-            Spacer()
         }
+        .padding(.bottom, 160)
     }
 }
 
