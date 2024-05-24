@@ -31,7 +31,10 @@ struct HomeView: View {
         VStack(spacing: Constants.cardsSpacing) {
             navigationView
                 .padding([.horizontal, .top])
-            categoriesView
+            
+            if !categories.isEmpty {
+                categoriesView
+            }
             
             notesList
                 .overlay(emptyView)
@@ -86,7 +89,6 @@ struct HomeView: View {
             selectedCategory: $selectedCategory) {
                 showModal.toggle()
             }
-            .isHidden(noteSections.isEmpty)
     }
     
     private var notesList: some View {

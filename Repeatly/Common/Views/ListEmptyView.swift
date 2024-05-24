@@ -28,7 +28,7 @@ struct ListEmptyView: View {
                     .padding(.horizontal, 32)
             }
         }
-        .padding(.bottom, 160)
+        .padding(.bottom, 100)
     }
 }
 
