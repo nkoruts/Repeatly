@@ -200,8 +200,8 @@
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
 				16E478B02BFB44B000CE588D /* CreateCategory */,
+				169A10A02C061D5E003D2CAB /* Categories */,
 				1668329F2B680C9D00576DA5 /* Settings */,
-				160CC08B2C00B860005D5DA4 /* CategoriesView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -306,6 +306,14 @@
 				160ECD342B6B7F300025A1D6 /* Storage */,
 			);
 			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		169A10A02C061D5E003D2CAB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				160CC08B2C00B860005D5DA4 /* CategoriesView.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		16E478B02BFB44B000CE588D /* CreateCategory */ = {

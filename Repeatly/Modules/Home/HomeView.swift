@@ -42,18 +42,6 @@ struct HomeView: View {
         .background(.background)
         .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
         .navigate(to: CategoriesView(), when: $showModal)
-//        .sheet(isPresented: $showModal) {
-//            if #available(iOS 16.4, *) {
-//                CreateCategoryView()
-//                    .presentationDetents([.medium, .large])
-//                    .presentationDragIndicator(.hidden)
-//                    .presentationCornerRadius(DesignSystem.cornerRadius)
-//            } else {
-//                CreateCategoryView()
-//                    .presentationDetents([.medium, .large])
-//                    .presentationDragIndicator(.hidden)
-//            }
-//        }
     }
     
     private var navigationView: some View {

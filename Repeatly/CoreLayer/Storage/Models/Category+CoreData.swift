@@ -15,7 +15,7 @@ public class Category: NSManagedObject, Identifiable, Model {
         return NSFetchRequest<Category>(entityName: "Category")
     }
     
-    @NSManaged public var id: UUID
+    @NSManaged public var id: UUID?
     @NSManaged public var name: String
     @NSManaged public var colorHex: Int32
 }

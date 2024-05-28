@@ -22,27 +22,32 @@ struct CategoriesView: View {
                 .padding(.bottom)
                 
                 ForEach(categories) { category in
-                    HStack {
+                    HStack(alignment: .bottom, spacing: 16) {
                         Text(category.name)
                             .font(FontBook.medium2)
-                            .foregroundColor(Color(hex: category.colorHex))
+                            .foregroundColor(.mainText)
                             .padding(.top)
 
                         Spacer()
                         
                         Button(action: {} ) {
+                            Image(systemName: "square.and.pencil")
+                                .font(FontBook.regular2)
+                                .foregroundColor(.grayText)
+                        }
+                        
+                        Button(action: {
+                            removeCategory(category)
+                        }) {
                             Image(systemName: "trash")
-                                .font(FontBook.regular3)
+                                .font(FontBook.regular2)
                                 .foregroundColor(.red)
-                                .padding()
-                                .background(
-                                    Circle()
-                                        .fill(.red.opacity(0.15))
-                                )
                         }
                     }
+                    .padding(.trailing, 12)
+                    
                     Divider()
-                        .background(.lightGray)
+                        .background(.cardBackground)
                 }
                 
                 Spacer()
@@ -50,6 +55,17 @@ struct CategoriesView: View {
             .padding(.horizontal)
             .padding(.vertical, Constants.contentVerticalPadding)
             .background(.background)
+        }
+    }
+    
+    private func removeCategory(_ category: Category) {
+        do {
+            try category.delete()
+            if categories.isEmpty {
+                dismiss()
+            }
+        } catch {
+            log(error)
         }
     }
 }
