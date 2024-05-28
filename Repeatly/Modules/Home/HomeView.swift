@@ -28,20 +28,26 @@ struct HomeView: View {
     
     // MARK: - UI
     var body: some View {
-        VStack(spacing: Constants.cardsSpacing) {
-            navigationView
-                .padding([.horizontal, .top])
-            
-            if categories.count > 1, !noteSections.isEmpty {
-                categoriesView
+        NavigationStack {
+            VStack(spacing: Constants.cardsSpacing) {
+                navigationView
+                    .padding([.horizontal, .top])
+                
+                if categories.count > 1, !noteSections.isEmpty {
+                    categoriesView
+                }
+                
+                notesList
+                    .overlay(emptyView)
             }
-            
-            notesList
-                .overlay(emptyView)
+            .background(.background)
+            .navigationDestination(isPresented: $willMoveToNoteCreation) {
+                CreateNoteView()
+            }
+            .navigationDestination(isPresented: $showModal) {
+                CategoriesView()
+            }
         }
-        .background(.background)
-        .navigate(to: CreateNoteView(), when: $willMoveToNoteCreation)
-        .navigate(to: CategoriesView(), when: $showModal)
     }
     
     private var navigationView: some View {
@@ -141,8 +147,7 @@ extension HomeView {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
+// MARK: - Preview
+#Preview {
+    HomeView()
 }

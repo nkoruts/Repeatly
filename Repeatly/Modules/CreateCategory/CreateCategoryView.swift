@@ -14,7 +14,7 @@ struct CreateCategoryView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
-    @State private var selectedColorHex: Int32? = Constants.colorsHex.first
+    @State private var selectedColorHex: Int32?
     
     @FocusState private var focusedField: FocusedField?
     private enum FocusedField: Hashable {
@@ -53,14 +53,15 @@ struct CreateCategoryView: View {
                         }
                 }, header: {
                     SectionHeaderView(title: Constants.categoryNameTitle)
+                        .font(FontBook.regular2)
                 })
                 
                 Section(content: {
                     ColorPickerView(
-                        colorsHex: Constants.colorsHex,
                         selectedColorHex: $selectedColorHex)
                 }, header: {
                     SectionHeaderView(title: Constants.colorsTitle)
+                        .font(FontBook.regular2)
                 })
                 
                 Spacer()
@@ -92,35 +93,12 @@ extension CreateCategoryView {
         static let colorsTitle = "Choose color"
         static let categoryNameTitle = "Category name"
         static let namePlaceholder = "Example: Study"
-        static let nameTextLength = 12
-        
+        static let nameTextLength = 16
         static let saveButtonTitle = "Save"
-        
-        static let colorsHex: [Int32] = [
-            0xC62828,
-            0xF79F36,
-            0x3D51B2,
-            0x673AB7,
-            0x2196F3,
-        ]
-        
-//        0x00BCD4,
-//        0x4CAF50,
-//        0xF44336,
-//        0xE91E63
-        
-//        0x7C4DFF,
-//        0x03DAC5,
-//        0xFFA726,
-//        0x9C27B0,
-//        0x673AB7
-        
     }
 }
 
 // MARK: - Preview
-struct CreateCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateCategoryView()
-    }
+#Preview {
+    CreateCategoryView()
 }

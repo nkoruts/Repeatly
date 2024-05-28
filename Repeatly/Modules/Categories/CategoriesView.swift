@@ -14,7 +14,7 @@ struct CategoriesView: View {
     private var categories: FetchedResults<Category>
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 NavigationTopView(title: Constants.screenTitle) {
                     dismiss()
@@ -30,7 +30,9 @@ struct CategoriesView: View {
 
                         Spacer()
                         
-                        Button(action: {} ) {
+                        NavigationLink {
+                            EditCategoryView(category: category)
+                        } label: {
                             Image(systemName: "square.and.pencil")
                                 .font(FontBook.regular2)
                                 .foregroundColor(.grayText)
@@ -56,8 +58,10 @@ struct CategoriesView: View {
             .padding(.vertical, Constants.contentVerticalPadding)
             .background(.background)
         }
+        .navigationBarBackButtonHidden()
     }
     
+    // MARK: - Private Methods
     private func removeCategory(_ category: Category) {
         do {
             try category.delete()
@@ -79,8 +83,7 @@ extension CategoriesView {
     }
 }
 
-struct CategoriesView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesView()
-    }
+// MARK: - Preview
+#Preview {
+    CategoriesView()
 }

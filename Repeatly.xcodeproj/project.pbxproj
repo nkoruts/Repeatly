@@ -39,6 +39,7 @@
 		167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656D52B81F9B0003D2A68 /* FontBook.swift */; };
 		167656D82B8202D8003D2A68 /* ColorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656D72B8202D8003D2A68 /* ColorSystem.swift */; };
 		167656DC2B823B69003D2A68 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656DB2B823B69003D2A68 /* DesignSystem.swift */; };
+		169A10A22C061F20003D2CAB /* EditCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A10A12C061F20003D2CAB /* EditCategoryView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
@@ -83,6 +84,7 @@
 		167656D52B81F9B0003D2A68 /* FontBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontBook.swift; sourceTree = "<group>"; };
 		167656D72B8202D8003D2A68 /* ColorSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSystem.swift; sourceTree = "<group>"; };
 		167656DB2B823B69003D2A68 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		169A10A12C061F20003D2CAB /* EditCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
@@ -199,8 +201,9 @@
 				160ECD2B2B6B744D0025A1D6 /* Main */,
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
-				16E478B02BFB44B000CE588D /* CreateCategory */,
 				169A10A02C061D5E003D2CAB /* Categories */,
+				16E478B02BFB44B000CE588D /* CreateCategory */,
+				169A10A32C0638E8003D2CAB /* EditCategory */,
 				1668329F2B680C9D00576DA5 /* Settings */,
 			);
 			path = Modules;
@@ -314,6 +317,14 @@
 				160CC08B2C00B860005D5DA4 /* CategoriesView.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		169A10A32C0638E8003D2CAB /* EditCategory */ = {
+			isa = PBXGroup;
+			children = (
+				169A10A12C061F20003D2CAB /* EditCategoryView.swift */,
+			);
+			path = EditCategory;
 			sourceTree = "<group>";
 		};
 		16E478B02BFB44B000CE588D /* CreateCategory */ = {
@@ -438,6 +449,7 @@
 				160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */,
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
+				169A10A22C061F20003D2CAB /* EditCategoryView.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
 				160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */,
 				166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */,

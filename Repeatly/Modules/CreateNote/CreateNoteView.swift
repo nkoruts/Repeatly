@@ -29,13 +29,11 @@ struct CreateNoteView: View {
     
     // MARK: - UI
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
-                NavigationTopView(
-                    title: Constants.screenTitle,
-                    backAction: {
-                        dismiss()
-                    })
+                NavigationTopView(title: Constants.screenTitle) {
+                    dismiss()
+                }
                 .padding(.horizontal)
                 
                 ScrollView {
@@ -99,7 +97,7 @@ struct CreateNoteView: View {
             .padding(.vertical, Constants.contentVerticalPadding)
             .background(.background)
         }
-        .preferredColorScheme(.light)
+        .navigationBarBackButtonHidden()
         .sheet(isPresented: $showModal) {
             if #available(iOS 16.4, *) {
                 CreateCategoryView()
@@ -183,8 +181,6 @@ extension CreateNoteView {
 }
 
 // MARK: - Preview
-struct CreateNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateNoteView()
-    }
+#Preview {
+    CreateNoteView()
 }
