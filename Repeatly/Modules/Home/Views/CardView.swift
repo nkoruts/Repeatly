@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardViewModel {
     var note: Note
-    var removeAction: () -> Void
+    var removeAction: Action
     
     var color: Color {
         if let hexColor = note.category?.colorHex {
@@ -41,7 +41,7 @@ struct CardView: View {
                         )
                         .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
                 }
-            }
+            } // Background buttons displayed when the card is dragged
             
             HStack(spacing: Constants.mainStackSpacing) {
                 Capsule()
@@ -76,7 +76,7 @@ struct CardView: View {
                 Image(systemName: Constants.arrowIconName)
                     .foregroundColor(.icon)
                     .padding(.trailing, Constants.defaultPadding)
-            }
+            } // Card UI
             .background(
                 RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
                     .fill(.cardBackground))

@@ -92,9 +92,8 @@ struct CreateNoteView: View {
                 }
                 .buttonStyle(MainButtonStyle())
                 .disabled(title.isEmpty)
-                .padding(.horizontal)
+                .padding([.horizontal, .bottom])
             }
-            .padding(.vertical, Constants.contentVerticalPadding)
             .background(.background)
         }
         .navigationBarBackButtonHidden()

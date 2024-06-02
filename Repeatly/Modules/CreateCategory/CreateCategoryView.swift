@@ -30,7 +30,6 @@ struct CreateCategoryView: View {
                     Text("New category")
                         .foregroundColor(.mainText)
                         .font(FontBook.medium)
-                        .multilineTextAlignment(.center)
                     Spacer()
                     Button(action: {
                         focusedField = nil
@@ -57,8 +56,7 @@ struct CreateCategoryView: View {
                 })
                 
                 Section(content: {
-                    ColorPickerView(
-                        selectedColorHex: $selectedColorHex)
+                    ColorPickerView(selectedColorHex: $selectedColorHex)
                 }, header: {
                     SectionHeaderView(title: Constants.colorsTitle)
                         .font(FontBook.regular2)

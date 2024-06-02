@@ -92,10 +92,11 @@ struct HomeView: View {
                 ForEach(noteSections) { section in
                     Section(content: {
                         ForEach(section) { note in
-                            let cardViewModel = CardViewModel(
-                                note: note,
-                                removeAction: { deleteNote(note) })
-                            CardView(viewModel: cardViewModel)
+                            NavigationLink {
+                                NoteDetailsView(note: note)
+                            } label: {
+                                CardView(viewModel: cardViewModel(note))
+                            }
                         }
                     }, header: {
                         SectionHeaderView(title: section.id)
@@ -129,6 +130,14 @@ struct HomeView: View {
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MMM d"
         return dateFormatter.string(from: date)
+    }
+    
+    private func cardViewModel(_ model: Note) -> CardViewModel {
+        return CardViewModel(
+            note: model,
+            removeAction: {
+                deleteNote(model)
+            })
     }
 }
 
