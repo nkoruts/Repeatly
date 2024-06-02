@@ -28,4 +28,6 @@ struct FontBook {
     static let regular2: Font = .gilroyRegular(size: 16)
     /// Gilroy-Regular, size: 14
     static let regular3: Font = .gilroyRegular(size: 14)
+    /// Gilroy-Regular, size: 14
+    static let regular4: Font = .gilroyRegular(size: 12)
 }
