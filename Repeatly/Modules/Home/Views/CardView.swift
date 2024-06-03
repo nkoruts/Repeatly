@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     let note: Note
+    let repeatAction: Action
     let removeAction: Action
     
     @State var cardOffset: CGFloat = 0
@@ -16,20 +17,20 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            HStack {
+            HStack(spacing: 8) {
                 Spacer()
-                
-                Button(action: removeAction) {
-                    Image(systemName: "trash")
-                        .font(.title3)
-                        .foregroundColor(.red)
-                        .padding()
-                        .background(
-                            Circle()
-                                .fill(.red.opacity(0.15))
-                        )
-                        .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
-                }
+
+                ColorIconButton(
+                    iconName: "repeat",
+                    color: .green,
+                    action: repeatAction)
+                .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
+               
+                ColorIconButton(
+                    iconName: "trash",
+                    color: .red,
+                    action: removeAction)
+                .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
             } // Background buttons displayed when the card is dragged
             
             HStack(spacing: Constants.mainStackSpacing) {
@@ -69,9 +70,8 @@ struct CardView: View {
             .background(
                 RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
                     .fill(.cardBackground))
-            .shadow(
-                color: ColorSystem.shadow.color,
-                radius: Constants.shadowRadius)
+            .shadow(color: ColorSystem.shadow.color,
+                    radius: Constants.shadowRadius)
             .offset(x: cardOffset)
             .gesture(
                 DragGesture()
@@ -84,9 +84,9 @@ struct CardView: View {
         let offset = value.translation.width
         
         if offset < .zero {
-            cardOffset = isSwipped ? offset - 90 : offset
+            cardOffset = isSwipped ? offset - Constants.dragLimit : offset
         } else {
-            cardOffset = isSwipped ? min(0, offset - 90) : .zero
+            cardOffset = isSwipped ? min(0, offset - Constants.dragLimit) : .zero
         }
     }
     
@@ -94,7 +94,7 @@ struct CardView: View {
         let offset = value.translation.width
         withAnimation(.easeInOut) {
             let isSwipeGestureLong = offset < -60
-            cardOffset = isSwipeGestureLong ? -90 : .zero
+            cardOffset = isSwipeGestureLong ? -Constants.dragLimit : .zero
             isSwipped = isSwipeGestureLong
         }
     }
@@ -112,6 +112,15 @@ extension CardView {
         static let infoSpacing: CGFloat = 4
         static let detailsLineLimit = 2
         
+        static let dragLimit: CGFloat = 120
+        
         static let arrowIconName = "chevron.forward"
     }
+}
+
+#Preview {
+    let viewContent = CoreDataProvider.shared.viewContext
+    let note = Note(context: viewContent)
+    note.title = "Title"
+    return CardView(note: note, repeatAction: {}, removeAction: {})
 }

@@ -59,15 +59,6 @@ struct HomeView: View {
                     .foregroundColor(.mainText)
                     .font(FontBook.semibold)
                 Spacer()
-                // TODO: Show search button
-    //                Button(action: {
-    //                    print(notes)
-    //                    // TODO: - Search notes
-    //                }, label: {
-    //                    Image(systemName: Constants.findIconSystemName)
-    //                        .font(.system(size: 24))
-    //                        .foregroundColor(.button)
-    //                })
                 Button(action: {
                     willMoveToNoteCreation = true
                 }, label: {
@@ -96,10 +87,12 @@ struct HomeView: View {
                             NavigationLink {
                                 NoteDetailsView(note: note)
                             } label: {
-                                CardView(note: note) {
-                                    deleteNote(note)
-                                }
+                                CardView(
+                                    note: note,
+                                    repeatAction: { repeatNote(note) },
+                                    removeAction: { deleteNote(note) })
                             }
+                            .buttonStyle(.plain)
                         }
                     }, header: {
                         SectionHeaderView(title: section.id)
@@ -119,6 +112,15 @@ struct HomeView: View {
     }
     
     // MARK: - Private Methods
+    private func repeatNote(_ note: Note) {
+        do {
+            try note.updateRepetition()
+            note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
+        } catch {
+            log(error)
+        }
+    }
+    
     private func deleteNote(_ note: Note) {
         do {
             try note.delete()
