@@ -7,20 +7,9 @@
 
 import SwiftUI
 
-struct CardViewModel {
-    var note: Note
-    var removeAction: Action
-    
-    var color: Color {
-        if let hexColor = note.category?.colorHex {
-            return Color(hex: hexColor)
-        }
-        return ColorSystem.lightGray.color
-    }
-}
-
 struct CardView: View {
-    var viewModel: CardViewModel
+    let note: Note
+    let removeAction: Action
     
     @State var cardOffset: CGFloat = 0
     @State var isSwipped: Bool = false
@@ -30,7 +19,7 @@ struct CardView: View {
             HStack {
                 Spacer()
                 
-                Button(action: viewModel.removeAction) {
+                Button(action: removeAction) {
                     Image(systemName: "trash")
                         .font(.title3)
                         .foregroundColor(.red)
@@ -45,24 +34,24 @@ struct CardView: View {
             
             HStack(spacing: Constants.mainStackSpacing) {
                 Capsule()
-                    .fill(viewModel.color)
+                    .fill(Color(hex: note.category?.colorHex ?? ColorSystem.lightGray.hex))
                     .frame(width: Constants.dividerWidth)
                     .padding(.leading, Constants.dividerLeadingPadding)
                     .padding(.vertical, Constants.dividerVerticalPadding)
                 
                 VStack(alignment: .leading, spacing: Constants.infoSpacing) {
-                    if let category = viewModel.note.category {
+                    if let category = note.category {
                         NoteCategoryView(
                             title: category.name,
                             color: Color(hex: category.colorHex))
                         .padding(.bottom, Constants.infoSpacing)
                     }
                     
-                    Text(viewModel.note.title)
+                    Text(note.title)
                         .font(FontBook.medium2)
                         .foregroundColor(.mainText)
                     
-                    if let details = viewModel.note.details {
+                    if let details = note.details {
                         Text(details)
                             .font(FontBook.regular3)
                             .foregroundColor(.grayText)
