@@ -56,6 +56,8 @@ struct NoteDetailsView: View {
     private func updateRepetition() {
         do {
             try note.updateRepetition()
+            note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
+            dismiss()
         } catch {
             log(error)
         }

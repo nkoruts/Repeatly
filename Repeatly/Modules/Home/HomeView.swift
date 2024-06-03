@@ -15,6 +15,7 @@ struct HomeView: View {
     @SectionedFetchRequest(
         sectionIdentifier: \.nextRepetitionDate,
         sortDescriptors: [.init(keyPath: \Note.repetition.nextDate, ascending: true)],
+        predicate: .init(format: "isArchived == false"),
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
@@ -95,7 +96,9 @@ struct HomeView: View {
                             NavigationLink {
                                 NoteDetailsView(note: note)
                             } label: {
-                                CardView(viewModel: cardViewModel(note))
+                                CardView(note: note) {
+                                    deleteNote(note)
+                                }
                             }
                         }
                     }, header: {
@@ -130,14 +133,6 @@ struct HomeView: View {
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MMM d"
         return dateFormatter.string(from: date)
-    }
-    
-    private func cardViewModel(_ model: Note) -> CardViewModel {
-        return CardViewModel(
-            note: model,
-            removeAction: {
-                deleteNote(model)
-            })
     }
 }
 

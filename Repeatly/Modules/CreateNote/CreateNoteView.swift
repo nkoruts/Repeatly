@@ -117,6 +117,7 @@ struct CreateNoteView: View {
         newNote.id = UUID()
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
+        newNote.isArchived = false
 
         newNote.category = selectedCategory
         newNote.repetition = createRepetition()
