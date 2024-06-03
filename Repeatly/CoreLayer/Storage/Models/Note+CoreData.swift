@@ -19,10 +19,10 @@ public class Note: NSManagedObject, Identifiable, Model {
     @NSManaged public var title: String
     @NSManaged public var details: String?
     @NSManaged public var category: Category?
-    @NSManaged public var repetition: Repetition?
+    @NSManaged public var repetition: Repetition
+    @NSManaged public var isArchived: Bool
     
-    @objc var nextRepetitionDate: String? {
-        guard let repetition = repetition else { return nil }
+    @objc var nextRepetitionDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MMM d"
@@ -30,14 +30,13 @@ public class Note: NSManagedObject, Identifiable, Model {
     }
     
     func updateRepetition() throws {
-        guard let repetition = repetition else { return }
         let allDates = repetition.allDates
         guard let nextDateIndex = allDates.firstIndex(of: repetition.nextDate) else { return }
         
         if nextDateIndex < allDates.count - 1 {
             repetition.nextDate = allDates[nextDateIndex + 1]
         } else {
-            self.repetition = nil
+            self.isArchived = true
         }
         try save()
     }
