@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoriesListView: View {
+    var buttonIcon: String
     var categories: FetchedResults<Category>
     @Binding var selectedCategory: Category?
     var action: Action
@@ -16,7 +17,7 @@ struct CategoriesListView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
                 Button(action: action) {
-                    Image(systemName: "plus")
+                    Image(systemName: buttonIcon)
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(.button)
                         .padding(14)

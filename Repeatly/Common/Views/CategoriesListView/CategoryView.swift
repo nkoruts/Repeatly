@@ -23,7 +23,7 @@ struct CategoryView: View {
                 .padding(.vertical, 8)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                    .fill(isSelected ? color : color.opacity(0.4))
+                     .fill(isSelected ? color : color.opacity(0.4))
                 )
         })
         .buttonStyle(.plain)

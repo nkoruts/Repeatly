@@ -23,7 +23,13 @@ struct CardView: View {
                 ColorIconButton(
                     iconName: "repeat",
                     color: .green,
-                    action: repeatAction)
+                    action: {
+                        withAnimation {
+                            cardOffset = .zero
+                            isSwipped = false
+                        }
+                        repeatAction()
+                    })
                 .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
                
                 ColorIconButton(
@@ -67,9 +73,10 @@ struct CardView: View {
                     .foregroundColor(.icon)
                     .padding(.trailing, Constants.defaultPadding)
             } // Card UI
-            .background(
+            .background {
                 RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
-                    .fill(.cardBackground))
+                    .fill(.cardBackground)
+            }
             .shadow(color: ColorSystem.shadow.color,
                     radius: Constants.shadowRadius)
             .offset(x: cardOffset)

@@ -7,40 +7,21 @@
 
 import SwiftUI
 
-struct TitledButtonAction {
-    let title: String
-    let action: Action
-}
-
 struct NavigationTopView: View {
     var title: String
-    var action: TitledButtonAction?
     var backAction: Action
     
     var body: some View {
-        HStack(alignment: .center) {
-            BackButton {
-                backAction()
-            }
-            .frame(maxWidth: 75, alignment: .leading)
-            
+        ZStack {
+            BackButton(action: backAction)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             Text(title)
                 .foregroundColor(.mainText)
                 .font(FontBook.medium)
                 .frame(maxWidth: .infinity, alignment: .center)
-            
-            HStack {
-                if let buttonModel = action {
-                    Button(action: {
-                        buttonModel.action()
-                    }, label: {
-                        Text(buttonModel.title)
-                            .font(FontBook.regular2)
-                    })
-                }
-            }
-            .frame(maxWidth: 75, alignment: .trailing)
         }
+        .padding(.vertical)
     }
 }
 

@@ -27,10 +27,22 @@ struct EditCategoryView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
-                NavigationTopView(title: "Edit category") {
-                    dismiss()
+                HStack(alignment: .lastTextBaseline) {
+                    Text(Constants.screenTitle)
+                        .foregroundColor(.mainText)
+                        .font(FontBook.medium)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        focusedField = nil
+                        saveCategory()
+                    }, label: {
+                        Text("Save")
+                            .font(FontBook.medium2)
+                    })
+                    .disabled(category.name.isEmpty)
                 }
-                .padding(.bottom)
                 
                 Section(content: {
                     TextField(Constants.namePlaceholder, text: $name)
@@ -54,15 +66,14 @@ struct EditCategoryView: View {
                 
                 Spacer()
                 
-                Button(Constants.saveButtonTitle) {
-                    focusedField = nil
-                    saveCategory()
-                }
-                .buttonStyle(MainButtonStyle())
-                .disabled(category.name.isEmpty)
+//                Button(Constants.saveButtonTitle) {
+//                    focusedField = nil
+//                    saveCategory()
+//                }
+//                .buttonStyle(MainButtonStyle())
+//                .disabled(category.name.isEmpty)
             }
-            .padding(.horizontal)
-            .padding(.vertical, Constants.contentVerticalPadding)
+            .padding()
             .background(.background)
         }
         .onAppear {
@@ -89,8 +100,8 @@ struct EditCategoryView: View {
 // MARK: - Constants
 extension EditCategoryView {
     private enum Constants {
+        static let screenTitle = "Edit category"
         static let contentSpacing: CGFloat = 12
-        static let contentVerticalPadding: CGFloat = 24
         static let colorsTitle = "Choose color"
         static let categoryNameTitle = "Category name"
         static let namePlaceholder = "Example: Study"

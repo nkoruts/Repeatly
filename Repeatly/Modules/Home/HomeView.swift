@@ -19,13 +19,7 @@ struct HomeView: View {
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
-    @FetchRequest(sortDescriptors: [], animation: .spring())
-    private var categories: FetchedResults<Category>
-    
-    @State private var selectedCategory: Category?
-    
-    @State private var showModal: Bool = false
-    @State private var willMoveToNoteCreation = false
+    @State private var showNoteCreation = false
     
     // MARK: - UI
     var body: some View {
@@ -34,19 +28,12 @@ struct HomeView: View {
                 navigationView
                     .padding([.horizontal, .top])
                 
-                if categories.count > 1, !noteSections.isEmpty {
-                    categoriesView
-                }
-                
                 notesList
                     .overlay(emptyView)
             }
             .background(.background)
-            .navigationDestination(isPresented: $willMoveToNoteCreation) {
+            .navigationDestination(isPresented: $showNoteCreation) {
                 CreateNoteView()
-            }
-            .navigationDestination(isPresented: $showModal) {
-                CategoriesView()
             }
         }
     }
@@ -60,7 +47,7 @@ struct HomeView: View {
                     .font(FontBook.semibold)
                 Spacer()
                 Button(action: {
-                    willMoveToNoteCreation = true
+                    showNoteCreation = true
                 }, label: {
                     Image(systemName: Constants.addIconSystemName)
                         .font(Constants.addIconFont)
@@ -70,14 +57,6 @@ struct HomeView: View {
         }
     }
     
-    private var categoriesView: some View {
-        CategoriesListView(
-            categories: categories,
-            selectedCategory: $selectedCategory) {
-                showModal.toggle()
-            }
-    }
-    
     private var notesList: some View {
         ScrollView {
             LazyVStack(spacing: Constants.cardsSpacing) {
@@ -85,7 +64,8 @@ struct HomeView: View {
                     Section(content: {
                         ForEach(section) { note in
                             NavigationLink {
-                                NoteDetailsView(note: note)
+                                NoteDetailsView()
+                                    .environmentObject(note)
                             } label: {
                                 CardView(
                                     note: note,
@@ -141,7 +121,6 @@ struct HomeView: View {
 extension HomeView {
     private enum Constants {
         static let appName = "Repeatly"
-        static let findIconSystemName = "magnifyingglass"
         static let addIconSystemName = "plus.app.fill"
         
         static let addIconFont: Font = .system(size: 34)

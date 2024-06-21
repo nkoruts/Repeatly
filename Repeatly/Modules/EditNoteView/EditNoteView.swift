@@ -1,18 +1,26 @@
 //
-//  CreateNoteView.swift
+//  EditNoteView.swift
 //  Repeatly
 //
-//  Created by Nikita Koruts on 29.01.2024.
+//  Created by Nikita Koruts on 17.06.2024.
 //
 
 import SwiftUI
 
-struct CreateNoteView: View {
+struct EditNoteView: View {
     
     // MARK: - Properties
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @State private var showCategories: Bool = false
+    @State var showCategoryAddition = false
+    
+    @EnvironmentObject var note: Note
+    
+    @State private var title: String = ""
+    @State private var details = ""
+    @State private var selectedCategory: Category?
+    
+    @FetchRequest(sortDescriptors: [], animation: .spring)
+    private var categories: FetchedResults<Category>
     
     @FocusState private var focusedField: FocusedField?
     private enum FocusedField: Hashable {
@@ -20,30 +28,38 @@ struct CreateNoteView: View {
         case details
     }
     
-    @State private var title: String = ""
-    @State private var details = ""
-    @State private var selectedCategory: Category?
-    
-    @FetchRequest(sortDescriptors: [], animation: .spring())
-    private var categories: FetchedResults<Category>
     
     // MARK: - UI
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
-                NavigationTopView(title: Constants.screenTitle) {
-                    dismiss()
+                
+                HStack(alignment: .lastTextBaseline) {
+                    Text(Constants.screenTitle)
+                        .foregroundColor(.mainText)
+                        .font(FontBook.medium)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        focusedField = nil
+                        saveNote()
+                    }, label: {
+                        Text("Save")
+                            .font(FontBook.medium2)
+                    })
+                    .disabled(title.isEmpty)
                 }
-                .padding(.horizontal)
+                .padding([.horizontal, .top])
                 
                 ScrollView {
                     VStack(spacing: 8) {
                         Section(content: {
                             CategoriesListView(
-                                buttonIcon: "ellipsis",
+                                buttonIcon: "plus", 
                                 categories: categories,
                                 selectedCategory: $selectedCategory) {
-                                    showCategories.toggle()
+                                    showCategoryAddition.toggle()
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.categoryTitle)
@@ -83,58 +99,37 @@ struct CreateNoteView: View {
                                 .font(FontBook.regular2)
                         })
                         .padding(.horizontal)
-                    }
-                    .padding(.bottom)
-                }
-                
-                Button(Constants.saveButtonTitle) {
-                    focusedField = nil
-                    saveNote()
-                }
-                .buttonStyle(MainButtonStyle())
-                .disabled(title.isEmpty)
-                .padding([.horizontal, .bottom])
+                    }                }
             }
             .background(.background)
         }
-        .navigationBarBackButtonHidden()
-        .navigationDestination(isPresented: $showCategories) {
-            CategoriesView()
+        .onAppear {
+            title = note.title
+            details = note.details ?? ""
+            selectedCategory = note.category
         }
     }
     
     // MARK: - Private Methods
     private func saveNote() {
-        let newNote = Note(context: viewContext)
-        newNote.id = UUID()
-        newNote.title = title
-        newNote.details = !details.isEmpty ? details : nil
-        newNote.isArchived = false
-
-        newNote.category = selectedCategory
-        newNote.repetition = createRepetition()
+        note.title = title
+        note.details = details
+        note.details = !details.isEmpty ? details : nil
+        note.category = selectedCategory
         
         do {
-            try newNote.save()
+            try note.save()
             dismiss()
         } catch {
             log(error)
         }
     }
-        
-    private func createRepetition() -> Repetition {
-        let repetition = Repetition(context: viewContext)
-        let repetitionIntervals = RepetitionManager.sharing.defaultRepetitionIntervals()
-        repetition.nextDate = repetitionIntervals[0]
-        repetition.allDates = repetitionIntervals
-        return repetition
-    }
 }
 
 // MARK: - Constants
-extension CreateNoteView {
+extension EditNoteView {
     private enum Constants {
-        static let screenTitle = "Create Note"
+        static let screenTitle = "Edit Note"
         static let contentSpacing: CGFloat = 12
         
         static let categoryTitle = "Category"
@@ -150,7 +145,3 @@ extension CreateNoteView {
     }
 }
 
-// MARK: - Preview
-#Preview {
-    CreateNoteView()
-}

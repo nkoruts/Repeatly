@@ -28,6 +28,8 @@
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
 		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
 		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
+		165A18492C253C7400D03F7E /* RepetitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165A18482C253C7400D03F7E /* RepetitionManager.swift */; };
+		165A184B2C25513700D03F7E /* NavigationPanelWithToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165A184A2C25513700D03F7E /* NavigationPanelWithToolbar.swift */; };
 		166301442B7B700800EC6870 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166301432B7B700800EC6870 /* Logger.swift */; };
 		166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1666930F2B6785A9008F8850 /* NoteCategoryView.swift */; };
 		1668329C2B680BB000576DA5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668329B2B680BB000576DA5 /* MainView.swift */; };
@@ -39,6 +41,7 @@
 		167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656D52B81F9B0003D2A68 /* FontBook.swift */; };
 		167656D82B8202D8003D2A68 /* ColorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656D72B8202D8003D2A68 /* ColorSystem.swift */; };
 		167656DC2B823B69003D2A68 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167656DB2B823B69003D2A68 /* DesignSystem.swift */; };
+		167849C92C2001A200325A45 /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167849C82C2001A200325A45 /* EditNoteView.swift */; };
 		168838DD2C0CCF4800052DE1 /* NoteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838DC2C0CCF4800052DE1 /* NoteDetailsView.swift */; };
 		168838DF2C0CF1E200052DE1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838DE2C0CF1E200052DE1 /* Action.swift */; };
 		168838E22C0DFCF400052DE1 /* ColorIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838E12C0DFCF400052DE1 /* ColorIconButton.swift */; };
@@ -76,6 +79,8 @@
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		165A18482C253C7400D03F7E /* RepetitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionManager.swift; sourceTree = "<group>"; };
+		165A184A2C25513700D03F7E /* NavigationPanelWithToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPanelWithToolbar.swift; sourceTree = "<group>"; };
 		166301432B7B700800EC6870 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1666930F2B6785A9008F8850 /* NoteCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCategoryView.swift; sourceTree = "<group>"; };
 		1668329B2B680BB000576DA5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 		167656D52B81F9B0003D2A68 /* FontBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontBook.swift; sourceTree = "<group>"; };
 		167656D72B8202D8003D2A68 /* ColorSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSystem.swift; sourceTree = "<group>"; };
 		167656DB2B823B69003D2A68 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		167849C82C2001A200325A45 /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		168838DC2C0CCF4800052DE1 /* NoteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsView.swift; sourceTree = "<group>"; };
 		168838DE2C0CF1E200052DE1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		168838E12C0DFCF400052DE1 /* ColorIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorIconButton.swift; sourceTree = "<group>"; };
@@ -143,12 +149,13 @@
 		16110F332B6A661700471512 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16E478B62BFDC34200CE588D /* CategoriesListView */,
-				16E478B32BFDBB0600CE588D /* ColorPickerView */,
-				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
+				165A184A2C25513700D03F7E /* NavigationPanelWithToolbar.swift */,
 				16110F342B6A66C400471512 /* NavigationTopView.swift */,
+				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
 				16110F362B6A6AEE00471512 /* BackButton.swift */,
+				16E478B62BFDC34200CE588D /* CategoriesListView */,
+				16E478B32BFDBB0600CE588D /* ColorPickerView */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
 			);
 			path = Views;
@@ -207,11 +214,12 @@
 				160ECD2B2B6B744D0025A1D6 /* Main */,
 				162247EB2B6500C9007A61EF /* Home */,
 				166832A22B680F0600576DA5 /* CreateNote */,
+				167849C72C1FFAE700325A45 /* NoteDetails */,
+				167849CA2C2001A700325A45 /* EditNoteView */,
 				169A10A02C061D5E003D2CAB /* Categories */,
 				16E478B02BFB44B000CE588D /* CreateCategory */,
 				169A10A32C0638E8003D2CAB /* EditCategory */,
 				1668329F2B680C9D00576DA5 /* Settings */,
-				168838DC2C0CCF4800052DE1 /* NoteDetailsView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 				167656D72B8202D8003D2A68 /* ColorSystem.swift */,
 				166301432B7B700800EC6870 /* Logger.swift */,
 				167656DB2B823B69003D2A68 /* DesignSystem.swift */,
+				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -318,6 +327,22 @@
 				160ECD342B6B7F300025A1D6 /* Storage */,
 			);
 			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		167849C72C1FFAE700325A45 /* NoteDetails */ = {
+			isa = PBXGroup;
+			children = (
+				168838DC2C0CCF4800052DE1 /* NoteDetailsView.swift */,
+			);
+			path = NoteDetails;
+			sourceTree = "<group>";
+		};
+		167849CA2C2001A700325A45 /* EditNoteView */ = {
+			isa = PBXGroup;
+			children = (
+				167849C82C2001A200325A45 /* EditNoteView.swift */,
+			);
+			path = EditNoteView;
 			sourceTree = "<group>";
 		};
 		168838E02C0CF1E600052DE1 /* Models */ = {
@@ -448,6 +473,7 @@
 				168838DF2C0CF1E200052DE1 /* Action.swift in Sources */,
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
+				165A184B2C25513700D03F7E /* NavigationPanelWithToolbar.swift in Sources */,
 				164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */,
 				160ECD2A2B6B73530025A1D6 /* CoreDataProvider.swift in Sources */,
 				167656DC2B823B69003D2A68 /* DesignSystem.swift in Sources */,
@@ -465,7 +491,9 @@
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteView.swift in Sources */,
 				160ECD332B6B7E090025A1D6 /* Note+CoreData.swift in Sources */,
+				165A18492C253C7400D03F7E /* RepetitionManager.swift in Sources */,
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
+				167849C92C2001A200325A45 /* EditNoteView.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
 				169A10A22C061F20003D2CAB /* EditCategoryView.swift in Sources */,
 				168838DD2C0CCF4800052DE1 /* NoteDetailsView.swift in Sources */,
@@ -537,7 +565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -591,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -617,7 +645,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,7 +675,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
