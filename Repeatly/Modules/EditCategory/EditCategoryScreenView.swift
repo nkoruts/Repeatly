@@ -1,36 +1,39 @@
 //
-//  CreateCategoryView.swift
+//  EditCategoryView.swift
 //  Repeatly
 //
-//  Created by Nikita Koruts on 20.05.2024.
+//  Created by Nikita Koruts on 28.05.2024.
 //
 
 import SwiftUI
 
-struct CreateCategoryView: View {
+struct EditCategoryScreenView: View {
     
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContenxt
     @Environment(\.dismiss) private var dismiss
-    
-    @State private var name: String = ""
-    @State private var selectedColorHex: Int32?
     
     @FocusState private var focusedField: FocusedField?
     private enum FocusedField: Hashable {
         case name
     }
     
+    @State private var name: String = ""
+    @State private var selectedColorHex: Int32?
+    
+    let category: Category
+    
     // MARK: - UI
     var body: some View {
-        NavigationView {
-            VStack(spacing: Constants.contentSpacing) {
-                
+        NavigationStack {
+            VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 HStack(alignment: .lastTextBaseline) {
-                    Text("New category")
+                    Text(Constants.screenTitle)
                         .foregroundColor(.mainText)
                         .font(FontBook.medium)
+                    
                     Spacer()
+                    
                     Button(action: {
                         focusedField = nil
                         saveCategory()
@@ -38,9 +41,8 @@ struct CreateCategoryView: View {
                         Text("Save")
                             .font(FontBook.medium2)
                     })
-                    .disabled(name.isEmpty)
+                    .disabled(category.name.isEmpty)
                 }
-                .padding(.top)
                 
                 Section(content: {
                     TextField(Constants.namePlaceholder, text: $name)
@@ -63,15 +65,26 @@ struct CreateCategoryView: View {
                 })
                 
                 Spacer()
+                
+//                Button(Constants.saveButtonTitle) {
+//                    focusedField = nil
+//                    saveCategory()
+//                }
+//                .buttonStyle(MainButtonStyle())
+//                .disabled(category.name.isEmpty)
             }
-            .padding(.horizontal)
+            .padding()
             .background(.background)
         }
+        .onAppear {
+            name = category.name
+            selectedColorHex = category.colorHex
+        }
+        .navigationBarBackButtonHidden()
     }
     
+    // MARK: - Private Methods
     private func saveCategory() {
-        let category = Category(context: viewContenxt)
-        category.id = UUID()
         category.name = name
         category.colorHex = selectedColorHex ?? ColorSystem.icon.hex
         
@@ -85,8 +98,9 @@ struct CreateCategoryView: View {
 }
 
 // MARK: - Constants
-extension CreateCategoryView {
+extension EditCategoryScreenView {
     private enum Constants {
+        static let screenTitle = "Edit category"
         static let contentSpacing: CGFloat = 12
         static let colorsTitle = "Choose color"
         static let categoryNameTitle = "Category name"
@@ -94,9 +108,4 @@ extension CreateCategoryView {
         static let nameTextLength = 16
         static let saveButtonTitle = "Save"
     }
-}
-
-// MARK: - Preview
-#Preview {
-    CreateCategoryView()
 }

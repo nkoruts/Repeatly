@@ -1,13 +1,13 @@
 //
-//  CategoriesView.swift
+//  CategoriesModalView.swift
 //  Repeatly
 //
-//  Created by Nikita Koruts on 24.05.2024.
+//  Created by Nikita Koruts on 03.07.2024.
 //
 
 import SwiftUI
 
-struct CategoriesView: View {
+struct CategoriesScreenView: View {
     @Environment(\.dismiss) private var dismiss
     
     @FetchRequest(sortDescriptors: [], animation: .spring())
@@ -19,14 +19,18 @@ struct CategoriesView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
-                NavigationPanelWithToolbar(
-                    title: Constants.screenTitle,
-                    dismiss: dismiss
-                ) {
+                ModalNavigationView(title: Constants.screenTitle) {
                     Button(action: {
                         showAddCategoryScreen.toggle()
                     }, label: {
                         Image(systemName: "plus")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.button)
+                            .padding(8)
+                            .background {
+                                Circle()
+                                    .fill(.lightButton)
+                            }
                     })
                 }
                 
@@ -37,19 +41,20 @@ struct CategoriesView: View {
                         }
                     }
                 }
+                .overlay(emptyView)
             }
             .padding(.horizontal)
             .background(.background)
         }
         .navigationBarBackButtonHidden()
         .sheet(item: $editingCategory) { model in
-            EditCategoryView(category: model)
+            EditCategoryScreenView(category: model)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.hidden)
                 .presentationCornerRadius(DesignSystem.cornerRadius)
         }
         .sheet(isPresented: $showAddCategoryScreen) {
-            CreateCategoryView()
+            CreateCategoryScreenView()
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.hidden)
                 .presentationCornerRadius(DesignSystem.cornerRadius)
@@ -95,6 +100,11 @@ struct CategoriesView: View {
                 radius: Constants.shadowRadius)
     }
     
+    private var emptyView: some View {
+        ListEmptyView(title: Constants.emptyViewTitle)
+            .isHidden(!categories.isEmpty)
+    }
+    
     // MARK: - Private Methods
     private func removeCategory(_ category: Category) {
         do {
@@ -109,9 +119,10 @@ struct CategoriesView: View {
 }
 
 // MARK: - Constants
-extension CategoriesView {
+extension CategoriesScreenView {
     private enum Constants {
         static let screenTitle = "Categories"
+        static let emptyViewTitle = "Your categories is empty"
         static let contentSpacing: CGFloat = 12
         
         static let dividerWidth: CGFloat = 4
@@ -126,5 +137,5 @@ extension CategoriesView {
 
 // MARK: - Preview
 #Preview {
-    CategoriesView()
+    CategoriesScreenView()
 }

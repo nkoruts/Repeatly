@@ -11,7 +11,7 @@ import SwiftUI
 struct RepeatlyApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeScreenView()
                 .environment(\.managedObjectContext, CoreDataProvider.shared.viewContext)
         }
     }

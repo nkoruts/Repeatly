@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeScreenView: View {
     
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
@@ -33,7 +33,7 @@ struct HomeView: View {
             }
             .background(.background)
             .navigationDestination(isPresented: $showNoteCreation) {
-                CreateNoteView()
+                CreateNoteScreenView()
             }
         }
     }
@@ -64,7 +64,7 @@ struct HomeView: View {
                     Section(content: {
                         ForEach(section) { note in
                             NavigationLink {
-                                NoteDetailsView()
+                                NoteDetailsScreenView()
                                     .environmentObject(note)
                             } label: {
                                 CardView(
@@ -118,7 +118,7 @@ struct HomeView: View {
     }
 }
 
-extension HomeView {
+extension HomeScreenView {
     private enum Constants {
         static let appName = "Repeatly"
         static let addIconSystemName = "plus.app.fill"
@@ -134,5 +134,5 @@ extension HomeView {
 
 // MARK: - Preview
 #Preview {
-    HomeView()
+    HomeScreenView()
 }

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct EditNoteView: View {
+struct EditNoteScreenView: View {
     
     // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
-    @State var showCategoryAddition = false
+    @State var showCategories = false
     
     @EnvironmentObject var note: Note
     
@@ -32,15 +32,9 @@ struct EditNoteView: View {
     // MARK: - UI
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: Constants.contentSpacing) {
+            VStack(alignment: .leading, spacing: .zero) {
                 
-                HStack(alignment: .lastTextBaseline) {
-                    Text(Constants.screenTitle)
-                        .foregroundColor(.mainText)
-                        .font(FontBook.medium)
-                    
-                    Spacer()
-                    
+                ModalNavigationView(title: Constants.screenTitle) {
                     Button(action: {
                         focusedField = nil
                         saveNote()
@@ -50,16 +44,15 @@ struct EditNoteView: View {
                     })
                     .disabled(title.isEmpty)
                 }
-                .padding([.horizontal, .top])
+                .padding(.horizontal)
                 
                 ScrollView {
                     VStack(spacing: 8) {
                         Section(content: {
                             CategoriesListView(
-                                buttonIcon: "plus", 
                                 categories: categories,
                                 selectedCategory: $selectedCategory) {
-                                    showCategoryAddition.toggle()
+                                    showCategories.toggle()
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.categoryTitle)
@@ -99,9 +92,16 @@ struct EditNoteView: View {
                                 .font(FontBook.regular2)
                         })
                         .padding(.horizontal)
-                    }                }
+                    }
+                }
             }
             .background(.background)
+        }
+        .sheet(isPresented: $showCategories) {
+            CategoriesScreenView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
+                .presentationCornerRadius(DesignSystem.cornerRadius)
         }
         .onAppear {
             title = note.title
@@ -127,10 +127,9 @@ struct EditNoteView: View {
 }
 
 // MARK: - Constants
-extension EditNoteView {
+extension EditNoteScreenView {
     private enum Constants {
         static let screenTitle = "Edit Note"
-        static let contentSpacing: CGFloat = 12
         
         static let categoryTitle = "Category"
         static let noteTitle = "Note title"

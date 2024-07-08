@@ -11,12 +11,12 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            HomeView()
+            HomeScreenView()
                 .tabItem {
                     Label("Tasks", systemImage: "list.dash")
                 }
             
-            SettingsView()
+            SettingsScreenView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }

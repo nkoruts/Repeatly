@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteDetailsView: View {
+struct NoteDetailsScreenView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var note: Note
     
@@ -48,8 +48,8 @@ struct NoteDetailsView: View {
         }
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $editNote) {
-            EditNoteView()
-                .presentationDetents([.medium, .large])
+            EditNoteScreenView()
+                .presentationDetents([.large])
                 .presentationDragIndicator(.hidden)
                 .presentationCornerRadius(DesignSystem.cornerRadius)
                 .environmentObject(note)
@@ -101,7 +101,7 @@ struct NoteDetailsView: View {
 }
 
 // MARK: - Constants
-extension NoteDetailsView {
+extension NoteDetailsScreenView {
     private enum Constants {
         static let contentSpacing: CGFloat = 8
         static let staticNavWidth: CGFloat = 75

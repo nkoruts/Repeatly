@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct CreateNoteView: View {
+struct CreateNoteScreenView: View {
     
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @State private var showCategories: Bool = false
+    @State private var showAddCategories: Bool = false
     
     @FocusState private var focusedField: FocusedField?
     private enum FocusedField: Hashable {
@@ -40,10 +41,9 @@ struct CreateNoteView: View {
                     VStack(spacing: 8) {
                         Section(content: {
                             CategoriesListView(
-                                buttonIcon: "ellipsis",
                                 categories: categories,
                                 selectedCategory: $selectedCategory) {
-                                    showCategories.toggle()
+                                    categories.isEmpty ? showAddCategories.toggle() : showCategories.toggle()
                                 }
                         }, header: {
                             SectionHeaderView(title: Constants.categoryTitle)
@@ -98,8 +98,17 @@ struct CreateNoteView: View {
             .background(.background)
         }
         .navigationBarBackButtonHidden()
-        .navigationDestination(isPresented: $showCategories) {
-            CategoriesView()
+        .sheet(isPresented: $showAddCategories) {
+            CreateCategoryScreenView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
+                .presentationCornerRadius(DesignSystem.cornerRadius)
+        }
+        .sheet(isPresented: $showCategories) {
+            CategoriesScreenView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
+                .presentationCornerRadius(DesignSystem.cornerRadius)
         }
     }
     
@@ -132,7 +141,7 @@ struct CreateNoteView: View {
 }
 
 // MARK: - Constants
-extension CreateNoteView {
+extension CreateNoteScreenView {
     private enum Constants {
         static let screenTitle = "Create Note"
         static let contentSpacing: CGFloat = 12
@@ -152,5 +161,5 @@ extension CreateNoteView {
 
 // MARK: - Preview
 #Preview {
-    CreateNoteView()
+    CreateNoteScreenView()
 }
