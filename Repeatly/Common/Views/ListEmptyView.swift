@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListEmptyView: View {
     var title: String
-    var description: String
+    var description: String?
     
     var body: some View {
         VStack(spacing: 16) {
@@ -21,11 +21,13 @@ struct ListEmptyView: View {
                     .font(FontBook.semibold2)
                     .foregroundColor(.mainText)
                 .lineLimit(1)
-                Text(description)
-                    .font(FontBook.regular3)
-                    .foregroundColor(.mainText)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 32)
+                if let description = description {
+                    Text(description)
+                        .font(FontBook.regular3)
+                        .foregroundColor(.mainText)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 32)
+                }
             }
         }
         .padding(.bottom, 100)
