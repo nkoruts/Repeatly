@@ -19,6 +19,8 @@ struct HomeScreenView: View {
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
+    @State private var searchModeEnabled = false
+    @State private var searchedNote = ""
     @State private var showNoteCreation = false
     
     // MARK: - UI
@@ -27,13 +29,16 @@ struct HomeScreenView: View {
             VStack(spacing: Constants.cardsSpacing) {
                 navigationView
                     .padding([.horizontal, .top])
-                
                 notesList
                     .overlay(emptyView)
             }
             .background(.background)
             .navigationDestination(isPresented: $showNoteCreation) {
                 CreateNoteScreenView()
+            }
+            .navigationDestination(for: Note.self) { note in
+                NoteDetailsScreenView()
+                    .environmentObject(note)
             }
         }
     }
@@ -47,12 +52,34 @@ struct HomeScreenView: View {
                     .font(FontBook.semibold)
                 Spacer()
                 Button(action: {
+                    withAnimation {
+                        searchModeEnabled.toggle()
+                    }
+                }, label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(Constants.searchIconFont)
+                        .foregroundColor(.icon)
+                })
+                .isHidden(noteSections.isEmpty)
+                Button(action: {
                     showNoteCreation = true
                 }, label: {
                     Image(systemName: Constants.addIconSystemName)
                         .font(Constants.addIconFont)
                         .foregroundColor(.button)
                 })
+            }
+            
+            
+            if searchModeEnabled {
+                TextField(Constants.searchPlaceholder, text: $searchedNote)
+                    .textLimit(Constants.searchedTextLength, $searchedNote)
+                    .textFieldStyle(BorderedTextFieldStyle())
+    //                .focused($focusedField, equals: .title)
+                    .submitLabel(.search)
+    //                .onSubmit {
+    //                    focusedField = .details
+    //                }
             }
         }
     }
@@ -63,10 +90,7 @@ struct HomeScreenView: View {
                 ForEach(noteSections) { section in
                     Section(content: {
                         ForEach(section) { note in
-                            NavigationLink {
-                                NoteDetailsScreenView()
-                                    .environmentObject(note)
-                            } label: {
+                            NavigationLink(value: note) {
                                 CardView(
                                     note: note,
                                     repeatAction: { repeatNote(note) },
@@ -118,14 +142,18 @@ struct HomeScreenView: View {
     }
 }
 
-extension HomeScreenView {
-    private enum Constants {
+private extension HomeScreenView {
+     enum Constants {
         static let appName = "Repeatly"
         static let addIconSystemName = "plus.app.fill"
         
+        static let searchIconFont: Font = .system(size: 28)
         static let addIconFont: Font = .system(size: 34)
         static let navigationPanelSpacing: CGFloat = 12
         static let cardsSpacing: CGFloat = 16
+        
+        static let searchPlaceholder = "Note name"
+        static let searchedTextLength = 20
         
         static let emptyViewTitle = "Your notes is empty"
         static let emptyViewDescription = "Create a new Note to get started on spaced repetition"
