@@ -46,6 +46,8 @@
 		168838DD2C0CCF4800052DE1 /* NoteDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838DC2C0CCF4800052DE1 /* NoteDetailsScreenView.swift */; };
 		168838DF2C0CF1E200052DE1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838DE2C0CF1E200052DE1 /* Action.swift */; };
 		168838E22C0DFCF400052DE1 /* ColorIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838E12C0DFCF400052DE1 /* ColorIconButton.swift */; };
+		168F9E5D2CB6579000C4B2DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */; };
+		168F9E5F2CB659DF00C4B2DE /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */; };
 		169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
@@ -100,6 +102,8 @@
 		168838DC2C0CCF4800052DE1 /* NoteDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsScreenView.swift; sourceTree = "<group>"; };
 		168838DE2C0CF1E200052DE1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		168838E12C0DFCF400052DE1 /* ColorIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorIconButton.swift; sourceTree = "<group>"; };
+		168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
 		169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryScreenView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -309,7 +313,6 @@
 				167656D72B8202D8003D2A68 /* ColorSystem.swift */,
 				166301432B7B700800EC6870 /* Logger.swift */,
 				167656DB2B823B69003D2A68 /* DesignSystem.swift */,
-				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				162247D72B64F537007A61EF /* RepeatlyApp.swift */,
+				168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -341,7 +345,9 @@
 		16770D812B65C8D1000E0CAC /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
 				160ECD342B6B7F300025A1D6 /* Storage */,
+				168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -515,9 +521,11 @@
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
 				167849C92C2001A200325A45 /* EditNoteScreenView.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
+				168F9E5F2CB659DF00C4B2DE /* LocalNotificationScheduler.swift in Sources */,
 				169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */,
 				168838DD2C0CCF4800052DE1 /* NoteDetailsScreenView.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
+				168F9E5D2CB6579000C4B2DE /* AppDelegate.swift in Sources */,
 				160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */,
 				166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
