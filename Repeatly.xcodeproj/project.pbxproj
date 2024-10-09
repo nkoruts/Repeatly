@@ -55,6 +55,7 @@
 		16E478AF2BFB449500CE588D /* CreateCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478AE2BFB449500CE588D /* CreateCategoryScreenView.swift */; };
 		16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */; };
 		16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */; };
+		16ED3F042CB3E72700CF7273 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED3F032CB3E72700CF7273 /* SearchTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		16E478AE2BFB449500CE588D /* CreateCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryScreenView.swift; sourceTree = "<group>"; };
 		16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerButtonView.swift; sourceTree = "<group>"; };
+		16ED3F032CB3E72700CF7273 /* SearchTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				162248012B65156A007A61EF /* CardView.swift */,
 				168838E12C0DFCF400052DE1 /* ColorIconButton.swift */,
 				1666930F2B6785A9008F8850 /* NoteCategoryView.swift */,
+				16ED3F032CB3E72700CF7273 /* SearchTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				167656DC2B823B69003D2A68 /* DesignSystem.swift in Sources */,
 				166301442B7B700800EC6870 /* Logger.swift in Sources */,
 				16110F372B6A6AEE00471512 /* BackButton.swift in Sources */,
+				16ED3F042CB3E72700CF7273 /* SearchTextView.swift in Sources */,
 				1653575C2C35A50A00AA7627 /* CategoriesScreenView.swift in Sources */,
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,

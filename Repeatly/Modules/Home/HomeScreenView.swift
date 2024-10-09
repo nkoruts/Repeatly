@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeScreenView: View {
     
@@ -15,12 +16,21 @@ struct HomeScreenView: View {
     @SectionedFetchRequest(
         sectionIdentifier: \.nextRepetitionDate,
         sortDescriptors: [.init(keyPath: \Note.repetition.nextDate, ascending: true)],
-        predicate: .init(format: "isArchived == false"),
+        predicate: nil,
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
+    private var notesPredicate: NSPredicate {
+        var predicates = [NSPredicate(format: "isArchived == false")]
+        if !searchText.isEmpty {
+            let searchPredicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            predicates.append(searchPredicate)
+        }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+    }
+    
     @State private var searchModeEnabled = false
-    @State private var searchedNote = ""
+    @State private var searchText = ""
     @State private var showNoteCreation = false
     
     // MARK: - UI
@@ -40,6 +50,9 @@ struct HomeScreenView: View {
                 NoteDetailsScreenView()
                     .environmentObject(note)
             }
+            .onAppear {
+                updatePredicates()
+            }
         }
     }
     
@@ -50,36 +63,42 @@ struct HomeScreenView: View {
                 Text(Constants.appName)
                     .foregroundColor(.mainText)
                     .font(FontBook.semibold)
+                
                 Spacer()
-                Button(action: {
+                
+                Button(action: { // Search Button
                     withAnimation {
-                        searchModeEnabled.toggle()
+                        searchModeEnabled = true
+                        updatePredicates()
                     }
                 }, label: {
                     Image(systemName: "magnifyingglass")
                         .font(Constants.searchIconFont)
-                        .foregroundColor(.icon)
+                        .foregroundColor(searchText.isEmpty ? .icon : .button)
                 })
-                .isHidden(noteSections.isEmpty)
-                Button(action: {
-                    showNoteCreation = true
-                }, label: {
-                    Image(systemName: Constants.addIconSystemName)
-                        .font(Constants.addIconFont)
-                        .foregroundColor(.button)
-                })
+                .isHidden(noteSections.isEmpty && !searchModeEnabled)
+                
+                if !searchModeEnabled {
+                    Button(action: {
+                        showNoteCreation = true
+                    }, label: {
+                        Image(systemName: Constants.addIconSystemName)
+                            .font(Constants.addIconFont)
+                            .foregroundColor(.button)
+                    })
+                }
             }
             
-            
             if searchModeEnabled {
-                TextField(Constants.searchPlaceholder, text: $searchedNote)
-                    .textLimit(Constants.searchedTextLength, $searchedNote)
-                    .textFieldStyle(BorderedTextFieldStyle())
-    //                .focused($focusedField, equals: .title)
-                    .submitLabel(.search)
-    //                .onSubmit {
-    //                    focusedField = .details
-    //                }
+                SearchTextView(
+                    searchText: $searchText,
+                    placeholder: Constants.searchPlaceholder) {
+                        withAnimation {
+                            searchText = ""
+                            searchModeEnabled = false
+                            updatePredicates()
+                        }
+                    }
             }
         }
     }
@@ -116,6 +135,10 @@ struct HomeScreenView: View {
     }
     
     // MARK: - Private Methods
+    private func updatePredicates() {
+        noteSections.nsPredicate = notesPredicate
+    }
+    
     private func repeatNote(_ note: Note) {
         do {
             try note.updateRepetition()
