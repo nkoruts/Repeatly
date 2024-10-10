@@ -136,6 +136,10 @@ struct CreateNoteScreenView: View {
         let repetitionIntervals = RepetitionManager.sharing.defaultRepetitionIntervals()
         repetition.nextDate = repetitionIntervals[0]
         repetition.allDates = repetitionIntervals
+        repetitionIntervals.forEach {
+            LocalNotificationScheduler.instance.schedule(
+                .init(title: "Repeat your knowledge", date: $0))
+        }
         return repetition
     }
 }
