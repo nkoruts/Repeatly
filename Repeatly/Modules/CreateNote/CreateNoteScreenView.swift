@@ -120,6 +120,7 @@ struct CreateNoteScreenView: View {
         newNote.details = !details.isEmpty ? details : nil
         newNote.isArchived = false
 
+        // TODO: - Async task
         newNote.category = selectedCategory
         newNote.repetition = createRepetition()
         
@@ -133,13 +134,11 @@ struct CreateNoteScreenView: View {
         
     private func createRepetition() -> Repetition {
         let repetition = Repetition(context: viewContext)
-        let repetitionIntervals = RepetitionManager.sharing.defaultRepetitionIntervals()
-        repetition.nextDate = repetitionIntervals[0]
-        repetition.allDates = repetitionIntervals
-        repetitionIntervals.forEach {
-            LocalNotificationScheduler.instance.schedule(
-                .init(title: "Repeat your knowledge", date: $0))
-        }
+        let repetitionConfiguration = RepetitionManager.defaultRepetition
+        repetition.nextDate = repetitionConfiguration.nextDate
+        repetition.dayIntervals = repetitionConfiguration.dayIntervals
+        LocalNotificationScheduler.instance.schedule(
+            .init(title: "Repeat your knowledge", date: repetitionConfiguration.nextDate))
         return repetition
     }
 }

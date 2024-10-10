@@ -8,6 +8,16 @@
 import Foundation
 import UserNotifications
 
+// Создаём нотификацию только для nextDate заметки
+// У нас есть список [Date: [Note]]
+
+/// Public Methods:
+///     - schedule(note: Note, )
+///     - removeNotification()
+///     - updateNotification()
+///
+///
+
 struct LocalNotificationContent {
     let title: String
     let date: Date
@@ -15,7 +25,14 @@ struct LocalNotificationContent {
 
 class LocalNotificationScheduler {
     static let instance = LocalNotificationScheduler()
-    private init() { }
+    
+    private init() {
+//        UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
+//            scheduledDays = notifications.compactMap {
+//                $0.trigger
+//            }
+//        }
+    }
     
     private var scheduledDays: Set<Date> = []
     
@@ -29,7 +46,9 @@ class LocalNotificationScheduler {
         notificationContent.title = notification.title
         notificationContent.sound = .default
         
-        let triggerComponents = Calendar.current.dateComponents([.year, .month, .day], from: notification.date)
+        var triggerComponents = Calendar.current.dateComponents([.year, .month, .day], from: notification.date)
+        triggerComponents.hour = 12
+        triggerComponents.minute = 0
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
         createNotificationRequest(content: notificationContent, trigger: trigger)
     }

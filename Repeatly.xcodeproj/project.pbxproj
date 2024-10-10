@@ -345,8 +345,8 @@
 		16770D812B65C8D1000E0CAC /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
 				160ECD342B6B7F300025A1D6 /* Storage */,
+				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
 				168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */,
 			);
 			path = CoreLayer;

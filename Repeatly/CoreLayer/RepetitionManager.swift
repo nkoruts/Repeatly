@@ -7,26 +7,15 @@
 
 import Foundation
 
+struct RepetitionModel {
+    var nextDate: Date
+    var dayIntervals: [UInt16]
+}
+
 struct RepetitionManager {
-    static let sharing = RepetitionManager()
-    private init() { }
-    
-    func defaultRepetitionIntervals() -> [Date] {
-        let dayIntervals = [1, 3, 7, 14, 28, 56]
-        return getTimestamps(for: dayIntervals)
-    }
-    
-    private func getTimestamps(for days: [Int]) -> [Date] {
-        var dateComponents = DateComponents()
-        let calendar = Calendar.current
-        var lastTimestamp = Date()
-        
-        return days.map {
-            dateComponents.day = $0
-            lastTimestamp = calendar.date(
-                byAdding: dateComponents,
-                to: lastTimestamp) ?? Date()
-            return lastTimestamp
-        }
+    static var defaultRepetition: RepetitionModel {
+        let nextDate = Date()
+        let repetitionIntervals: [UInt16] = [1, 3, 7, 14, 28, 56]
+        return RepetitionModel(nextDate: nextDate, dayIntervals: repetitionIntervals)
     }
 }

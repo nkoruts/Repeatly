@@ -30,14 +30,19 @@ public class Note: NSManagedObject, Identifiable, Model {
     }
     
     func updateRepetition() throws {
-        let allDates = repetition.allDates
-        guard let nextDateIndex = allDates.firstIndex(of: repetition.nextDate) else { return }
-        
-        if nextDateIndex < allDates.count - 1 {
-            repetition.nextDate = allDates[nextDateIndex + 1]
-        } else {
-            self.isArchived = true
+        defer {
+            do { try save() }
+            catch { log(error) }
         }
-        try save()
+        
+        guard repetition.dayIntervals.count > 0 else {
+            self.isArchived = true
+            return
+        }
+        
+        guard let firstInterval = repetition.dayIntervals.first,
+              let nextDate = Calendar.current.date(byAdding: .day, value: Int(firstInterval), to: Date())
+        else { return }
+        repetition.nextDate = nextDate
     }
 }
