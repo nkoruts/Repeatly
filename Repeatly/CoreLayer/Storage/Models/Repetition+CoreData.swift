@@ -16,6 +16,10 @@ public class Repetition: NSManagedObject, Identifiable, Model {
     }
     
     @NSManaged public var nextDate: Date
-    @NSManaged public var currentInterval: UInt16
-    @NSManaged public var dayIntervals: [UInt16]
+    @NSManaged public var currentIntervalIndex: Int16
+    @NSManaged public var dayIntervals: [Int16]
+    
+    public var isLastInterval: Bool {
+        currentIntervalIndex + 1 == dayIntervals.count
+    }
 }

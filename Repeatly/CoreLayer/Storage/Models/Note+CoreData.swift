@@ -30,19 +30,21 @@ public class Note: NSManagedObject, Identifiable, Model {
     }
     
     func updateRepetition() throws {
-        defer {
-            do { try save() }
-            catch { log(error) }
-        }
-        
-        guard repetition.dayIntervals.count > 0 else {
+        guard !repetition.isLastInterval, !repetition.dayIntervals.isEmpty else {
             self.isArchived = true
+            try save()
             return
         }
         
-        guard let firstInterval = repetition.dayIntervals.first,
-              let nextDate = Calendar.current.date(byAdding: .day, value: Int(firstInterval), to: Date())
-        else { return }
+        repetition.currentIntervalIndex += 1
+        let currentInterval = repetition.dayIntervals[Int(repetition.currentIntervalIndex)]
+        
+        guard let nextDate = Calendar.current.date(
+            byAdding: .day,
+            value: Int(currentInterval),
+            to: Date()) else { return }
+        
         repetition.nextDate = nextDate
+        try save()
     }
 }

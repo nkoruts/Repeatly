@@ -15,7 +15,8 @@
         <relationship name="repetition" maxCount="1" deletionRule="Cascade" destinationEntity="Repetition" inverseName="note" inverseEntity="Repetition"/>
     </entity>
     <entity name="Repetition" representedClassName="Repetition" syncable="YES">
-        <attribute name="allDates" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="currentIntervalIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dayIntervals" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="nextDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="note" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="repetition" inverseEntity="Note"/>
     </entity>
