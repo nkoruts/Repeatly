@@ -115,14 +115,19 @@ struct CreateNoteScreenView: View {
     // MARK: - Private Methods
     private func saveNote() {
         let newNote = Note(context: viewContext)
-        newNote.id = UUID()
+        let noteId = UUID()
+        newNote.id = noteId
         newNote.title = title
         newNote.details = !details.isEmpty ? details : nil
         newNote.isArchived = false
 
         // TODO: - Async task
         newNote.category = selectedCategory
-        newNote.repetition = createRepetition()
+        let repetition = createRepetition()
+        newNote.repetition = repetition
+        RepetitionScheduler.instance.schedule(
+            noteId: noteId.uuidString,
+            repetitionDate: repetition.nextDate)
         
         do {
             try newNote.save()
@@ -137,8 +142,6 @@ struct CreateNoteScreenView: View {
         let repetitionConfiguration = RepetitionManager.defaultRepetition
         repetition.nextDate = repetitionConfiguration.nextDate
         repetition.dayIntervals = repetitionConfiguration.dayIntervals
-        LocalNotificationScheduler.instance.schedule(
-            .init(title: "Repeat your knowledge", date: repetitionConfiguration.nextDate))
         return repetition
     }
 }

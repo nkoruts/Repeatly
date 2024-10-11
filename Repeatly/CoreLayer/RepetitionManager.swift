@@ -14,8 +14,10 @@ struct RepetitionModel {
 
 struct RepetitionManager {
     static var defaultRepetition: RepetitionModel {
-        let nextDate = Date()
         let repetitionIntervals: [Int16] = [1, 3, 7, 14, 28, 56]
-        return RepetitionModel(nextDate: nextDate, dayIntervals: repetitionIntervals)
+        let firstInterval = Int(repetitionIntervals[0])
+        let nextDate = Calendar.current.date(byAdding: .day, value: firstInterval, to: Date()) ?? Date()
+        let day = Calendar.current.startOfDay(for: nextDate)
+        return RepetitionModel(nextDate: day, dayIntervals: repetitionIntervals)
     }
 }

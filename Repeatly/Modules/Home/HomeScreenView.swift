@@ -149,6 +149,10 @@ struct HomeScreenView: View {
     }
     
     private func deleteNote(_ note: Note) {
+        RepetitionScheduler.instance.remove(
+            noteId: note.id.uuidString,
+            lastRepetitionDate: note.repetition.nextDate)
+        
         do {
             try note.delete()
         } catch {

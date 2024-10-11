@@ -20,4 +20,8 @@
         <attribute name="nextDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="note" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="repetition" inverseEntity="Note"/>
     </entity>
+    <entity name="ScheduledNotification" representedClassName="ScheduledNotification" syncable="YES">
+        <attribute name="noteIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="notificationId" attributeType="String"/>
+    </entity>
 </model>

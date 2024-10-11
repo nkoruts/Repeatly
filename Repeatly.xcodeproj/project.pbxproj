@@ -47,13 +47,15 @@
 		168838DF2C0CF1E200052DE1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838DE2C0CF1E200052DE1 /* Action.swift */; };
 		168838E22C0DFCF400052DE1 /* ColorIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838E12C0DFCF400052DE1 /* ColorIconButton.swift */; };
 		168F9E5D2CB6579000C4B2DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */; };
-		168F9E5F2CB659DF00C4B2DE /* LocalNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */; };
+		168F9E5F2CB659DF00C4B2DE /* RepetitionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */; };
 		169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
 		16B97C072CB1830C00BC9691 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */; };
+		16D298222CB92F0F00759D8A /* ScheduledNotification+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D298212CB92F0F00759D8A /* ScheduledNotification+CoreData.swift */; };
+		16D298242CB9367700759D8A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D298232CB9367700759D8A /* NotificationService.swift */; };
 		16E478AF2BFB449500CE588D /* CreateCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478AE2BFB449500CE588D /* CreateCategoryScreenView.swift */; };
 		16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */; };
 		16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */; };
@@ -103,13 +105,15 @@
 		168838DE2C0CF1E200052DE1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		168838E12C0DFCF400052DE1 /* ColorIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorIconButton.swift; sourceTree = "<group>"; };
 		168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationScheduler.swift; sourceTree = "<group>"; };
+		168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionScheduler.swift; sourceTree = "<group>"; };
 		169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryScreenView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		16D298212CB92F0F00759D8A /* ScheduledNotification+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotification+CoreData.swift"; sourceTree = "<group>"; };
+		16D298232CB9367700759D8A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		16E478AE2BFB449500CE588D /* CreateCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryScreenView.swift; sourceTree = "<group>"; };
 		16E478B12BFCDB6E00CE588D /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		16E478B42BFDC31500CE588D /* ColorPickerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerButtonView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				160ECD2F2B6B7E090025A1D6 /* Note+CoreData.swift */,
 				160ECD2D2B6B7E090025A1D6 /* Category+CoreData.swift */,
 				160ECD362B6BC2C50025A1D6 /* Repetition+CoreData.swift */,
+				16D298212CB92F0F00759D8A /* ScheduledNotification+CoreData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,7 +352,8 @@
 			children = (
 				160ECD342B6B7F300025A1D6 /* Storage */,
 				165A18482C253C7400D03F7E /* RepetitionManager.swift */,
-				168F9E5E2CB659DF00C4B2DE /* LocalNotificationScheduler.swift */,
+				168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */,
+				16D298232CB9367700759D8A /* NotificationService.swift */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				166A67802B6D689200102BA5 /* CategoriesListView.swift in Sources */,
 				166A67862B6F914900102BA5 /* Repeatly.xcdatamodeld in Sources */,
 				16E478B52BFDC31500CE588D /* ColorPickerButtonView.swift in Sources */,
+				16D298222CB92F0F00759D8A /* ScheduledNotification+CoreData.swift in Sources */,
 				16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */,
 				1653575F2C35B18000AA7627 /* ModalNavigationView.swift in Sources */,
 				167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */,
@@ -521,7 +528,7 @@
 				162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */,
 				167849C92C2001A200325A45 /* EditNoteScreenView.swift in Sources */,
 				162248062B657B5A007A61EF /* Color+Ext.swift in Sources */,
-				168F9E5F2CB659DF00C4B2DE /* LocalNotificationScheduler.swift in Sources */,
+				168F9E5F2CB659DF00C4B2DE /* RepetitionScheduler.swift in Sources */,
 				169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */,
 				168838DD2C0CCF4800052DE1 /* NoteDetailsScreenView.swift in Sources */,
 				162248022B65156A007A61EF /* CardView.swift in Sources */,
@@ -534,6 +541,7 @@
 				169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */,
 				16B621192BF317D60095DE91 /* Model.swift in Sources */,
 				162247ED2B6500EC007A61EF /* HomeScreenView.swift in Sources */,
+				16D298242CB9367700759D8A /* NotificationService.swift in Sources */,
 				168838E22C0DFCF400052DE1 /* ColorIconButton.swift in Sources */,
 				16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */,
 				1668329E2B680C9A00576DA5 /* SettingsScreenView.swift in Sources */,

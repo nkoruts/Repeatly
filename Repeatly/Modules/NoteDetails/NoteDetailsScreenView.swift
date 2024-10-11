@@ -83,6 +83,7 @@ struct NoteDetailsScreenView: View {
     private func updateRepetition() {
         do {
             try note.updateRepetition()
+            RepetitionScheduler.instance.
             note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
             dismiss()
         } catch {
