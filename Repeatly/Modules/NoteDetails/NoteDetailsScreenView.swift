@@ -83,7 +83,7 @@ struct NoteDetailsScreenView: View {
     private func updateRepetition() {
         do {
             try note.updateRepetition()
-            RepetitionScheduler.instance.
+            RepetitionScheduler.instance.update(noteId: note.id.uuidString, repetitionDate: note.repetition.nextDate)
             note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
             dismiss()
         } catch {

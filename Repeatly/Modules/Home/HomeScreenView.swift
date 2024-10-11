@@ -142,6 +142,7 @@ struct HomeScreenView: View {
     private func repeatNote(_ note: Note) {
         do {
             try note.updateRepetition()
+            RepetitionScheduler.instance.update(noteId: note.id.uuidString, repetitionDate: note.repetition.nextDate)
             note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
         } catch {
             log(error)
@@ -149,9 +150,7 @@ struct HomeScreenView: View {
     }
     
     private func deleteNote(_ note: Note) {
-        RepetitionScheduler.instance.remove(
-            noteId: note.id.uuidString,
-            lastRepetitionDate: note.repetition.nextDate)
+        RepetitionScheduler.instance.remove(noteId: note.id.uuidString)
         
         do {
             try note.delete()

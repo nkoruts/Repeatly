@@ -23,44 +23,59 @@ class RepetitionScheduler {
     func schedule(noteId: String, repetitionDate: Date) {
         let identifier = transformDateToIdentifier(repetitionDate)
         
-        if let scheduledNotification = scheduledNotifications.first(where: { $0.notificationId == identifier }) {
-            scheduledNotification.noteIds.append(noteId)
-            updateScheduledNotification(scheduledNotification)
-        } else {
-            createScheduledNotification(withIdentifier: identifier, noteId: noteId)
+        if scheduledNotifications.filter({ $0.notificationId == identifier }).isEmpty  {
             NotificationService().createNotification(withIdentifier: identifier, date: repetitionDate)
         }
+        createScheduledNotification(withIdentifier: identifier, noteId: noteId)
     }
     
-    func update(noteId: String) {
+    func update(noteId: String, repetitionDate: Date) {
+        guard let scheduledNotification = scheduledNotifications.first(where: { $0.noteId == noteId }) else { return }
         
-    }
-
-    func remove(noteId: String, lastRepetitionDate: Date) {
-        let identifier = transformDateToIdentifier(lastRepetitionDate)
-        
-        guard let scheduledNotification = scheduledNotifications.first(where: { $0.notificationId == identifier }) else { return }
-        scheduledNotification.noteIds.removeAll(where: { $0 == noteId })
-        
-        if scheduledNotification.noteIds.isEmpty {
-            NotificationService().removeNotification(withIdentifier: identifier)
+        if scheduledNotifications.filter({ $0.notificationId == scheduledNotification.notificationId }).count <= 1 {
+            NotificationService().removeNotification(withIdentifier: scheduledNotification.notificationId)
         }
         
-        updateScheduledNotification(scheduledNotification)
+        let identifier = transformDateToIdentifier(repetitionDate)
+        if scheduledNotifications.filter({ $0.notificationId == identifier }).isEmpty {
+            NotificationService().createNotification(withIdentifier: identifier, date: repetitionDate)
+        }
+        
+        scheduledNotification.notificationId = identifier
+        saveScheduledNotification(scheduledNotification)
+    }
+
+    func remove(noteId: String) {
+        guard let scheduledNotification = scheduledNotifications.first(where: { $0.noteId == noteId }) else { return }
+        
+        if scheduledNotifications.filter({ $0.notificationId == scheduledNotification.notificationId }).count <= 1 {
+            NotificationService().removeNotification(withIdentifier: scheduledNotification.notificationId)
+        }
+        
+        deleteScheduledNotification(scheduledNotification)
     }
     
     // MARK: - Private Methods
     private func createScheduledNotification(withIdentifier identifier: String, noteId: String) {
         let scheduledNotification = ScheduledNotification(context: context)
         scheduledNotification.notificationId = identifier
-        scheduledNotification.noteIds = [noteId]
+        scheduledNotification.noteId = noteId
         
-        updateScheduledNotification(scheduledNotification)
+        saveScheduledNotification(scheduledNotification)
     }
     
-    private func updateScheduledNotification(_ scheduledNotification: ScheduledNotification) {
+    private func saveScheduledNotification(_ scheduledNotification: ScheduledNotification) {
         do {
             try scheduledNotification.save()
+            fetchScheduledNotifications()
+        } catch {
+            log(error)
+        }
+    }
+    
+    private func deleteScheduledNotification(_ scheduledNotification: ScheduledNotification) {
+        do {
+            try scheduledNotification.delete()
             fetchScheduledNotifications()
         } catch {
             log(error)

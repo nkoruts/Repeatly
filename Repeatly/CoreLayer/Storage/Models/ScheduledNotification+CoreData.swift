@@ -16,12 +16,12 @@ import Foundation
 import CoreData
 
 @objc(ScheduledNotification)
-public class ScheduledNotification: NSManagedObject, Identifiable, Model {
+public class ScheduledNotification: NSManagedObject, Model {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ScheduledNotification> {
         return NSFetchRequest<ScheduledNotification>(entityName: "ScheduledNotification")
     }
     
     @NSManaged public var notificationId: String
-    @NSManaged public var noteIds: [String]
+    @NSManaged public var noteId: String
 }
