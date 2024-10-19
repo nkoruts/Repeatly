@@ -20,9 +20,9 @@ struct CategoryView: View {
                 .font(FontBook.medium3)
                 .foregroundColor(.white)
                 .padding(.horizontal)
-                .padding(.vertical, 8)
+                .padding(.vertical, 7)
                 .background(
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 12)
                      .fill(isSelected ? color : color.opacity(0.4))
                 )
         })
