@@ -15,6 +15,7 @@ public class Repetition: NSManagedObject, Identifiable, Model {
         return NSFetchRequest<Repetition>(entityName: "Repetition")
     }
     
+    @NSManaged public var startDate: Date
     @NSManaged public var nextDate: Date
     @NSManaged public var currentIntervalIndex: Int16
     @NSManaged public var dayIntervals: [Int16]
