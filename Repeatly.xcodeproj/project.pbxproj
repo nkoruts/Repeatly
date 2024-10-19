@@ -25,6 +25,7 @@
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
 		162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162248032B65194D007A61EF /* Gilroy-SemiBold.otf */; };
 		162248062B657B5A007A61EF /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248052B657B5A007A61EF /* Color+Ext.swift */; };
+		162CC7812CC26152009AE781 /* IntervalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CC7802CC26152009AE781 /* IntervalPickerView.swift */; };
 		164870582B70C3E0000BD34B /* ListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870572B70C3E0000BD34B /* ListEmptyView.swift */; };
 		1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164870592B70D015000BD34B /* MainButtonStyle.swift */; };
 		1653575C2C35A50A00AA7627 /* CategoriesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1653575B2C35A50A00AA7627 /* CategoriesScreenView.swift */; };
@@ -50,6 +51,7 @@
 		168F9E5F2CB659DF00C4B2DE /* RepetitionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */; };
 		169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
+		169D04382CBD353600589F1D /* RepetitionIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D04372CBD353600589F1D /* RepetitionIntervals.swift */; };
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
@@ -83,6 +85,7 @@
 		162248012B65156A007A61EF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		162248032B65194D007A61EF /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
 		162248052B657B5A007A61EF /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		162CC7802CC26152009AE781 /* IntervalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalPickerView.swift; sourceTree = "<group>"; };
 		164870572B70C3E0000BD34B /* ListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmptyView.swift; sourceTree = "<group>"; };
 		164870592B70D015000BD34B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		1653575B2C35A50A00AA7627 /* CategoriesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenView.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionScheduler.swift; sourceTree = "<group>"; };
 		169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryScreenView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		169D04372CBD353600589F1D /* RepetitionIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionIntervals.swift; sourceTree = "<group>"; };
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -165,12 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				1653575D2C35B17800AA7627 /* Navigation */,
-				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
-				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
-				16110F362B6A6AEE00471512 /* BackButton.swift */,
 				16E478B62BFDC34200CE588D /* CategoriesListView */,
 				16E478B32BFDBB0600CE588D /* ColorPickerView */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
+				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
+				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
+				16110F362B6A6AEE00471512 /* BackButton.swift */,
+				169D04372CBD353600589F1D /* RepetitionIntervals.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				16E478B02BFB44B000CE588D /* CreateCategory */,
 				169A10A32C0638E8003D2CAB /* EditCategory */,
 				1668329F2B680C9D00576DA5 /* Settings */,
+				162CC7802CC26152009AE781 /* IntervalPickerView.swift */,
 				16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */,
 			);
 			path = Modules;
@@ -500,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16E478AF2BFB449500CE588D /* CreateCategoryScreenView.swift in Sources */,
+				162CC7812CC26152009AE781 /* IntervalPickerView.swift in Sources */,
 				168838DF2C0CF1E200052DE1 /* Action.swift in Sources */,
 				16110F352B6A66C400471512 /* NavigationTopView.swift in Sources */,
 				1668329C2B680BB000576DA5 /* MainView.swift in Sources */,
@@ -520,6 +527,7 @@
 				167656D62B81F9B0003D2A68 /* FontBook.swift in Sources */,
 				16E478B22BFCDB6E00CE588D /* ColorPickerView.swift in Sources */,
 				1648705A2B70D015000BD34B /* MainButtonStyle.swift in Sources */,
+				169D04382CBD353600589F1D /* RepetitionIntervals.swift in Sources */,
 				16110F312B6A624600471512 /* View+Ext.swift in Sources */,
 				166A677E2B6D621700102BA5 /* CategoryView.swift in Sources */,
 				166832A12B680EF900576DA5 /* CreateNoteScreenView.swift in Sources */,
