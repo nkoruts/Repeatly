@@ -20,18 +20,28 @@ struct HomeScreenView: View {
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
+    @FetchRequest(sortDescriptors: [])
+    private var categories: FetchedResults<Category>
+    
+    @State private var selectedCategory: Category?
+    @State private var searchModeEnabled = false
+    @State private var searchText = ""
+    
+    @State private var showCategories: Bool = false
+    @State private var showNoteCreation = false
+    
     private var notesPredicate: NSPredicate {
         var predicates = [NSPredicate(format: "isArchived == false")]
         if !searchText.isEmpty {
             let searchPredicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
             predicates.append(searchPredicate)
         }
+        if let selectedCategory = selectedCategory {
+            let searchPredicate = NSPredicate(format: "category == %@", selectedCategory)
+            predicates.append(searchPredicate)
+        }
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
-    
-    @State private var searchModeEnabled = false
-    @State private var searchText = ""
-    @State private var showNoteCreation = false
     
     // MARK: - UI
     var body: some View {
@@ -39,6 +49,11 @@ struct HomeScreenView: View {
             VStack(spacing: Constants.cardsSpacing) {
                 navigationView
                     .padding([.horizontal, .top])
+                
+                if !categories.isEmpty {
+                    categoriesView
+                }
+                
                 notesList
                     .overlay(emptyView)
             }
@@ -49,6 +64,12 @@ struct HomeScreenView: View {
             .navigationDestination(for: Note.self) { note in
                 NoteDetailsScreenView()
                     .environmentObject(note)
+            }
+            .sheet(isPresented: $showCategories) {
+                CategoriesScreenView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.hidden)
+                    .presentationCornerRadius(DesignSystem.cornerRadius)
             }
             .onAppear {
                 updatePredicates()
@@ -66,7 +87,7 @@ struct HomeScreenView: View {
                 
                 Spacer()
                 
-                Button(action: { // Search Button
+                Button(action: {
                     withAnimation {
                         searchModeEnabled = true
                         updatePredicates()
@@ -80,7 +101,7 @@ struct HomeScreenView: View {
                 
                 if !searchModeEnabled {
                     Button(action: {
-                        showNoteCreation = true
+                        showNoteCreation.toggle()
                     }, label: {
                         Image(systemName: Constants.addIconSystemName)
                             .font(Constants.addIconFont)
@@ -127,11 +148,26 @@ struct HomeScreenView: View {
         }
     }
     
+    private var categoriesView: some View {
+        CategoriesListView(
+            categories: categories,
+            selectedCategory: $selectedCategory) {
+                showCategories.toggle()
+                updatePredicates()
+            }
+            .onChange(of: selectedCategory) { _ in
+                updatePredicates()
+            }
+    }
+    
     private var emptyView: some View {
         ListEmptyView(
             title: Constants.emptyViewTitle,
             description: Constants.emptyViewDescription)
         .isHidden(!noteSections.isEmpty)
+        .onTapGesture {
+            showNoteCreation.toggle()
+        }
     }
     
     // MARK: - Private Methods
@@ -182,7 +218,7 @@ private extension HomeScreenView {
         static let searchedTextLength = 20
         
         static let emptyViewTitle = "Your notes is empty"
-        static let emptyViewDescription = "Create a new Note to get started on spaced repetition"
+        static let emptyViewDescription = "Create a new Note to get started on interval repetition"
     }
 }
 
