@@ -16,10 +16,10 @@ struct CategoriesListView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
                 Button(action: action) {
-                    Image(systemName: categories.isEmpty ? "plus" : "list.bullet")
-                        .font(.system(size: 16, weight: .medium))
+                    Image(systemName: categories.isEmpty ? "plus" : "list.dash")
+                        .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.button)
-                        .frame(width: 44, height: 44)
+                        .frame(width: 36, height: 36)
                         .background {
                             Circle()
                                 .fill(.lightButton)
@@ -51,4 +51,3 @@ struct CategoriesListView: View {
         selectedCategory = (selectedCategory?.id != category.id) ? category : nil
     }
 }
-
