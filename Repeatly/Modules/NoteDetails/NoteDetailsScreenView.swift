@@ -15,7 +15,7 @@ struct NoteDetailsScreenView: View {
     
     // MARK: - UI
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 navigationView
                 
@@ -73,6 +73,7 @@ struct NoteDetailsScreenView: View {
             } label: {
                 Image(systemName: "ellipsis.circle")
                     .foregroundColor(.button)
+                    .font(.system(size: 20))
             }
         }
     }

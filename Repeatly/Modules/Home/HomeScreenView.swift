@@ -62,8 +62,7 @@ struct HomeScreenView: View {
                 CreateNoteScreenView()
             }
             .navigationDestination(for: Note.self) { note in
-                print("Navigating to NoteDetailsScreenView with note: \(note)")
-                return NoteDetailsScreenView()
+                NoteDetailsScreenView()
                     .environmentObject(note)
             }
             .sheet(isPresented: $showCategories) {

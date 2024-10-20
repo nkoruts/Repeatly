@@ -54,6 +54,7 @@
 		16A7DD4B2B7777820072A3F7 /* BorderedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */; };
 		16A7DD4D2B7784610072A3F7 /* TextEditor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */; };
 		16B4D7482CC46DA9004485C4 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4D7472CC46DA9004485C4 /* Date+Ext.swift */; };
+		16B4D74B2CC51ECF004485C4 /* IntervalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4D74A2CC51ECF004485C4 /* IntervalView.swift */; };
 		16B621192BF317D60095DE91 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B621182BF317D60095DE91 /* Model.swift */; };
 		16B97C072CB1830C00BC9691 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */; };
 		16D298222CB92F0F00759D8A /* ScheduledNotification+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D298212CB92F0F00759D8A /* ScheduledNotification+CoreData.swift */; };
@@ -114,6 +115,7 @@
 		16A7DD4A2B7777820072A3F7 /* BorderedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextFieldStyle.swift; sourceTree = "<group>"; };
 		16A7DD4C2B7784610072A3F7 /* TextEditor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Ext.swift"; sourceTree = "<group>"; };
 		16B4D7472CC46DA9004485C4 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		16B4D74A2CC51ECF004485C4 /* IntervalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalView.swift; sourceTree = "<group>"; };
 		16B621182BF317D60095DE91 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		16D298212CB92F0F00759D8A /* ScheduledNotification+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduledNotification+CoreData.swift"; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
 				16110F362B6A6AEE00471512 /* BackButton.swift */,
-				169D04372CBD353600589F1D /* RepetitionIntervals.swift */,
+				16B4D7492CC51EC8004485C4 /* RepetitionIntervals */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,6 +414,15 @@
 			path = IntervalPicker;
 			sourceTree = "<group>";
 		};
+		16B4D7492CC51EC8004485C4 /* RepetitionIntervals */ = {
+			isa = PBXGroup;
+			children = (
+				169D04372CBD353600589F1D /* RepetitionIntervals.swift */,
+				16B4D74A2CC51ECF004485C4 /* IntervalView.swift */,
+			);
+			path = RepetitionIntervals;
+			sourceTree = "<group>";
+		};
 		16E478B02BFB44B000CE588D /* CreateCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +563,7 @@
 				160ECD372B6BC2C50025A1D6 /* Repetition+CoreData.swift in Sources */,
 				166693102B6785A9008F8850 /* NoteCategoryView.swift in Sources */,
 				162247D82B64F537007A61EF /* RepeatlyApp.swift in Sources */,
+				16B4D74B2CC51ECF004485C4 /* IntervalView.swift in Sources */,
 				160ECD312B6B7E090025A1D6 /* Category+CoreData.swift in Sources */,
 				167656D82B8202D8003D2A68 /* ColorSystem.swift in Sources */,
 				169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */,

@@ -30,7 +30,6 @@ struct EditNoteScreenView: View {
         case details
     }
     
-    
     // MARK: - UI
     var body: some View {
         NavigationView {
