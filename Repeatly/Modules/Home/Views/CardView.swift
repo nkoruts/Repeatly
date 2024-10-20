@@ -30,14 +30,14 @@ struct CardView: View {
                         }
                         repeatAction()
                     })
-                .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
+                .scaleEffect(safeScale(for: cardOffset))
                
                 ColorIconButton(
                     iconName: "trash",
                     color: .red,
                     action: removeAction)
-                .scaleEffect(min(1, max(0.001, abs(cardOffset / 90))))
-            } // Background buttons displayed when the card is dragged
+                .scaleEffect(safeScale(for: cardOffset))
+            }
             
             HStack(spacing: Constants.mainStackSpacing) {
                 Capsule()
@@ -72,13 +72,12 @@ struct CardView: View {
                 Image(systemName: Constants.arrowIconName)
                     .foregroundColor(.icon)
                     .padding(.trailing, Constants.defaultPadding)
-            } // Card UI
+            }
             .background {
                 RoundedRectangle(cornerRadius: DesignSystem.cornerRadius)
                     .fill(.cardBackground)
             }
-            .shadow(color: ColorSystem.shadow.color,
-                    radius: Constants.shadowRadius)
+            .shadow(color: ColorSystem.shadow.color, radius: Constants.shadowRadius)
             .offset(x: cardOffset)
             .gesture(
                 DragGesture()
@@ -89,7 +88,6 @@ struct CardView: View {
     
     private func dragOnChange(_ value: DragGesture.Value) {
         let offset = value.translation.width
-        
         if offset < .zero {
             cardOffset = isSwipped ? offset - Constants.dragLimit : offset
         } else {
@@ -104,6 +102,11 @@ struct CardView: View {
             cardOffset = isSwipeGestureLong ? -Constants.dragLimit : .zero
             isSwipped = isSwipeGestureLong
         }
+    }
+    
+    private func safeScale(for offset: CGFloat) -> CGFloat {
+        let scale = abs(offset / 90)
+        return min(1, max(0.1, scale))
     }
 }
 

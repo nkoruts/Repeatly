@@ -61,10 +61,6 @@ struct HomeScreenView: View {
             .navigationDestination(isPresented: $showNoteCreation) {
                 CreateNoteScreenView()
             }
-            .navigationDestination(for: Note.self) { note in
-                NoteDetailsScreenView()
-                    .environmentObject(note)
-            }
             .sheet(isPresented: $showCategories) {
                 CategoriesScreenView()
                     .presentationDetents([.medium, .large])
@@ -145,6 +141,10 @@ struct HomeScreenView: View {
                     .padding(.horizontal)
                 }
             }
+        }
+        .navigationDestination(for: Note.self) { note in
+            NoteDetailsScreenView()
+                .environmentObject(note)
         }
     }
     
