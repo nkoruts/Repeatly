@@ -32,12 +32,3 @@ struct SearchTextView: View {
         }
     }
 }
-
-#Preview {
-    @State var searchText = ""
-    return SearchTextView(
-        searchText: $searchText,
-        placeholder: "Search text") {
-            
-        }
-}

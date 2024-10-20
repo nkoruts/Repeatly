@@ -12,8 +12,10 @@ struct IntervalPickerView: View {
     // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
     
-    let dateFrom: Date
-    @Binding var selectedDate: Date
+    @State private var selectedDate: Date = Date()
+    @State private var day: Int = .zero
+    
+    let onSelection: (Date) -> Void
     
     // MARK: - UI
     var body: some View {
@@ -21,6 +23,7 @@ struct IntervalPickerView: View {
             VStack(alignment: .leading) {
                 ModalNavigationView(title: "Next repetition date") {
                     Button(action: {
+                        onSelection(selectedDate)
                         dismiss()
                     }, label: {
                         Text("Save")
@@ -28,11 +31,21 @@ struct IntervalPickerView: View {
                     })
                 }
                 
+                Text("Day: \(day)")
+                    .foregroundColor(.mainText)
+                    .font(FontBook.regular2)
+                
                 ScrollView {
                     DatePicker(
                         "",
-                        selection: $selectedDate,
-                        in: dateFrom...,
+                        selection: Binding(
+                            get: { selectedDate },
+                            set: { newDate in
+                                let calendar = Calendar.current
+                                day = calendar.dateComponents([.day], from: Date().startOfDay, to: newDate).day ?? .zero
+                                selectedDate = newDate
+                            }),
+                        in: Date()...,
                         displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .labelsHidden()
@@ -45,11 +58,6 @@ struct IntervalPickerView: View {
     }
 }
 
-
 #Preview {
-    IntervalPickerView(
-        dateFrom: Date(),
-        selectedDate: Binding(
-            get: { Date() },
-            set: {_ in }))
+    IntervalPickerView(onSelection: { _ in })
 }

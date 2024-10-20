@@ -27,14 +27,22 @@ struct RepetitionInterval: Identifiable {
 }
 
 struct RepetitionIntervalsView: View {
-    let startDate: Date
     @Binding var intervals: [Int]
+    let startDate: Date
+    var currentIntervalIndex: Int = .zero
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(0..<intervals.count, id: \.self) { index in
                 let intervalModel = getRepetitionInterval(intervals[index])
-                IntervalView(number: "\(index + 1)", model: intervalModel)
+                IntervalView(viewModel: .init(
+                    number: "\(index + 1)",
+                    state: intervalModel.state,
+                    interval: intervalModel.interval,
+                    date: intervalModel.date,
+                    remove: {
+                        intervals.remove(at: index)
+                    }))
             }
         }
         .padding(.horizontal, 12)
@@ -46,63 +54,84 @@ struct RepetitionIntervalsView: View {
     }
     
     private func getRepetitionInterval(_ interval: Int) -> RepetitionInterval {
-        let calendar = Calendar.current
-        let intervalDate = calendar.date(byAdding: .day, value: interval, to: startDate) ?? Date()
+        let intervalDate = Calendar.current.date(byAdding: .day, value: interval, to: startDate) ?? Date()
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         let dateString = dateFormatter.string(from: intervalDate)
         
-        let intervalString = interval.description + (interval > 1 ? " days" : " day")
+        let intervalString = "\(interval.description) day"
+        let state: RepetitionIntervalState = (intervals.firstIndex(of: interval) ?? 0 > currentIntervalIndex) ? .next : .repeated
         
         return RepetitionInterval(
             interval: intervalString,
-            date: dateString)
+            date: dateString,
+            state: state)
     }
 }
 
-struct IntervalView: View {
+
+#Preview {
+    RepetitionIntervalsView(
+        intervals: Binding(
+            get: {
+                [1, 3, 5, 7, 14]
+            },
+            set: { _ in }),
+        startDate: Date())
+}
+
+struct IntervalViewModel {
     let number: String
-    let model: RepetitionInterval
+    let state: RepetitionIntervalState
+    let interval: String
+    let date: String
+    let remove: Action
+}
+
+struct IntervalView: View {
+    @State private var showPanel = false
+    let viewModel: IntervalViewModel
     
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
+            circleStatusView
+                .padding(.trailing, 2)
+            
             HStack {
-                circleStatusView
-                
-                Text(model.interval)
+                Text(viewModel.interval)
                     .font(FontBook.regular3)
-                
                     .foregroundColor(.mainText)
-                Text("(\(model.date))")
+                Text("(\(viewModel.date))")
                     .font(FontBook.regular3)
                     .foregroundColor(.grayText)
+                
+                Spacer()
+                
+                Button(action: {
+                    viewModel.remove()
+                    showPanel.toggle()
+                }, label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.system(size: 14))
+                        .foregroundColor(.grayText)
+                })
             }
-            .opacity(model.state == .repeated ? 0.5 : 1)
-            
-            Spacer()
-            
-            Button(action: {
-//                showAddCategoryScreen.toggle()
-            }, label: {
-                Image(systemName: "square.and.pencil")
-                    .font(.system(size: 14))
-                    .foregroundColor(.button)
-            })
+            .opacity(viewModel.state == .repeated ? 0.5 : 1)
         }
     }
     
     @ViewBuilder
     private var circleStatusView: some View {
-        if model.state == .repeated {
+        if viewModel.state == .repeated {
             Image(systemName: "checkmark.circle")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.button)
-                .frame(width: 23, height: 30)
+                .frame(width: 18, height: 30)
         } else {
-            Text(number)
-                .font(FontBook.regular4)
+            Text(viewModel.number)
+                .font(.gilroyRegular(size: 10))
                 .foregroundColor(.mainText)
                 .padding(6)
                 .background {

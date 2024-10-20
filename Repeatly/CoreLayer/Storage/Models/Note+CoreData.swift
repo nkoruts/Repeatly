@@ -42,7 +42,7 @@ public class Note: NSManagedObject, Identifiable, Model {
         guard let nextDate = Calendar.current.date(
             byAdding: .day,
             value: Int(currentInterval),
-            to: Date()) else { return }
+            to: repetition.startDate) else { return }
         
         repetition.nextDate = nextDate
         try save()

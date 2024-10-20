@@ -12,12 +12,14 @@ struct EditNoteScreenView: View {
     // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
     @State var showCategories = false
+    @State var showDatePicker = false
     
     @EnvironmentObject var note: Note
     
     @State private var title: String = ""
     @State private var details = ""
     @State private var selectedCategory: Category?
+    @State private var intervals: [Int] = []
     
     @FetchRequest(sortDescriptors: [], animation: .spring)
     private var categories: FetchedResults<Category>
@@ -92,6 +94,33 @@ struct EditNoteScreenView: View {
                                 .font(FontBook.regular2)
                         })
                         .padding(.horizontal)
+                        
+                        Section(content: {
+                            RepetitionIntervalsView(
+                                intervals: $intervals,
+                                startDate: Date(),
+                                currentIntervalIndex: Int(note.repetition.currentIntervalIndex))
+                        }, header: {
+                            HStack(alignment: .lastTextBaseline) {
+                                SectionHeaderView(title: Constants.repetitionTitle)
+                                    .font(FontBook.regular2)
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
+                                        showDatePicker.toggle()
+                                    }, label: {
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "plus")
+                                            Text("Add interval")
+                                        }
+                                        .font(FontBook.regular3)
+                                        .foregroundColor(.button)
+                                    })
+                                }
+                            }
+                            
+                        })
+                        .padding(.horizontal)
                     }
                 }
             }
@@ -103,10 +132,21 @@ struct EditNoteScreenView: View {
                 .presentationDragIndicator(.hidden)
                 .presentationCornerRadius(DesignSystem.cornerRadius)
         }
+        .sheet(isPresented: $showDatePicker) {
+            IntervalPickerView { selectedDate in
+                let newInterval = Calendar.current.dateComponents([.day], from: Date().startOfDay, to: selectedDate).day ?? 0
+                intervals.append(newInterval)
+                intervals.sort()
+            }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.hidden)
+            .presentationCornerRadius(DesignSystem.cornerRadius)
+        }
         .onAppear {
             title = note.title
             details = note.details ?? ""
             selectedCategory = note.category
+            intervals = note.repetition.dayIntervals.map { Int($0) }
         }
     }
     
@@ -140,7 +180,8 @@ extension EditNoteScreenView {
         static let detailsTitle = "Details"
         static let detailsPlaceholder = "Example: Creating a learning space"
         
+        static let repetitionTitle = "Repetition intervals"
+        
         static let saveButtonTitle = "Save"
     }
 }
-

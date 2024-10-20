@@ -12,6 +12,7 @@ struct CreateNoteScreenView: View {
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    
     @State private var showCategories = false
     @State private var showAddCategories = false
     @State private var showDatePicker = false
@@ -19,9 +20,7 @@ struct CreateNoteScreenView: View {
     @State private var title = ""
     @State private var details = ""
     @State private var selectedCategory: Category?
-    
     @State private var intervals: [Int] = []
-    @State private var selectedIntervalDate = Date()
     
     @FetchRequest(sortDescriptors: [], animation: .spring())
     private var categories: FetchedResults<Category>
@@ -31,6 +30,8 @@ struct CreateNoteScreenView: View {
         case title
         case details
     }
+    
+    private let calendar = Calendar.current
     
     // MARK: - UI
     var body: some View {
@@ -43,6 +44,7 @@ struct CreateNoteScreenView: View {
                 
                 ScrollView {
                     VStack(spacing: 8) {
+                        // Caterories list
                         Section(content: {
                             CategoriesListView(
                                 categories: categories,
@@ -55,6 +57,7 @@ struct CreateNoteScreenView: View {
                                 .padding(.horizontal)
                         })
                         
+                        // Title section
                         Section(content: {
                             TextField(Constants.notePlaceholder, text: $title)
                                 .textLimit(Constants.titleTextLength, $title)
@@ -70,6 +73,7 @@ struct CreateNoteScreenView: View {
                         })
                         .padding(.horizontal)
                         
+                        // Details section
                         Section(content: {
                             TextField(
                                 Constants.detailsPlaceholder,
@@ -88,8 +92,11 @@ struct CreateNoteScreenView: View {
                         })
                         .padding(.horizontal)
                         
+                        // Repetition intervals
                         Section(content: {
-                            RepetitionIntervalsView(startDate: Date(), intervals: $intervals)
+                            RepetitionIntervalsView(
+                                intervals: $intervals,
+                                startDate: Date())
                         }, header: {
                             HStack(alignment: .lastTextBaseline) {
                                 SectionHeaderView(title: Constants.repetitionTitle)
@@ -125,9 +132,6 @@ struct CreateNoteScreenView: View {
             }
             .background(.background)
         }
-        .onAppear {
-            intervals = getIntervals(forDays: 6)
-        }
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showAddCategories) {
             CreateCategoryScreenView()
@@ -142,16 +146,18 @@ struct CreateNoteScreenView: View {
                 .presentationCornerRadius(DesignSystem.cornerRadius)
         }
         .sheet(isPresented: $showDatePicker) {
-            let lastInterval = intervals.last ?? 1
-            let dateFrom = Calendar.current.date(byAdding: .day, value: lastInterval, to: Date()) ?? Date()
-            IntervalPickerView(dateFrom: dateFrom, selectedDate: $selectedIntervalDate)
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.hidden)
-                .presentationCornerRadius(DesignSystem.cornerRadius)
+            IntervalPickerView { selectedDate in
+                let newInterval = calendar.dateComponents([.day], from: Date().startOfDay, to: selectedDate).day ?? 0
+                intervals.append(newInterval)
+                intervals.sort()
+            }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.hidden)
+            .presentationCornerRadius(DesignSystem.cornerRadius)
         }
-//        .onChange(of: selectedIntervalDate) { date in
-//            intervals.append(date)
-//        }
+        .onAppear {
+            intervals = getIntervals(forDays: 6)
+        }
     }
     
     // MARK: - Private Methods
@@ -180,11 +186,17 @@ struct CreateNoteScreenView: View {
     }
         
     private func createRepetition() -> Repetition {
+        let startDate = Date().startOfDay
+        let firstInterval = intervals.first ?? 1
+        
         let repetition = Repetition(context: viewContext)
-        let repetitionConfiguration = RepetitionManager.defaultRepetition
-        repetition.startDate = Date()
-        repetition.nextDate = repetitionConfiguration.nextDate
-        repetition.dayIntervals = repetitionConfiguration.dayIntervals
+        repetition.startDate = startDate
+        repetition.nextDate = calendar.date(
+            byAdding: .day, 
+            value: firstInterval,
+            to: startDate) ?? startDate
+        repetition.dayIntervals = intervals.map { Int16($0) }
+
         return repetition
     }
     
