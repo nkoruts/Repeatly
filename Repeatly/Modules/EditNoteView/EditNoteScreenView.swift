@@ -20,6 +20,7 @@ struct EditNoteScreenView: View {
     @State private var details = ""
     @State private var selectedCategory: Category?
     @State private var intervals: [Int] = []
+    @State private var repetitionIntervalsWereEdited = false
     
     @FetchRequest(sortDescriptors: [], animation: .spring)
     private var categories: FetchedResults<Category>
@@ -98,7 +99,10 @@ struct EditNoteScreenView: View {
                             RepetitionIntervalsView(
                                 intervals: $intervals,
                                 startDate: Date(),
-                                currentIntervalIndex: Int(note.repetition.currentIntervalIndex))
+                                currentIntervalIndex: Int(note.repetition.currentIntervalIndex),
+                                removeAction: {
+                                    repetitionIntervalsWereEdited = true
+                                })
                         }, header: {
                             HStack(alignment: .lastTextBaseline) {
                                 SectionHeaderView(title: Constants.repetitionTitle)
@@ -136,6 +140,7 @@ struct EditNoteScreenView: View {
                 let newInterval = Calendar.current.dateComponents([.day], from: Date().startOfDay, to: selectedDate).day ?? 0
                 intervals.append(newInterval)
                 intervals.sort()
+                repetitionIntervalsWereEdited = true
             }
             .presentationDetents([.medium])
             .presentationDragIndicator(.hidden)
@@ -156,8 +161,24 @@ struct EditNoteScreenView: View {
         note.details = !details.isEmpty ? details : nil
         note.category = selectedCategory
         
+        if repetitionIntervalsWereEdited {
+            note.repetition.dayIntervals = intervals.map { Int16($0) }
+            if intervals.count < note.repetition.currentIntervalIndex + 1 {
+                note.isArchived = true
+                note.repetition.currentIntervalIndex = -1
+            } else {
+                let currentInterval = note.repetition.dayIntervals[Int(note.repetition.currentIntervalIndex)]
+                let nextDate = Calendar.current.date(
+                    byAdding: .day,
+                    value: Int(currentInterval),
+                    to: note.repetition.startDate) ?? Date()
+                note.repetition.nextDate = nextDate
+            }
+        }
+        
         do {
             try note.save()
+            note.repetition.managedObjectContext?.refresh(note, mergeChanges: true)
             dismiss()
         } catch {
             log(error)

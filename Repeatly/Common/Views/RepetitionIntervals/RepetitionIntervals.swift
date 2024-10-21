@@ -30,6 +30,7 @@ struct RepetitionIntervalsView: View {
     @Binding var intervals: [Int]
     let startDate: Date
     var currentIntervalIndex: Int = .zero
+    var removeAction: Action?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -42,6 +43,7 @@ struct RepetitionIntervalsView: View {
                     date: intervalModel.date,
                     remove: {
                         intervals.remove(at: index)
+                        removeAction?()
                     }))
             }
         }

@@ -18,6 +18,9 @@ struct IntervalViewModel {
 struct IntervalView: View {
     @State private var showPanel = false
     let viewModel: IntervalViewModel
+    private var isDisabled: Bool {
+        viewModel.state == .repeated
+    }
     
     var body: some View {
         HStack(spacing: 12) {
@@ -42,14 +45,15 @@ struct IntervalView: View {
                         .font(.system(size: 14))
                         .foregroundColor(.grayText)
                 })
+                .disabled(isDisabled)
             }
-            .opacity(viewModel.state == .repeated ? 0.5 : 1)
+            .opacity(isDisabled ? 0.5 : 1)
         }
     }
     
     @ViewBuilder
     private var circleStatusView: some View {
-        if viewModel.state == .repeated {
+        if isDisabled {
             Image(systemName: "checkmark.circle")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -59,7 +63,6 @@ struct IntervalView: View {
             Text(viewModel.number)
                 .font(.gilroyRegular(size: 10))
                 .foregroundColor(.mainText)
-//                .padding(6)
                 .frame(width: 18, height: 23)
                 .background {
                     Circle()

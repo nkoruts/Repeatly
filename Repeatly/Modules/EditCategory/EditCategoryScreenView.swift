@@ -65,13 +65,6 @@ struct EditCategoryScreenView: View {
                 })
                 
                 Spacer()
-                
-//                Button(Constants.saveButtonTitle) {
-//                    focusedField = nil
-//                    saveCategory()
-//                }
-//                .buttonStyle(MainButtonStyle())
-//                .disabled(category.name.isEmpty)
             }
             .padding()
             .background(.background)

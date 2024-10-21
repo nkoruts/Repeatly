@@ -240,8 +240,8 @@
 				169A10A02C061D5E003D2CAB /* Categories */,
 				16E478B02BFB44B000CE588D /* CreateCategory */,
 				169A10A32C0638E8003D2CAB /* EditCategory */,
-				1668329F2B680C9D00576DA5 /* Settings */,
 				16B4D7462CC469E9004485C4 /* IntervalPicker */,
+				1668329F2B680C9D00576DA5 /* Settings */,
 				16B97C062CB1830C00BC9691 /* Launch Screen.storyboard */,
 			);
 			path = Modules;

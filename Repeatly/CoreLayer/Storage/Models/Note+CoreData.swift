@@ -31,7 +31,8 @@ public class Note: NSManagedObject, Identifiable, Model {
     
     func updateRepetition() throws {
         guard !repetition.isLastInterval, !repetition.dayIntervals.isEmpty else {
-            self.isArchived = true
+            isArchived = true
+            repetition.currentIntervalIndex = -1
             try save()
             return
         }
