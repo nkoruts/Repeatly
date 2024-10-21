@@ -25,7 +25,7 @@ struct EditCategoryScreenView: View {
     
     // MARK: - UI
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 HStack(alignment: .lastTextBaseline) {
                     Text(Constants.screenTitle)

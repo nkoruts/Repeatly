@@ -35,7 +35,7 @@ struct CreateNoteScreenView: View {
     
     // MARK: - UI
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 NavigationTopView(title: Constants.screenTitle) {
                     dismiss()
@@ -131,6 +131,9 @@ struct CreateNoteScreenView: View {
                 .padding([.horizontal, .bottom])
             }
             .background(.background)
+            .onTapGesture {
+                focusedField = nil
+            }
         }
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showAddCategories) {

@@ -17,7 +17,7 @@ struct CategoriesScreenView: View {
     @State private var showAddCategoryScreen = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                 ModalNavigationView(title: Constants.screenTitle) {
                     Button(action: {

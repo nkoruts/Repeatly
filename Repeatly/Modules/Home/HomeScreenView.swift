@@ -16,7 +16,7 @@ struct HomeScreenView: View {
     @SectionedFetchRequest(
         sectionIdentifier: \.nextRepetitionDate,
         sortDescriptors: [.init(keyPath: \Note.repetition.nextDate, ascending: true)],
-        predicate: nil,
+        predicate: NSPredicate(format: "isArchived == false"),
         animation: .spring())
     private var noteSections: SectionedFetchResults<String, Note>
     
@@ -29,6 +29,11 @@ struct HomeScreenView: View {
     
     @State private var showCategories: Bool = false
     @State private var showNoteCreation = false
+    
+    @FocusState private var focusedField: FocusedField?
+    private enum FocusedField: Hashable {
+        case search
+    }
     
     private var notesPredicate: NSPredicate {
         var predicates = [NSPredicate(format: "isArchived == false")]
@@ -70,13 +75,15 @@ struct HomeScreenView: View {
             .onAppear {
                 updatePredicates()
             }
+            .onTapGesture {
+                focusedField = nil
+            }
         }
     }
     
     private var navigationView: some View {
         VStack {
-            HStack(alignment: .firstTextBaseline,
-                   spacing: Constants.navigationPanelSpacing) {
+            HStack(spacing: Constants.navigationPanelSpacing) {
                 Text(Constants.appName)
                     .foregroundColor(.mainText)
                     .font(FontBook.semibold)
@@ -85,6 +92,7 @@ struct HomeScreenView: View {
                 
                 Button(action: {
                     withAnimation {
+                        focusedField = .search
                         searchModeEnabled = true
                         updatePredicates()
                     }
@@ -111,11 +119,13 @@ struct HomeScreenView: View {
                     searchText: $searchText,
                     placeholder: Constants.searchPlaceholder) {
                         withAnimation {
+                            focusedField = nil
                             searchText = ""
                             searchModeEnabled = false
                             updatePredicates()
                         }
                     }
+                    .focused($focusedField, equals: .search)
             }
         }
     }

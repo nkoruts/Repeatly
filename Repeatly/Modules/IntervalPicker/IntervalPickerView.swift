@@ -19,7 +19,7 @@ struct IntervalPickerView: View {
     
     // MARK: - UI
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(alignment: .leading) {
                 ModalNavigationView(title: "Next repetition date") {
                     Button(action: {
