@@ -9,9 +9,7 @@ import SwiftUI
 
 enum ColorSystem: Int32 {
     case lightGray = 0xD3D3D3
-    case pink = 0xFD6686
     case lightBlue = 0x33C6F8
-    case yellow = 0xFFC12C
     case green = 0x34D183
     
     case button = 0x3E69FF
@@ -24,7 +22,6 @@ enum ColorSystem: Int32 {
     case background = 0xF5F7FA
     case cardBackground = 0xFCFCFD
     case shadow = 0xEEF0F4
-    case focus = 0xF0F2F4
     
     var hex: Int32 {
         self.rawValue

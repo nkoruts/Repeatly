@@ -19,7 +19,6 @@
 		162247DF2B64F538007A61EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162247DE2B64F538007A61EF /* Preview Assets.xcassets */; };
 		162247ED2B6500EC007A61EF /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247EC2B6500EC007A61EF /* HomeScreenView.swift */; };
 		162247F82B650C64007A61EF /* Gilroy-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F42B650C64007A61EF /* Gilroy-Regular.otf */; };
-		162247FA2B650C64007A61EF /* Gilroy-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F62B650C64007A61EF /* Gilroy-Bold.otf */; };
 		162247FB2B650C64007A61EF /* Gilroy-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162247F72B650C64007A61EF /* Gilroy-Medium.otf */; };
 		162247FF2B650E60007A61EF /* Font+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162247FE2B650E60007A61EF /* Font+Ext.swift */; };
 		162248022B65156A007A61EF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162248012B65156A007A61EF /* CardView.swift */; };
@@ -48,6 +47,7 @@
 		168838E22C0DFCF400052DE1 /* ColorIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168838E12C0DFCF400052DE1 /* ColorIconButton.swift */; };
 		168F9E5D2CB6579000C4B2DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */; };
 		168F9E5F2CB659DF00C4B2DE /* RepetitionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */; };
+		1695DBA82CC783E50065968E /* TextViewWithUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1695DBA72CC783E50065968E /* TextViewWithUrl.swift */; };
 		169A10A22C061F20003D2CAB /* EditCategoryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */; };
 		169BFB952B65AB6000DEBEB6 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */; };
 		169D04382CBD353600589F1D /* RepetitionIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D04372CBD353600589F1D /* RepetitionIntervals.swift */; };
@@ -79,7 +79,6 @@
 		162247DE2B64F538007A61EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		162247EC2B6500EC007A61EF /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		162247F42B650C64007A61EF /* Gilroy-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.otf"; sourceTree = "<group>"; };
-		162247F62B650C64007A61EF /* Gilroy-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.otf"; sourceTree = "<group>"; };
 		162247F72B650C64007A61EF /* Gilroy-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.otf"; sourceTree = "<group>"; };
 		162247FE2B650E60007A61EF /* Font+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Ext.swift"; sourceTree = "<group>"; };
 		162248002B650EAA007A61EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		168838E12C0DFCF400052DE1 /* ColorIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorIconButton.swift; sourceTree = "<group>"; };
 		168F9E5C2CB6579000C4B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		168F9E5E2CB659DF00C4B2DE /* RepetitionScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionScheduler.swift; sourceTree = "<group>"; };
+		1695DBA72CC783E50065968E /* TextViewWithUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithUrl.swift; sourceTree = "<group>"; };
 		169A10A12C061F20003D2CAB /* EditCategoryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryScreenView.swift; sourceTree = "<group>"; };
 		169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		169D04372CBD353600589F1D /* RepetitionIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionIntervals.swift; sourceTree = "<group>"; };
@@ -174,10 +174,11 @@
 				16E478B62BFDC34200CE588D /* CategoriesListView */,
 				16E478B32BFDBB0600CE588D /* ColorPickerView */,
 				16110F382B6A6AFE00471512 /* StyleConfiguration */,
+				16B4D7492CC51EC8004485C4 /* RepetitionIntervals */,
 				169BFB942B65AB6000DEBEB6 /* SectionHeaderView.swift */,
 				164870572B70C3E0000BD34B /* ListEmptyView.swift */,
 				16110F362B6A6AEE00471512 /* BackButton.swift */,
-				16B4D7492CC51EC8004485C4 /* RepetitionIntervals */,
+				1695DBA72CC783E50065968E /* TextViewWithUrl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,7 +283,6 @@
 				162247F42B650C64007A61EF /* Gilroy-Regular.otf */,
 				162247F72B650C64007A61EF /* Gilroy-Medium.otf */,
 				162248032B65194D007A61EF /* Gilroy-SemiBold.otf */,
-				162247F62B650C64007A61EF /* Gilroy-Bold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -509,7 +509,6 @@
 			files = (
 				162247F82B650C64007A61EF /* Gilroy-Regular.otf in Resources */,
 				162247DF2B64F538007A61EF /* Preview Assets.xcassets in Resources */,
-				162247FA2B650C64007A61EF /* Gilroy-Bold.otf in Resources */,
 				162247FB2B650C64007A61EF /* Gilroy-Medium.otf in Resources */,
 				162248042B65194D007A61EF /* Gilroy-SemiBold.otf in Resources */,
 				162247DC2B64F538007A61EF /* Assets.xcassets in Resources */,
@@ -525,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16E478AF2BFB449500CE588D /* CreateCategoryScreenView.swift in Sources */,
+				1695DBA82CC783E50065968E /* TextViewWithUrl.swift in Sources */,
 				162CC7812CC26152009AE781 /* IntervalPickerView.swift in Sources */,
 				168838DF2C0CF1E200052DE1 /* Action.swift in Sources */,
 				16B4D7482CC46DA9004485C4 /* Date+Ext.swift in Sources */,

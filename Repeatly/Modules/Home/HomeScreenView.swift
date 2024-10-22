@@ -54,7 +54,7 @@ struct HomeScreenView: View {
             VStack(spacing: Constants.cardsSpacing) {
                 navigationView
                     .padding([.horizontal, .top])
-                
+
                 if !categories.isEmpty {
                     categoriesView
                 }
@@ -68,7 +68,7 @@ struct HomeScreenView: View {
             }
             .sheet(isPresented: $showCategories) {
                 CategoriesScreenView()
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.large])
                     .presentationDragIndicator(.hidden)
                     .presentationCornerRadius(DesignSystem.cornerRadius)
             }

@@ -17,27 +17,7 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            HStack(spacing: 8) {
-                Spacer()
-
-                ColorIconButton(
-                    iconName: "repeat",
-                    color: .green,
-                    action: {
-                        withAnimation {
-                            cardOffset = .zero
-                            isSwipped = false
-                        }
-                        repeatAction()
-                    })
-                .scaleEffect(safeScale(for: cardOffset))
-               
-                ColorIconButton(
-                    iconName: "trash",
-                    color: .red,
-                    action: removeAction)
-                .scaleEffect(safeScale(for: cardOffset))
-            }
+            dragMenu
             
             HStack(spacing: Constants.mainStackSpacing) {
                 Capsule()
@@ -86,6 +66,31 @@ struct CardView: View {
         }
     }
     
+    private var dragMenu: some View {
+        HStack(spacing: 10) {
+            Spacer()
+
+            ColorIconButton(
+                iconName: "checkmark",
+                color: .green,
+                action: {
+                    withAnimation {
+                        cardOffset = .zero
+                        isSwipped = false
+                    }
+                    repeatAction()
+                })
+            .scaleEffect(safeScale(for: cardOffset))
+           
+            ColorIconButton(
+                iconName: "trash",
+                color: .red,
+                action: removeAction)
+            .scaleEffect(safeScale(for: cardOffset))
+        }
+    }
+    
+    // MARK: - Private Methods
     private func dragOnChange(_ value: DragGesture.Value) {
         let offset = value.translation.width
         if offset < .zero {
@@ -122,7 +127,7 @@ extension CardView {
         static let infoSpacing: CGFloat = 4
         static let detailsLineLimit = 2
         
-        static let dragLimit: CGFloat = 120
+        static let dragLimit: CGFloat = 110
         
         static let arrowIconName = "chevron.forward"
     }

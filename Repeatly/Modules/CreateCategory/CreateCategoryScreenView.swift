@@ -46,6 +46,7 @@ struct CreateCategoryScreenView: View {
                     TextField(Constants.namePlaceholder, text: $name)
                         .textLimit(Constants.nameTextLength, $name)
                         .textFieldStyle(BorderedTextFieldStyle())
+                        .focused($focusedField, equals: .name)
                         .submitLabel(.next)
                         .onSubmit {
                             focusedField = nil
@@ -66,6 +67,9 @@ struct CreateCategoryScreenView: View {
             }
             .padding(.horizontal)
             .background(.background)
+        }
+        .onTapGesture {
+            focusedField = nil
         }
     }
     

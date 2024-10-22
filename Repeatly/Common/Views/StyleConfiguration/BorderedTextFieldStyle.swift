@@ -12,6 +12,7 @@ struct BorderedTextFieldStyle: TextFieldStyle {
         configuration
             .font(FontBook.regular3)
             .foregroundColor(.mainText)
+            .disableAutocorrection(true)
             .padding(Constants.padding)
             .overlay(
                 RoundedRectangle(cornerRadius: DesignSystem.mediumCornerRadius)

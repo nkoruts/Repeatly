@@ -22,7 +22,7 @@ struct CategoryView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 7)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: DesignSystem.smallCornerRadius)
                      .fill(isSelected ? color : color.opacity(0.4))
                 )
         })

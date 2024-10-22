@@ -16,11 +16,15 @@ struct ColorIconButton: View {
         Button(action: action) {
             Circle()
                 .fill(color.opacity(0.15))
-                .frame(width: 45, height: 45)
+                .frame(width: 40, height: 40)
                 .overlay {
                     Image(systemName: iconName)
-                        .font(.subheadline)
+                        .font(.system(size: 16))
                         .foregroundColor(color)
+                }
+                .background {
+                    Circle()
+                        .strokeBorder(color, lineWidth: 0.5)
                 }
 
         }

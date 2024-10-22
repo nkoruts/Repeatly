@@ -17,7 +17,7 @@ struct CategoriesListView: View {
             HStack() {
                 Button(action: action) {
                     Image(systemName: categories.isEmpty ? "plus" : "list.dash")
-                        .font(.system(size: 12, weight: .medium))
+                        .font(.system(size: 13, weight: .medium))
                         .foregroundColor(.button)
                         .frame(width: 36, height: 36)
                         .background {

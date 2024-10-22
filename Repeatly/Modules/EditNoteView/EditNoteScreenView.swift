@@ -44,90 +44,23 @@ struct EditNoteScreenView: View {
                         Text("Save")
                             .font(FontBook.medium2)
                     })
-                    .disabled(title.isEmpty)
+                    .disabled(title.isEmpty || intervals.isEmpty)
                 }
                 .padding(.horizontal)
                 
                 ScrollView {
                     VStack(spacing: 8) {
-                        Section(content: {
-                            CategoriesListView(
-                                categories: categories,
-                                selectedCategory: $selectedCategory) {
-                                    showCategories.toggle()
-                                }
-                        }, header: {
-                            SectionHeaderView(title: Constants.categoryTitle)
-                                .font(FontBook.regular2)
-                                .padding(.horizontal)
-                        })
-                        
-                        Section(content: {
-                            TextField(Constants.notePlaceholder, text: $title)
-                                .textLimit(Constants.titleTextLength, $title)
-                                .textFieldStyle(BorderedTextFieldStyle())
-                                .focused($focusedField, equals: .title)
-                                .submitLabel(.next)
-                                .onSubmit {
-                                    focusedField = .details
-                                }
-                        }, header: {
-                            SectionHeaderView(title: Constants.noteTitle)
-                                .font(FontBook.regular2)
-                        })
-                        .padding(.horizontal)
-                        
-                        Section(content: {
-                            TextField(
-                                Constants.detailsPlaceholder,
-                                text: $details,
-                                axis: .vertical)
-                            .lineLimit(5, reservesSpace: true)
-                            .textFieldStyle(BorderedTextFieldStyle())
-                            .focused($focusedField, equals: .details)
-                            .submitLabel(.continue)
-                            .onSubmit {
-                                focusedField = title.isEmpty ? .title : nil
-                            }
-                        }, header: {
-                            SectionHeaderView(title: Constants.detailsTitle)
-                                .font(FontBook.regular2)
-                        })
-                        .padding(.horizontal)
-                        
-                        Section(content: {
-                            RepetitionIntervalsView(
-                                intervals: $intervals,
-                                startDate: Date(),
-                                currentIntervalIndex: Int(note.repetition.currentIntervalIndex),
-                                removeAction: {
-                                    repetitionIntervalsWereEdited = true
-                                })
-                        }, header: {
-                            HStack(alignment: .lastTextBaseline) {
-                                SectionHeaderView(title: Constants.repetitionTitle)
-                                    .font(FontBook.regular2)
-                                HStack {
-                                    Spacer()
-                                    Button(action: {
-                                        showDatePicker.toggle()
-                                    }, label: {
-                                        HStack(spacing: 4) {
-                                            Image(systemName: "plus")
-                                            Text("Add interval")
-                                        }
-                                        .font(FontBook.regular3)
-                                        .foregroundColor(.button)
-                                    })
-                                }
-                            }
-                            
-                        })
-                        .padding(.horizontal)
+                        categoriesSection
+                        titleSection
+                        detailsSection
+                        repetitionIntervalsSection
                     }
                 }
             }
             .background(.background)
+            .onTapGesture {
+                focusedField = nil
+            }
         }
         .sheet(isPresented: $showCategories) {
             CategoriesScreenView()
@@ -152,6 +85,90 @@ struct EditNoteScreenView: View {
             selectedCategory = note.category
             intervals = note.repetition.dayIntervals.map { Int($0) }
         }
+    }
+    
+    private var categoriesSection: some View {
+        Section(content: {
+            CategoriesListView(
+                categories: categories,
+                selectedCategory: $selectedCategory) {
+                    showCategories.toggle()
+                }
+        }, header: {
+            SectionHeaderView(title: Constants.categoryTitle)
+                .font(FontBook.regular2)
+                .padding(.horizontal)
+        })
+    }
+    
+    private var titleSection: some View {
+        Section(content: {
+            TextField(Constants.notePlaceholder, text: $title)
+                .textLimit(Constants.titleTextLength, $title)
+                .textFieldStyle(BorderedTextFieldStyle())
+                .focused($focusedField, equals: .title)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .details
+                }
+        }, header: {
+            SectionHeaderView(title: Constants.noteTitle, mandatory: true)
+                .font(FontBook.regular2)
+        })
+        .padding(.horizontal)
+    }
+    
+    private var detailsSection: some View {
+        Section(content: {
+            TextField(
+                Constants.detailsPlaceholder,
+                text: $details,
+                axis: .vertical)
+            .lineLimit(5, reservesSpace: true)
+            .textFieldStyle(BorderedTextFieldStyle())
+            .focused($focusedField, equals: .details)
+            .submitLabel(.continue)
+            .onSubmit {
+                focusedField = title.isEmpty ? .title : nil
+            }
+        }, header: {
+            SectionHeaderView(title: Constants.detailsTitle)
+                .font(FontBook.regular2)
+        })
+        .padding(.horizontal)
+    }
+    
+    private var repetitionIntervalsSection: some View {
+        Section(content: {
+            RepetitionIntervalsView(
+                intervals: $intervals,
+                startDate: Date(),
+                currentIntervalIndex: Int(note.repetition.currentIntervalIndex),
+                removeAction: {
+                    repetitionIntervalsWereEdited = true
+                })
+            .isHidden(intervals.isEmpty)
+        }, header: {
+            HStack(alignment: .lastTextBaseline) {
+                SectionHeaderView(title: Constants.repetitionTitle, mandatory: true)
+                    .font(FontBook.regular2)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showDatePicker.toggle()
+                    }, label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "plus")
+                            Text("Add interval")
+                        }
+                        .font(FontBook.regular3)
+                        .foregroundColor(.button)
+                    })
+                }
+            }
+            
+        })
+        .padding(.horizontal)
     }
     
     // MARK: - Private Methods

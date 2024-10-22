@@ -52,8 +52,8 @@ struct IntervalPickerView: View {
                 }
             }
             .padding(.horizontal)
-            .background(.background)
         }
+        .background(.background)
         .navigationBarBackButtonHidden()
     }
 }

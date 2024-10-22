@@ -48,6 +48,7 @@ struct EditCategoryScreenView: View {
                     TextField(Constants.namePlaceholder, text: $name)
                         .textLimit(Constants.nameTextLength, $name)
                         .textFieldStyle(BorderedTextFieldStyle())
+                        .focused($focusedField, equals: .name)
                         .submitLabel(.next)
                         .onSubmit {
                             focusedField = nil
@@ -69,11 +70,14 @@ struct EditCategoryScreenView: View {
             .padding()
             .background(.background)
         }
+        .navigationBarBackButtonHidden()
+        .onTapGesture {
+            focusedField = nil
+        }
         .onAppear {
             name = category.name
             selectedColorHex = category.colorHex
         }
-        .navigationBarBackButtonHidden()
     }
     
     // MARK: - Private Methods

@@ -30,7 +30,7 @@ struct NoteDetailsScreenView: View {
                     .foregroundColor(.mainText)
                 
                 if let details = note.details {
-                    Text(details)
+                    TextViewWithUrl(text: details)
                         .font(.gilroyRegular(size: 15))
                         .foregroundColor(.mainText)
                 }

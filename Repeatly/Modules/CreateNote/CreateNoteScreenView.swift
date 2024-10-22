@@ -44,80 +44,10 @@ struct CreateNoteScreenView: View {
                 
                 ScrollView {
                     VStack(spacing: 8) {
-                        // Caterories list
-                        Section(content: {
-                            CategoriesListView(
-                                categories: categories,
-                                selectedCategory: $selectedCategory) {
-                                    categories.isEmpty ? showAddCategories.toggle() : showCategories.toggle()
-                                }
-                        }, header: {
-                            SectionHeaderView(title: Constants.categoryTitle)
-                                .font(FontBook.regular2)
-                                .padding(.horizontal)
-                        })
-                        
-                        // Title section
-                        Section(content: {
-                            TextField(Constants.notePlaceholder, text: $title)
-                                .textLimit(Constants.titleTextLength, $title)
-                                .textFieldStyle(BorderedTextFieldStyle())
-                                .focused($focusedField, equals: .title)
-                                .submitLabel(.next)
-                                .onSubmit {
-                                    focusedField = .details
-                                }
-                        }, header: {
-                            SectionHeaderView(title: Constants.noteTitle)
-                                .font(FontBook.regular2)
-                        })
-                        .padding(.horizontal)
-                        
-                        // Details section
-                        Section(content: {
-                            TextField(
-                                Constants.detailsPlaceholder,
-                                text: $details,
-                                axis: .vertical)
-                            .lineLimit(5, reservesSpace: true)
-                            .textFieldStyle(BorderedTextFieldStyle())
-                            .focused($focusedField, equals: .details)
-                            .submitLabel(.continue)
-                            .onSubmit {
-                                focusedField = title.isEmpty ? .title : nil
-                            }
-                        }, header: {
-                            SectionHeaderView(title: Constants.detailsTitle)
-                                .font(FontBook.regular2)
-                        })
-                        .padding(.horizontal)
-                        
-                        // Repetition intervals
-                        Section(content: {
-                            RepetitionIntervalsView(
-                                intervals: $intervals,
-                                startDate: Date())
-                        }, header: {
-                            HStack(alignment: .lastTextBaseline) {
-                                SectionHeaderView(title: Constants.repetitionTitle)
-                                    .font(FontBook.regular2)
-                                HStack {
-                                    Spacer()
-                                    Button(action: {
-                                        showDatePicker.toggle()
-                                    }, label: {
-                                        HStack(spacing: 4) {
-                                            Image(systemName: "plus")
-                                            Text("Add interval")
-                                        }
-                                        .font(FontBook.regular3)
-                                        .foregroundColor(.button)
-                                    })
-                                }
-                            }
-                            
-                        })
-                        .padding(.horizontal)
+                        categoriesSection
+                        titleSection
+                        detailsSection
+                        repetitionIntervalsSection
                     }
                     .padding(.bottom)
                 }
@@ -127,7 +57,7 @@ struct CreateNoteScreenView: View {
                     saveNote()
                 }
                 .buttonStyle(MainButtonStyle())
-                .disabled(title.isEmpty)
+                .disabled(title.isEmpty || intervals.isEmpty)
                 .padding([.horizontal, .bottom])
             }
             .background(.background)
@@ -161,6 +91,86 @@ struct CreateNoteScreenView: View {
         .onAppear {
             intervals = getIntervals(forDays: 6)
         }
+    }
+    
+    private var categoriesSection: some View {
+        Section(content: {
+            CategoriesListView(
+                categories: categories,
+                selectedCategory: $selectedCategory) {
+                    categories.isEmpty ? showAddCategories.toggle() : showCategories.toggle()
+                }
+        }, header: {
+            SectionHeaderView(title: Constants.categoryTitle)
+                .font(FontBook.regular2)
+                .padding(.horizontal)
+        })
+    }
+    
+    private var titleSection: some View {
+        Section(content: {
+            TextField(Constants.notePlaceholder, text: $title)
+                .textLimit(Constants.titleTextLength, $title)
+                .textFieldStyle(BorderedTextFieldStyle())
+                .focused($focusedField, equals: .title)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .details
+                }
+        }, header: {
+            SectionHeaderView(title: Constants.noteTitle, mandatory: true)
+                .font(FontBook.regular2)
+        })
+        .padding(.horizontal)
+    }
+    
+    private var detailsSection: some View {
+        Section(content: {
+            TextField(
+                Constants.detailsPlaceholder,
+                text: $details,
+                axis: .vertical)
+            .lineLimit(5, reservesSpace: true)
+            .textFieldStyle(BorderedTextFieldStyle())
+            .focused($focusedField, equals: .details)
+            .submitLabel(.continue)
+            .onSubmit {
+                focusedField = title.isEmpty ? .title : nil
+            }
+        }, header: {
+            SectionHeaderView(title: Constants.detailsTitle)
+                .font(FontBook.regular2)
+        })
+        .padding(.horizontal)
+    }
+    
+    private var repetitionIntervalsSection: some View {
+        Section(content: {
+            RepetitionIntervalsView(
+                intervals: $intervals,
+                startDate: Date())
+            .isHidden(intervals.isEmpty)
+        }, header: {
+            HStack(alignment: .lastTextBaseline) {
+                SectionHeaderView(title: Constants.repetitionTitle, mandatory: true)
+                    .font(FontBook.regular2)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showDatePicker.toggle()
+                    }, label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "plus")
+                            Text("Add interval")
+                        }
+                        .font(FontBook.regular3)
+                        .foregroundColor(.button)
+                    })
+                }
+            }
+            
+        })
+        .padding(.horizontal)
     }
     
     // MARK: - Private Methods
@@ -220,13 +230,14 @@ extension CreateNoteScreenView {
         
         static let categoryTitle = "Category"
         static let noteTitle = "Note title"
-        static let repetitionTitle = "Repetition intervals"
         static let titleTextLength = 40
         static let notePlaceholder = "Example: Study"
         static let noteFieldPadding: CGFloat = 12
         
         static let detailsTitle = "Details"
         static let detailsPlaceholder = "Example: Creating a learning space"
+        
+        static let repetitionTitle = "Repetition intervals"
         
         static let saveButtonTitle = "Save"
     }

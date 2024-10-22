@@ -19,8 +19,4 @@ extension Font {
     static func gilroySemiBold(size: CGFloat) -> Font {
         return Font.custom("Gilroy-SemiBold", size: size)
     }
-    
-    static func gilroyBold(size: CGFloat) -> Font {
-        return Font.custom("Gilroy-Bold", size: size)
-    }
 }
